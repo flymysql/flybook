@@ -1,0 +1,14 @@
+extends layout
+block head_content
+  title= "归档 | " + site.title
+  link(rel='stylesheet', href='/stylesheets/index.css')
+block content
+  div(class="index-container")
+    ul(class="post-list")
+      each post in list
+        li(class="archives-post-item")
+          span(class="pub-time")= post.updateTime
+          h2(class="archives-title")
+            a(href="/post/" + post.id)=post.title
+            if ifadmin
+              a(class="update" href="/update/" + post.id)= " 修改"

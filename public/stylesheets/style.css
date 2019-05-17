@@ -1,0 +1,167 @@
+html{
+  height:100%;
+}
+
+body {
+  margin: unset;
+  font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+}
+
+*{
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}
+
+/* 顶部样式 */
+
+.header{
+  background-color: #fff;
+  border-color: #f0f0f0;
+  top: 0;
+  border-width: 0 0 1px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #d6d9e6;
+  height: 56px;
+}
+
+.header .head-content{
+  min-width: 768px;
+  max-width: 1440px;
+  margin: 0 auto;
+
+}
+
+.header a.logo{
+  float: left;
+  height: 56px;
+  padding: 0;
+}
+
+.header a.logo img {
+  height: 96%;
+}
+
+.header a.btn{
+  float: right;
+  width: 100px;
+  height: 40px;
+  line-height: 24px;
+  margin: 8px 12px 0;
+  border-radius: 20px;
+  font-size: 1.3em;
+  color: #fff;
+  background-color: #ea6f5a;
+  padding: 8px 15px;
+  text-align: center;
+}
+
+.header .normol-head{
+  float: right;
+  margin: 11px 6px 0 10px;
+  font-size: 1.5em;
+  color: #969696;
+}
+
+.header .container{
+  width: 66%;
+  height: 58px;
+  margin: auto;
+}
+
+.container form{
+  position: relative;
+  top: 9px;
+}
+
+input.search-input{
+  padding: 0 40px 0 20px;
+  width: 160px;
+  height: 38px;
+  font-size: 14px;
+  border: 1px solid #eee;
+  border-radius: 40px;
+  background: #eee;
+  transition: width .5s;
+  -moz-transition: width .5s;
+  -webkit-transition: width .5s;
+  -o-transition: width .5s;
+  transition-delay: .1s;
+  -moz-transition-delay: .1s;
+  -webkit-transition-delay: .1s;
+  -o-transition-delay: .1s;
+}
+
+
+/* 顶部结束 */
+
+
+/* 底部样式 */
+
+footer {
+  width: 950px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 30px;
+}
+
+footer col{
+  width: 70.83333%;
+  display: inline-block;
+}
+
+footer a{
+  color: #666666!important;
+  display: inline-block;
+}
+
+footer .icp{
+  color: #666666;
+}
+
+/* 底部结束 */
+
+
+.tag-cloud-tags {
+  text-align: left;
+}
+
+.tag-cloud-tags a {
+  border-radius: 4px;
+  padding: 2px 5px 6px 4px;
+  margin-right: 3px;
+  margin-left: 0;
+  color: #555 ;
+  margin-top: 8px;
+  margin-bottom: 0;
+  background-color: #f5f7f1;
+  border: none;
+  text-decoration: none;
+  border: unset;
+  display: inline-block;
+}
+
+.tag_img {
+  background-size: contain;
+  width: 24px;
+  height: 24px;
+  margin-right: 3px;
+  position: relative;
+  top: 5px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-position-x: center;
+  background-position-y: center;
+}
+
+@media (max-width: 767px){
+
+}

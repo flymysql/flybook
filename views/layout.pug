@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="icon" type="image/png" sizes="32x32" href="/images/logo4.png")
+    block head_content
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    include partails/header
+    block content
+  include partails/tags
+  include partails/footer
+  
+script(src="/javascripts/view-image.min.js")
+script.
+  jQuery(document).ready(function () {
+        jQuery.viewImage({
+            'target' : 'img', //需要使用ViewImage的图片
+            'exclude': '#no-view',    //要排除的图片
+            'delay'  : 300                //延迟时间
+        });
+    });

@@ -1,0 +1,41 @@
+extends layout
+block head_content
+  title= site.title
+  link(rel='stylesheet', href='/stylesheets/index.css')
+block content
+  div(class="index-container")
+    ul(class="post-list")
+      include partails/carousel
+      each post in list
+        li(class="post-item")
+          if post.img != ""
+            a(href="" class="post-item-img")
+              img(src=post.img, alt="" id="no-view")
+            div(class="post-item-content-img")
+              h2(class="post-item-title")
+                a(href="/post/" + post.id)=post.title
+              p!=post.content
+              div(class="post-item-meta")
+                span(class="cop")= post.cop
+                  i
+                span= " 阅读" + post.view
+                span= " " + post.tag
+                span= " " + post.updateTime
+          else
+            div(class="post-item-content")
+              h2(class="post-item-title")
+                a(href="/post/" + post.id)=post.title
+              p!=post.content
+              div(class="post-item-meta")
+                span(class="cop")= post.cop
+                  i
+                span= " 阅读" + post.view
+                span= " " + post.tag
+                span= " " + post.updateTime
+      if !tag
+        div(class="next-pre")
+          a(href="/?page=" + next class="next")= "更早文章"
+          a(href="/?page=" + pre class="pre")= "最近文章"
+    include partails/inside
+
+

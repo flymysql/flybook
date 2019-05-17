@@ -1,0 +1,279 @@
+.index-container{
+    padding-top: 80px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 960px;
+    width: 96%;
+    margin-bottom: 100px;
+  }
+
+ul.post-list{
+  width: 70%;
+  padding-right: 0;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  float: left;
+  list-style: none;
+}
+
+.index-aside {
+  width: 27%;
+  float: right;
+}
+
+ul.post-list .post-item{
+  position: relative;
+  width: 100%;
+  margin: 0 0 15px;
+  padding: 15px 2px 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+  word-wrap: break-word;
+}
+
+ul.post-list .post-item .post-item-content-img{
+  padding-right: 165px;
+}
+
+ul.post-list .post-item a.post-item-img{
+  width: 150px;
+  position: absolute;
+  top: 50%;
+  margin-top: -60px;
+  right: 0;
+  width: 125px;
+  height: 100px;
+}
+
+.post-item img{
+  display: none;
+}
+
+ul.post-list .post-item a.post-item-img img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  border: 1px solid #f0f0f0;
+}
+
+.post-item-title a{
+  color: #333;
+  text-decoration: unset;
+  display: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.post-item p{
+  letter-spacing: .1em;
+  margin: 0 0 8px;
+  font-size: 13px;
+  line-height: 24px;
+  color: #999;
+}
+
+.post-item .post-item-meta span{
+  color: rgb(179, 190, 206);
+  line-height: 1;
+  font-size: 13px;
+}
+
+.post-item .post-item-meta span.cop{
+  color: #6491e2;
+}
+.post-item .post-item-meta span.cop i::before{
+  color:#6491e2;
+  content: "✿";
+}
+.post-content{
+  max-width: 780px;
+  width: 96%;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 100px;
+}
+
+/* 归档页面 */
+.archives-post-item{
+  width: 100%;
+  margin: 0 0 15px;
+}
+
+.archives-post-item .archives-title{
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: unset;
+  margin-bottom: unset;
+}
+
+.archives-post-item .archives-title a{
+  display: inline-block;
+  font-size: 16px;
+  color: #585353cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.archives-post-item .pub-time{
+  color: rgb(61, 126, 220);
+  line-height: 1;
+  font-size: 13px;
+  display: inline-block;
+}
+.next-pre{
+  text-align: right;
+}
+.next-pre a{
+  border: 1px solid #999;
+  padding: 4px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #666;
+}
+.next-pre a.next{
+  float: left;
+}
+.next-pre .pre{
+  clear: both;
+}
+
+.update{
+  margin-left: 10px;
+  color: #6491e2!important;
+}
+
+.post-title
+{
+  display:none!important;
+}
+
+.index-list
+{
+  box-sizing:border-box;
+  list-style:none;
+  text-align:left;
+  color:#969696;
+  font-size:9pt;
+  margin:2px 0 20px;
+}
+
+.index-list a
+{
+  border:none;
+}
+
+.index-list li
+{
+  display:list-item;
+  margin-top:15px;
+  list-style:none;
+  text-align:0;
+  line-height:20px;
+}
+
+.index-list .avatar
+{
+  float: left;
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+  display: block;
+  cursor: pointer;
+}
+
+.index-list li .index-name{
+  color: #555;
+  padding-top: 5px;
+  margin-right: 60px;
+  font-size: 15px;
+  display: block;
+  text-decoration: none;
+}
+
+.index-list .avatar img{
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.index-list .follow
+{
+  float:right;
+  margin-top:5px;
+  color:#42c02e;
+  font-weight:400;
+  font-size:13px;
+  line-height:normal;
+  padding:0;
+}
+
+.index-list .index-name
+{
+  display:block;
+  margin-right:60px;
+  padding-top:5px;
+  font-size:15px;
+}
+
+.index-list a:hover
+{
+  border-bottom:none!important;
+  color:#4b784e;
+}
+
+.find-more
+{
+  width:100%;
+  border:1px solid #dcdcdc;
+  border-radius:4px;
+  background-color:#f7f7f7;
+  color:#787878;
+  font-size:13px;
+  padding:7px 7px 7px 9pt;
+}
+
+.slide{
+  height:300px;
+  margin-bottom: 20px;
+}
+
+  
+@media (max-width: 960px){
+  .index-container{
+    padding-left: unset;
+    padding-right: unset;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .slide{
+    height: auto!important;
+  }
+  .index-aside{
+    display: none!important;
+  }
+  ul.post-list{
+    width: 100%;
+    float: none;
+    padding-left:unset;
+  }
+  .header a{
+    font-size: 1.3em;
+  }
+  .post-item p{
+    letter-spacing: 0.2px;
+    font-size: 1em;
+  }
+  .post-item-title a{
+    font-size: 19px;
+    padding-bottom: 10px;
+  }
+  ul.post-list .post-item .post-item-content-img{
+    padding-right: unset;
+  }
+  ul.post-list .post-item a.post-item-img{
+    display: none;
+  }
+}
