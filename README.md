@@ -74,7 +74,7 @@
 ### 安装
 
 ```
-git clone [https://github.com/flymysql/flybook.git](https://github.com/flymysql/flybook.git)
+git clone https://github.com/flymysql/flybook.git
 ```
 
 进入项目文件夹文件夹后安装生产环境
