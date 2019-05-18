@@ -1,6 +1,4 @@
-window.onload=function(){//页面加载完成后
-	
-	
+//window.onload=function(){//页面加载完成后
 	slideLlx("slide");//参数为字符串是外层容器的id,可以多次调用
 	slideLlx("slide_two");
 	
@@ -34,7 +32,6 @@ window.onload=function(){//页面加载完成后
 	lastIMG.setAttribute("src",firstSrc);
 	lastLi.appendChild(lastIMG);
 	slideUl.appendChild(lastLi);
-	
 	
 	//创建圆点控制按钮
 	var circle_btn=document.createElement("div");
@@ -138,9 +135,6 @@ window.onload=function(){//页面加载完成后
 	function goslide(){
 		slideUl.style.transform="translateX(-"+index*offset+"px)";
 	}
-		
-	
-	
 	//响应式，根据浏览器窗口变化
 	slideUl.style.width=slideLis.length*100+"%";
 	var liWidth=100/slideLis.length+"%";
@@ -154,5 +148,5 @@ window.onload=function(){//页面加载完成后
 	}
 }
 
-}
+//}
 
