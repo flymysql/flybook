@@ -9,6 +9,7 @@ body{
 .post-content{
     width:56%;
     margin: auto;
+    margin-top: 80px;
 }
 
 .post-control{
@@ -79,6 +80,6 @@ form.login input{
     margin: 2px 6px 16px 0;
 }
 
-.footer{
+footer{
     display: none;
 }
