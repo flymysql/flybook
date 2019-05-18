@@ -54,8 +54,9 @@ block content
                         contentType: false,
                         processData: false,
                         success: function(res){
-                            console.log(res.url)
-                            insert(res.url[0]);
+                            for(var i in res.url){
+                                insert(res.url[i]);
+                            }
                         },
                         error:function(err){
                             console.log(err);

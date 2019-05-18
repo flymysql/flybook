@@ -6,7 +6,7 @@ const option = {
     title: config.seo.title,
     icp: config.options.ICP,
     cop: config.options.copyright,
-    pagenum: 10,
+    pagenum: 20,
     avator: "",
     carousel: config.carousel,
 }
@@ -47,7 +47,7 @@ exports.archivesArticle = (res => Articleslist(res, false));
  */
 exports.getArticleList = (res, page) =>{
     var pagenum = page * option.pagenum || 0;
-    var selectsql=`select * from articles where type = 'post' order by updateTime desc limit ${pagenum}, 10`;
+    var selectsql=`select * from articles where type = 'post' order by updateTime desc limit ${pagenum}, ${option.pagenum}`;
     var result= [];
     connection.query(selectsql,function(err,rows){
         if(err){
