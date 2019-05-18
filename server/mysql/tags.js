@@ -7,7 +7,8 @@ const option = {
     icp: config.options.ICP,
     cop: config.options.copyright,
     pagenum: 10,
-    avator: ""
+    avator: "",
+    carousel: config.carousel,
 }
 
 exports.queryAllTags = (res)=>{
@@ -53,7 +54,6 @@ exports.queryTagid = (tagname)=>{
 exports.queryOneTags = (res, req) =>{
     var tname = req.params.id;
     var selectsql=`select * from articles where type = 'post' and tag = '${tname}' order by updateTime desc`;
-    console.log(selectsql)
     var result= [];
     connection.query(selectsql,function(err,rows){
         if(err){
@@ -79,7 +79,9 @@ exports.queryOneTags = (res, req) =>{
         res.render('index', { 
             'site':option,
             'list':result,
-            'tag': true
+            'tag': true,
+            'carousel': option.carousel,
+            'friends': config.friends
         }); 
     });
 }

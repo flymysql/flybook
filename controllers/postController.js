@@ -37,4 +37,5 @@ exports.post_tags_get = (req, res) => { tags.queryAllTags(res);}
 // get获取单个文章页面
 exports.get_one_tag = (req, res) => { tags.queryOneTags(res, req) ;}
 
-
+// post获取搜索内容
+exports.post_search = (req, res) => { post.post_search(res, req.query.s)}

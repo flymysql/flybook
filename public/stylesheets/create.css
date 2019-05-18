@@ -83,3 +83,9 @@ form.login input{
 footer{
     display: none;
 }
+
+@media(max-width:787px){
+    .post-content{
+        width: 96%;
+    }
+}

@@ -195,4 +195,37 @@ exports.deleteArticle = (res, id) =>{
     });
 }
 
+exports.post_search = (res, s) =>{
+    var searchsql = `SELECT * FROM articles WHERE post_content LIKE '%${s}%'`;
+    var result= [];
+    connection.query(searchsql,function(err,rows){
+        if(err){
+        console.log(err);
+            return;
+        }
+        for(var i in rows){
+            var time = rows[i].updateTime;
+            result.push({
+                'id':rows[i].id,
+                'title':rows[i].title, 
+                'content':rows[i].description,
+                'like': rows[i].like,
+                'view': rows[i].visitors,
+                'tag': rows[i].tag,
+                'img': rows[i].img,
+                'cop': "原创",
+                'updateTime': time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate()
+            });
+        }
+        // console.log(result);
+        res.render('index', {
+            'site':option,
+            'list':result,
+            'tag': true,
+            'carousel': option.carousel,
+            'friends': config.friends
+        }); 
+    });
+}
+
 exports.conn = connection;

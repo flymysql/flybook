@@ -34,16 +34,20 @@ a{
 }
 
 .header .head-content{
-  min-width: 768px;
-  max-width: 1440px;
+  min-width: 70%;
+  max-width: 96%;
   margin: 0 auto;
 
 }
 
 .header a.logo{
   float: left;
-  height: 56px;
+  height: 55px;
   padding: 0;
+  width: 335px;
+  background: url(/images/headerico.png);
+  background-size: auto 100%;
+  background-repeat: no-repeat;
 }
 
 .header a.logo img {
@@ -164,4 +168,35 @@ footer .icp{
 
 @media (max-width: 767px){
 
+  body{
+    background: #fff;
+  }
+/* 顶部样式 */
+.header{
+  width:100%;
+  height: 4em;
+  position: inherit;
+}
+.header form{
+  display: none;
+}
+.header a.logo{
+  background: url(/images/headerico2.png);
+  width: 56px;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+}
+.index-container{
+  padding-top: unset!important;
+}
+.post-content{
+  margin-top: unset;
+}
+/* 顶部结束 */
+
+/* 底部样式 */
+footer{
+  width:98%!important;
+}
+/* 底部结束 */
 }

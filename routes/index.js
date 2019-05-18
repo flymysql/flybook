@@ -45,6 +45,9 @@ router.get('/gettags', postController.post_tags_get);
 // get单个标签
 router.get('/tag/:id', postController.get_one_tag);
 
+// post获取search
+router.get('/search', postController.post_search);
+
 // post上传图片
 router.post('/upload', upload.array('imageup',10), function (req, res, next) {
     // req.file 是 `avatar` 文件的信息

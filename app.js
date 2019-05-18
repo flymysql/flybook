@@ -41,8 +41,14 @@ app.use('/', indexRouter);
 app.use('/create', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
+// 404 page
+app.use(function (req, res) {
+  if (!res.headersSent) {
+    res.render('404');
+  }
 });
 
 // error handler

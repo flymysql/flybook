@@ -10,7 +10,7 @@ module.exports ={
         avatar:"/images/avatar.jpg",   
         nickname:"兰州小红鸡",    
         description:"桃李春风一杯酒，江湖夜雨十年灯",
-        ICP:"闽ICP备123456789",
+        ICP:"闽ICP备18025365号",
         copyright:"© 2018"
     },
     carousel:[
