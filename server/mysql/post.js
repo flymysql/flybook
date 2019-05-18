@@ -51,8 +51,8 @@ exports.getArticleList = (res, page) =>{
     var result= [];
     connection.query(selectsql,function(err,rows){
         if(err){
-        console.log(err);
-        return;
+            console.log(err);
+            return;
         }
         for(var i in rows){
             var time = rows[i].updateTime;
@@ -82,15 +82,18 @@ exports.getArticleList = (res, page) =>{
 };
 
 exports.getArticleDetail = (res, id) =>{
-    var selectsql=`select * from articles where id = "${id}";
-    update articles set visitors=visitors+1 where id = "${id}"
-    `;
+    var selectsql=`select * from articles where id = "${id}"`;
+    var updatetag = `update articles set visitors=visitors+1 where id = "${id}"`;
+    connection.query(updatetag);
     connection.query(selectsql,function(err,rows){
         if(err){
         console.log(err);
         return;
         }
-        rows = rows[0];
+        if(rows[0] == undefined){
+            res.render('404');
+            return;
+        }
         var time = rows[0].updateTime;
         res.render('post', {
             'site':option,
@@ -100,7 +103,7 @@ exports.getArticleDetail = (res, id) =>{
             'view': rows[0].visitors,
             'tag': rows[0].tag,
             'updateTime': time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate()
-        }); 
+        });
     });
 };
 
@@ -110,8 +113,6 @@ exports.createArticle = (res, req) =>{
     var id = Math.random().toString(16).substr(6);
     var loginUser = sess.loginUser;
     var isLogined = !!loginUser;
-    console.log(loginUser)
-    console.log(isLogined)
     // var isLogined = !!loginUser;
     res.render('create', {
         'update': false,
