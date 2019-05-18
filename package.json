@@ -7,7 +7,8 @@
     "devstart": "nodemon ./bin/www",
     "pmstart": "./node_modules/.bin/pm2 start ./bin/www --name=\"blog\"",
     "pmstop": "./node_modules/.bin/pm2 stop all",
-    "pmrestart": "./node_modules/.bin/pm2 restart all"
+    "pmrestart": "./node_modules/.bin/pm2 restart all",
+    "update": "sh update.sh"
   },
   "dependencies": {
     "async": "^2.6.2",
