@@ -8,15 +8,21 @@ html
   body
     include partails/header
     block content
+  script(src="/javascripts/jQuery.min.js")
   include partails/tags
-  include partails/footer
-  
-script(src="/javascripts/view-image.min.js")
-script.
-  jQuery(document).ready(function () {
-        jQuery.viewImage({
-            'target' : 'img', //需要使用ViewImage的图片
-            'exclude': '#no-view',    //要排除的图片
-            'delay'  : 300                //延迟时间
-        });
+  script(src="/javascripts/view-image.min.js")
+  script(type="text/javascript" src="/highlight/highlight.pack.js")
+  script.
+    jQuery(document).ready(function () {
+          jQuery.viewImage({
+              'target' : 'img', //需要使用ViewImage的图片
+              'exclude': '#no-view',    //要排除的图片
+              'delay'  : 300                //延迟时间
+          });
+      });
+    $(function(){
+      $('pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+      });
     });
+    include partails/footer

@@ -1,0 +1,55 @@
+script(src="/javascripts/wangEditor.min.js")
+script(src="/javascripts/jQuery.min.js")
+script.
+    var E = window.wangEditor; 
+    var editor = new E( document.getElementById('editor') );
+    //- editor.customConfig.uploadImgServer = '/upload';
+    editor.customConfig.customUploadImg = function (files, insert) {
+        var formData = new FormData();
+        for(var i in files){
+            formData.append('imageup',files[i]);
+        }
+        $.ajax({
+                url: "/upload",
+                type: "post",
+                data:formData,
+                contentType: false,
+                processData: false,
+                success: function(res){
+                    for(var i in res.url){
+                        insert(res.url[i]);
+                    }
+                },
+                error:function(err){
+                    console.log(err);
+                }
+        });
+        // files 是 input 中选中的文件列表
+        // insert 是获取图片 url 后，插入到编辑器的方法
+
+        // 上传代码返回结果之后，将图片插入到编辑器中
+        
+    }
+    editor.create();
+    $(document).ready(function(){
+        $("#btn1").click(function(){
+            var img = $("#img")[0].value;
+            if(img == "封面链接"){
+                img = null;
+            }
+            $.post("/insert_post",{
+                id: document.getElementById('title').dataset.id,
+                tag: $("#tag")[0].value,
+                title: $("#title")[0].value,
+                author: $("#author")[0].value,
+                img: img,
+                type: document.getElementById('btn1').dataset.type,
+                content: editor.txt.html(),
+                ifpage: $("[name='type']").filter(":checked")[0].value
+            },
+            function(data,status){
+                alert("文章发表成功");
+                window.location="/";
+            });
+        });
+    });
