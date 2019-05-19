@@ -1,7 +1,7 @@
 extends layout
 block head_content
   title= site.title
-  link(rel='stylesheet', href='/stylesheets/index.css')
+  link(rel='stylesheet', href='/stylesheets/index.css?t='+sst)
 block content
   div(class="index-container")
     ul(class="post-list")

@@ -1,5 +1,6 @@
 var post = require('../server/mysql/post');
 var tags = require('../server/mysql/tags');
+var sitemap = require('../server/mysql/sitemap');
 
 
 exports.index = (req, res) => { post.getArticleList(res, req.query.page);};
@@ -22,12 +23,6 @@ exports.post_update_get = (req, res) => { post.updateArticle(res, req) };
 // 由 GET 显示删除文章的表单
 exports.post_delete_get = (req, res) => { post.deleteArticle(res, req.params.id); };
 
-// 由 POST 处理文章删除操作
-exports.post_delete_post = (req, res) => { res.send('未实现：删除文章的 POST'); };
-
-// 由 POST 处理文章更新操作
-exports.post_update_post = (req, res) => { res.send('未实现：更新文章的 POST'); };
-
 // get处理文章归档
 exports.post_archives_get = (req, res) => { post.archivesArticle(res); }
 
@@ -39,3 +34,12 @@ exports.get_one_tag = (req, res) => { tags.queryOneTags(res, req) ;}
 
 // post获取搜索内容
 exports.post_search = (req, res) => { post.post_search(res, req.query.s)}
+
+// get获取sitemap
+exports.get_sitemap = (req, res) => { sitemap.get_sitemap(res) }
+
+// get新建标签
+exports.get_insert_tag = (req, res) => { tags.get_insert_tag(res, req.query.tagname) }
+
+// get增加like
+exports.get_add_like = (req, res) => { post.get_add_like(res, req) }

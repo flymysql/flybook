@@ -42,11 +42,20 @@ router.get('/archives', postController.post_archives_get);
 // get标签列表
 router.get('/gettags', postController.post_tags_get);
 
+// get新建标签
+router.get('/insert_tag', postController.get_insert_tag);
+
 // get单个标签
 router.get('/tag/:id', postController.get_one_tag);
 
 // post获取search
 router.get('/search', postController.post_search);
+
+// get获取search
+router.get('/sitemap.xml', postController.get_sitemap);
+
+// get增加like
+router.get('/like-add', postController.get_add_like);
 
 // post上传图片
 router.post('/upload', upload.array('imageup',10), function (req, res, next) {

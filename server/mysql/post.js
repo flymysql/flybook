@@ -1,7 +1,8 @@
 const connection = require('./db').connection
 const config = require('../../config')
 const until = require('../../until/until')
-
+//serverStartTimestamp
+const sst = new Date().getTime()
 const option = {
     title: config.seo.title,
     icp: config.options.ICP,
@@ -13,7 +14,7 @@ const option = {
 
 // 文章归档和后台使用同一个模板渲染
 const Articleslist = function(res, ifadmin){
-    var selectsql=`select id,title,updateTime from articles where type = 'post'`;
+    var selectsql=`select id,title,updateTime from articles where type = 'post' order by updateTime desc`;
     if(ifadmin){
         selectsql = `select id,title,updateTime from articles`;
     }
@@ -34,7 +35,8 @@ const Articleslist = function(res, ifadmin){
         res.render('archives', {
             'ifadmin': ifadmin,
             'site': option,
-            'list': result
+            'list': result,
+            'sst': sst
         })
     });
 }
@@ -76,7 +78,8 @@ exports.getArticleList = (res, page) =>{
             'next': parseInt(page)+1 || 1,
             'pre': parseInt(page)-1>=0? parseInt(page)-1 : 0,
             'carousel': option.carousel,
-            'friends': config.friends
+            'friends': config.friends,
+            'sst':sst
         }); 
     });
 };
@@ -102,7 +105,8 @@ exports.getArticleDetail = (res, id) =>{
             'like': rows[0].like,
             'view': rows[0].visitors,
             'tag': rows[0].tag,
-            'updateTime': time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate()
+            'updateTime': time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate(),
+            'sst': sst
         });
     });
 };
@@ -120,7 +124,8 @@ exports.createArticle = (res, req) =>{
         'isLogined': isLogined,
         'name': loginUser,
         'type': 'insert',
-        'id': id
+        'id': id,
+        'sst': sst
     });
 };
 
@@ -134,25 +139,18 @@ exports.insertArticle = (req, res) =>{
     if(req.body.ifpage == 'page'){
         pid = title;
     }
-    var sql = `INSERT INTO articles  VALUES('${pid}', '${title}', '${desc}', '${content}', '${req.body.img}', '${req.body.ifpage}', 0, 0, '${req.body.tag}', '${date}', '${date}', (select id from tags where name = '${req.body.tag}'))`;
+    console.log(date)
+    var sql = `INSERT INTO articles  VALUES('${pid}', '${title}', '${desc}', '${content}', '${req.body.img}', '${req.body.ifpage}', 0, 0, '${req.body.tag}', '${date}', '${date}')`;
     if(req.body.type == 'update'){
         console.log('update')
-        sql = `UPDATE articles SET title = '${title}', description = '${desc}', post_content = '${content}', img = '${req.body.img}',tag = '${req.body.tag}',updateTime = '${date}', tagid = (select id from tags where name = '${req.body.tag}') where id = '${req.body.id}'`;
+        sql = `UPDATE articles SET title = '${title}', description = '${desc}', post_content = '${content}', img = '${req.body.img}',tag = '${req.body.tag}',updateTime = '${date}' where id = '${req.body.id}'`;
     }
     // sql = mysql.escape(sql);
     // console.log(sql)
     connection.query(sql,function(err,rows){
         // 如果标签不存在的话就创建新标签
         if(err){
-            var insertAll = `insert into tags values(null , '${req.body.tag}');
-            INSERT INTO articles  VALUES('${req.body.id}', '${title}', '${desc}', '${content}', '${req.body.img}', '${req.body.ifpage}', 0, 0, '${req.body.tag}', '${date}', '${date}', (select id from tags where name = '${req.body.tag}'))`;
-            connection.query(insertAll, function(err,rows){
-                if(err){
-                    console.log(err);
-                }
-                res.end('succeed'); 
-                console.log("new tags")
-            });
+            console.log(err)
         }
         else{
             res.end('succeed'); 
@@ -180,7 +178,8 @@ exports.updateArticle = (res, req) =>{
             'img': rows[0].img,
             'isLogined': isLogined,
             'name': loginUser,
-            'type': 'update'
+            'type': 'update',
+            'sst': sst
         }); 
     });
 };
@@ -197,7 +196,7 @@ exports.deleteArticle = (res, id) =>{
 }
 
 exports.post_search = (res, s) =>{
-    var searchsql = `SELECT * FROM articles WHERE post_content LIKE '%${s}%'`;
+    var searchsql = `SELECT * FROM articles WHERE post_content LIKE '%${s}%' or title like '%${s}%'`;
     var result= [];
     connection.query(searchsql,function(err,rows){
         if(err){
@@ -224,9 +223,27 @@ exports.post_search = (res, s) =>{
             'list':result,
             'tag': true,
             'carousel': option.carousel,
-            'friends': config.friends
+            'friends': config.friends,
+            'sst': sst
         }); 
     });
 }
 
-exports.conn = connection;
+
+exports.get_add_like = (res, req) => {
+    console.log(req.headers.referer)
+    var id = req.headers.referer.replace(config.seo.index,"").replace("/post/","");
+    var sql = 'update articles set `like` = `like`+1 where id ="' + id + '"';
+    connection.query(sql, function(err, rows){
+        if(err){
+            console.log(err)
+            res.json({
+                code:0
+            })
+            return;
+        }
+        res.json({
+            code:1
+        })
+    })
+}

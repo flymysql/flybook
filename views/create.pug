@@ -1,7 +1,7 @@
 extends layout
 block head_content
   title= "写文章 | " + site.title 
-  link(rel='stylesheet', href='/stylesheets/create.css')
+  link(rel='stylesheet', href='/stylesheets/create.css?t='+sst)
 block content
     if isLogined
         div(class="post-content")
@@ -15,7 +15,7 @@ block content
                 else
                     p= "开始你的创作吧！"
             div(class="post-control")
-                span= "标签"
+                span= "关键词"
                 if update
                     input(type="text" value=tag id="tag")
                 else
@@ -32,12 +32,16 @@ block content
 
             div(class="other-option")
                 br
+                form(action="/insert_tag", method="get" target="_blank")
+                    span= "新建标签"
+                    input(type="text", name="tagname")
+                    input(type="submit", value="提交")
                 a(href="/admin")= "文章列表"
                 if update
                     a(href="/delete/" + id)= "删除文章"
 
-        script(src="/javascripts/wangEditor.min.js")
-        script(src="/javascripts/jQuery.min.js")
+        script(src="/javascripts/wangEditor.min.js?t="+sst)
+        script(src="/javascripts/jQuery.min.js?t="+sst)
         script.
             var E = window.wangEditor; 
             var editor = new E( document.getElementById('editor') );

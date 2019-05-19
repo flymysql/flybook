@@ -2,16 +2,16 @@ doctype html
 html
   head
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    link(rel="icon" type="image/png" sizes="32x32" href="/images/logo4.png")
+    link(rel="icon" type="image/png" sizes="32x32" href="/images/logo4.png?t="+sst)
     block head_content
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/style.css?t='+sst)
   body
     include partails/header
     block content
-  script(src="/javascripts/jQuery.min.js")
+    script(src="/javascripts/jQuery.min.js?t="+sst)
   include partails/tags
-  script(src="/javascripts/view-image.min.js")
-  script(type="text/javascript" src="/third-part/highlight/highlight.pack.js")
+  script(src="/javascripts/view-image.min.js?t="+sst)
+  script(type="text/javascript" src="/third-part/highlight/highlight.pack.js?t="+sst)
   script.
     jQuery(document).ready(function () {
           jQuery.viewImage({
@@ -24,5 +24,12 @@ html
       $('pre').each(function(i, block) {
           hljs.highlightBlock(block);
       });
+    });
+    $("#like1").click(function(){
+        $.get("/like-add", function(status){
+            if(status.code==1){
+              alert("谢谢你的喜欢！！")
+            }
+        });
     });
   include partails/footer

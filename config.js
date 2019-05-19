@@ -1,10 +1,7 @@
 module.exports ={
     seo:{
         title:"兰州小红鸡",
-        subtitle:"记录生活，分享感动。",
-        keywords:"个人博客,生活,记录,代码",
-        description:"记录生活，分享感动。",
-        icon:"https://cherryml.com/wp-content/uploads/2017/07/favicon.png"
+        index:"https://me.idealli.com"
     },
     options:{
         avatar:"/images/avatar.jpg",   

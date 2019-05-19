@@ -1,8 +1,8 @@
 extends layout
 block head_content
   title= title + " | " + site.title
-  link(rel='stylesheet', href='/stylesheets/post.css')
-  link(rel="stylesheet", href="/third-part/highlight/styles/github.css")
+  link(rel='stylesheet', href='/stylesheets/post.css?t='+sst)
+  link(rel="stylesheet", href="/third-part/highlight/styles/github.css?t="+sst)
 block content
     div(class="post-content")
         h2(class="post-title")= title
@@ -17,10 +17,12 @@ block content
                 div(class="meta")
                     span= "阅读" + view
                     span= " 喜欢" + like
-                    span= " 标签 " + tag
+                    span= " " + tag
                     span= " 更新" + updateTime
 
         article(class="post-body")
             div!=content
+        div(class="like")
+            button(id="like1")= "喜欢"
         div(class="tag-cloud-tags" id="tagcloud")
         include comment

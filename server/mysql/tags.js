@@ -13,14 +13,14 @@ const option = {
 
 exports.queryAllTags = (res)=>{
     var result = [];
-    var selectags = `select distinct tag from articles where type='post'`;
+    var selectags = `select name from tags`;
     connection.query(selectags,function(err,rows){
         if(err){
             console.log(err);
             return;
         }
         for(var i in rows){
-            result.push(rows[i].tag);
+            result.push(rows[i].name);
         }
         res.json({
             "code":200,
@@ -53,7 +53,7 @@ exports.queryTagid = (tagname)=>{
 
 exports.queryOneTags = (res, req) =>{
     var tname = req.params.id;
-    var selectsql=`select * from articles where type = 'post' and tag = '${tname}' order by updateTime desc`;
+    var selectsql=`select * from articles where type = 'post' and tag like '%${tname}%' or title like '%${tname}%' order by updateTime desc`;
     var result= [];
     connection.query(selectsql,function(err,rows){
         if(err){
@@ -84,4 +84,15 @@ exports.queryOneTags = (res, req) =>{
             'friends': config.friends
         }); 
     });
+}
+
+exports.get_insert_tag = (res, name) => {
+    var insertsql = `insert into tags value(null, '${name}')`;
+    connection.query(insertsql, function(err, rows){
+        if(err){
+            res.end("err");
+            return;
+        }
+        res.send("succeed");
+    })
 }

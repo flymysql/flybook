@@ -1,4 +1,4 @@
-link(rel="stylesheet", href="/stylesheets/slide.css")
+link(rel="stylesheet", href="/stylesheets/slide.css?t="+sst)
 div(id="slide" class="slide")
     ul
         for item in carousel
@@ -7,5 +7,5 @@ div(id="slide" class="slide")
     div
         span(class="prev_btn")= "<"
         span(class="next_btn")= ">"
-script(src="/javascripts/slide.js")
+script(src="/javascripts/slide.js?t="+sst)
 

@@ -129,6 +129,10 @@ code {
   padding: 0.125rem 0.25rem;
 }
 
+pre code{
+  background-color: unset;
+}
+
 p {
   margin: 0 0 1.5rem;
   letter-spacing: 0.3px;
@@ -1531,4 +1535,20 @@ body{
   }
   .author a {
     border: unset;
+  }
+
+  .like{
+    width: 100%;
+    height: 120px;
+    text-align: center;
+  }
+  .like button{
+    margin: auto;
+    width: 120px;
+    height: 60px;
+    font-size: 24px;
+    color: #f7f7f7;
+    font-weight: 600;
+    background: #f46b4cbd;
+    border-radius: 30px;
   }

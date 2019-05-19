@@ -49,7 +49,7 @@ app.use('/create', usersRouter);
 // 404 page
 app.use(function (req, res) {
   if (!res.headersSent) {
-    res.render('404');
+    res.redirect(301, '/404.html');
   }
 });
 
