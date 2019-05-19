@@ -1,4 +1,4 @@
-const connection = require('./db').connection
+const connection = require('../config/db').connection
 const config = require('../../config')
 const until = require('../../until/until')
 //serverStartTimestamp

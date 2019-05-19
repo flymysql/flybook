@@ -1,5 +1,5 @@
 var sm = require('sitemap');
-const connection = require('./db').connection;
+const connection = require('../config/db').connection;
 var site = require('../../config').seo.index;
 
 exports.get_sitemap = (res)=> {

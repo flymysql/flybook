@@ -1,4 +1,4 @@
-const connection = require('./db').connection;
+const connection = require('../config/db').connection;
 const config = require('../../config')
 const until = require('../../until/until')
 
@@ -53,7 +53,7 @@ exports.queryTagid = (tagname)=>{
 
 exports.queryOneTags = (res, req) =>{
     var tname = req.params.id;
-    var selectsql=`select * from articles where type = 'post' and tag like '%${tname}%' or title like '%${tname}%' order by updateTime desc`;
+    var selectsql=`select * from articles where type = 'post' and (tag like '%${tname}%' or post_content like '%${tname}%' ) order by updateTime desc`;
     var result= [];
     connection.query(selectsql,function(err,rows){
         if(err){

@@ -1,4 +1,4 @@
-var users = require('../server/mysql/user').items;
+var users = require('../server/config/user').items;
 
 var findUser = function(name, password){
     return users.find(function(item){
