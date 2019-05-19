@@ -42,7 +42,7 @@ a{
 
 .header a.logo{
   float: left;
-  height: 55px;
+  height: 45px;
   padding: 0;
   width: 335px;
   background: url(/images/headerico.png);
@@ -183,6 +183,7 @@ footer .icp{
 .header a.logo{
   background: url(/images/headerico2.png);
   width: 56px;
+  height: 55px;
   background-size: auto 100%;
   background-repeat: no-repeat;
 }
