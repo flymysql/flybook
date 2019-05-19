@@ -1,13 +1,9 @@
 body{
-    background-image:url(/images/1029bg.jpg);
-    background-position: right bottom;
-    background-size: auto 80%;
-    background-repeat: no-repeat;
     height: 100%;
 }
 
 .post-content{
-    width:56%;
+    width:70%;
     margin: auto;
     margin-top: 80px;
 }
@@ -47,7 +43,7 @@ body{
 
 .post-content input#title{
     max-width: 780px;
-    width: 96%;
+    width: 56%;
     height: 1.6em;
     font-size: 1.4em;
     margin-top: 20px;
@@ -57,7 +53,7 @@ body{
 }
 
 .post-content .w-e-text-container {
-    height: 400px!important;
+    height: 520px!important;
 }
 
 form.login {

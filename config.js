@@ -53,6 +53,12 @@ module.exports ={
         desc: "无文字 | 三无计划"
       },
       {
+        img: "https://www.52share.online/medias/avatar.jpg",
+        link: "https://www.52share.online/",
+        name: "在线分享网",
+        desc: "免费分享各种学习视频，资源收集于网络！"
+      },
+      {
         img: "https://c.disquscdn.com/uploads/users/32762/6397/avatar92.jpg?1557241158",
         link: "https://me.idealli.com",
         name: "闲置友情位",
