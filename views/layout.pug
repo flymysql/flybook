@@ -11,7 +11,7 @@ html
   script(src="/javascripts/jQuery.min.js")
   include partails/tags
   script(src="/javascripts/view-image.min.js")
-  script(type="text/javascript" src="/highlight/highlight.pack.js")
+  script(type="text/javascript" src="/third-part/highlight/highlight.pack.js")
   script.
     jQuery(document).ready(function () {
           jQuery.viewImage({
@@ -21,8 +21,8 @@ html
           });
       });
     $(function(){
-      $('pre code').each(function(i, block) {
+      $('pre').each(function(i, block) {
           hljs.highlightBlock(block);
       });
     });
-    include partails/footer
+  include partails/footer
