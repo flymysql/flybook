@@ -3,7 +3,9 @@ cp -rf flybook/app.js ./
 cp -rf flybook/routes ./
 cp -rf flybook/bin ./
 cp -rf flybook/controllers ./
-cp -rf flybook/server ./
+cp -rf flybook/server/mysql ./server/
+cp -rf flybook/server/install ./server/
+cp -rf flybook/server/file ./server/
 cp -rf flybook/until ./
 cp -rf flybook/public/javascripts ./public/
 cp -rf flybook/public/third-part ./public/
