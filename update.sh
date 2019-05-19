@@ -2,8 +2,8 @@ git clone https://github.com/flymysql/flybook.git
 cp -rf flybook/app.js ./
 cp -rf flybook/routes ./
 cp -rf flybook/bin ./
-cp -rf flybook/server/mysql/post.js ./server/mysql/post.js
-cp -rf flybook/server/mysql/tags.js ./server/mysql/tags.js
+cp -rf flybook/controllers ./
+cp -rf flybook/server ./
 cp -rf flybook/until ./
 cp -rf flybook/public/javascripts ./public/
 cp -rf flybook/public/third-part ./public/
