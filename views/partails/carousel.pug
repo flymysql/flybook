@@ -3,7 +3,8 @@ div(id="slide" class="slide")
     ul
         for item in carousel
             li
-                img(src=item.img id="no-view")
+                a(href=item.link target="_blank")
+                    img(src=item.img id="no-view")
     div
         span(class="prev_btn")= "<"
         span(class="next_btn")= ">"

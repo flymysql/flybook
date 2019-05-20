@@ -152,8 +152,8 @@ h5,
 h6 {
   display: block;
   margin: 0 0 2rem;
-  color: #444444;
-  font-weight: inherit;
+  color: #000;
+  font-weight: 500;
   font-size: inherit;
   line-height: 1.25;
 }
@@ -178,12 +178,12 @@ h1 {
 }
 
 h2 {
-  border-bottom: 1px solid #e9f2fa70;
+  border-bottom: 1px solid #b1c7da70;
   font-size: 1.6rem;
 }
 
 h3 {
-  border-bottom: 1px solid #e9f2fa70;
+  border-bottom: 1px solid #9cafc070;
   font-size: 1.4rem;
 }
 
