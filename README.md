@@ -1,11 +1,9 @@
 ## Flybook
 
 ![](https://img.shields.io/github/issues/flymysql/flybook.svg)
-![](https://img.shields.io/github/issues/flymysql/flybook.svg)
 ![](https://img.shields.io/github/forks/flymysql/flybook.svg)
 ![](https://img.shields.io/github/stars/flymysql/flybook.svg)
 ![](https://img.shields.io/github/license/flymysql/flybook.svg)
-![](https://img.shields.io/cocoapods/l/flybook.svg?style=flat)
 ![](https://img.shields.io/badge/language-node.js-green.svg)
 
 搭了快一年的博客了，用过wordpress，也用过typecho，其中hexo用的最久，期间把nex主题改得乱七八糟。平常喜欢折腾，就一直在搞些杂七杂八的。也一直想自己动手做个属于自己的博客框架，奈何之前技术水平不够，觉得这种项目离自己的水平还有点距离，学了半年前端后（其实也没系统地学），上周看完node的文档后，决定自己用node搭一个博客web应用。历时一周，完成初步版本，本博客整体UI风模仿简书。。
