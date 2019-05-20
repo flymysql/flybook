@@ -247,3 +247,10 @@ exports.get_add_like = (res, req) => {
         })
     })
 }
+
+exports.render_photos = (res => {
+    res.render('photos', {
+        'sst':sst,
+        'site':option,
+    })
+})

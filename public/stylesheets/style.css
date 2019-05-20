@@ -182,11 +182,28 @@ footer .icp{
 }
 .header a.logo{
   background: url(/images/headerico2.png);
-  width: 56px;
-  height: 55px;
+  width: 40px;
+  height: 40px;
   background-size: auto 100%;
   background-repeat: no-repeat;
 }
+
+.header a.btn{
+  float: right;
+  height: 36px;
+  line-height: 18px;
+  border-radius: 18px;
+  text-align: center;
+  margin: 8px 2px 0;
+}
+
+.header .normol-head {
+  float: right;
+  margin: 11px 2px 0 4px;
+  font-size: 1.3em;
+  color: #969696;
+}
+
 .index-container{
   padding-top: unset!important;
 }

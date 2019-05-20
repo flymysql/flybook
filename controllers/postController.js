@@ -43,3 +43,5 @@ exports.get_insert_tag = (req, res) => { tags.get_insert_tag(res, req.query.tagn
 
 // get增加like
 exports.get_add_like = (req, res) => { post.get_add_like(res, req) }
+
+exports.get_photos = (req, res) => { post.render_photos(res) }

@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title= "小鸡的相册"
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="icon" type="image/png" sizes="32x32" href="/images/logo4.png?t="+sst)
+    block head_content
+    link(rel='stylesheet', href='/stylesheets/style.css?t='+sst)
+    link(rel='stylesheet', href='/stylesheets/photos.css?t='+sst)
+  body
+    include partails/photo
+    script(src="/javascripts/jQuery.min.js?t="+sst)
+    script(src="/javascripts/image.js?t="+sst)
+    script.
+        jQuery(document).ready(function () {
+            jQuery.viewImage({
+                'target' : 'img', //需要使用ViewImage的图片
+                'exclude': '#no-view',    //要排除的图片
+                'delay'  : 300                //延迟时间
+            });
+        });
+    div(class="comment")
+    include comment
+    

@@ -57,6 +57,9 @@ router.get('/sitemap.xml', postController.get_sitemap);
 // get增加like
 router.get('/like-add', postController.get_add_like);
 
+// get增加photos
+router.get('/photos', postController.get_photos);
+
 // post上传图片
 router.post('/upload', upload.array('imageup',10), function (req, res, next) {
     // req.file 是 `avatar` 文件的信息
