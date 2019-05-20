@@ -29,7 +29,7 @@ const Articleslist = function(res, ifadmin){
             result.push({
                 'id':rows[i].id,
                 'title':rows[i].title, 
-                'updateTime': time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate()
+                'updateTime': time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate()
             });
         }
         res.render('archives', {
@@ -67,7 +67,7 @@ exports.getArticleList = (res, page) =>{
                 'tag': rows[i].tag,
                 'img': rows[i].img,
                 'cop': "原创",
-                'updateTime': time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate()
+                'updateTime': time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate()
             });
         }
         // console.log(result);
@@ -105,7 +105,7 @@ exports.getArticleDetail = (res, id) =>{
             'like': rows[0].like,
             'view': rows[0].visitors,
             'tag': rows[0].tag,
-            'updateTime': time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate(),
+            'updateTime': time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate(),
             'sst': sst
         });
     });
