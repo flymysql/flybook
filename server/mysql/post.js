@@ -133,7 +133,11 @@ exports.insertArticle = (req, res) =>{
     var date = until.nowDate;
     var content = req.body.content.replace(/'/g,"\"");
     var title = req.body.title.replace(/'/g,"\"");
-    var desc = content.substring(0,80);
+    var desc = req.body.desc;
+    console.log(desc.length)
+    if(desc.length > 100){
+        desc = desc.substring(0,100);
+    }
     // var title = req.body.title.replace("\"","\\\"")
     var pid = req.body.id;
     if(req.body.ifpage == 'page'){

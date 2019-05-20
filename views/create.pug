@@ -76,9 +76,11 @@ block content
             $(document).ready(function(){
                 $("#btn1").click(function(){
                     var img = $("#img")[0].value;
-                    if(img == "封面链接"){
+                    if(img.indexOf("http") == -1){
                         img = null;
                     }
+                    var desc = $(".w-e-text").find("p")[0].textContent;
+                    console.log(desc)
                     $.post("/insert_post",{
                         id: document.getElementById('title').dataset.id,
                         tag: $("#tag")[0].value,
@@ -87,6 +89,7 @@ block content
                         img: img,
                         type: document.getElementById('btn1').dataset.type,
                         content: editor.txt.html(),
+                        desc: desc,
                         ifpage: $("[name='type']").filter(":checked")[0].value
                     },
                     function(data,status){
