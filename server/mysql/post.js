@@ -71,16 +71,23 @@ exports.getArticleList = (res, page) =>{
             });
         }
         // console.log(result);
-        
-        res.render('index', { 
-            'site':option,
-            'list':result,
-            'next': parseInt(page)+1 || 1,
-            'pre': parseInt(page)-1>=0? parseInt(page)-1 : 0,
-            'carousel': option.carousel,
-            'friends': config.friends,
-            'sst':sst
-        }); 
+        if(page == undefined){
+            res.render('index', { 
+                'site':option,
+                'list':result,
+                'next': parseInt(page)+1 || 1,
+                'pre': parseInt(page)-1>=0? parseInt(page)-1 : 0,
+                'carousel': option.carousel,
+                'friends': config.friends,
+                'sst':sst
+            }); 
+        }
+        else{
+            res.json({
+                'list': result,
+                'code': 1
+            });
+        }
     });
 };
 

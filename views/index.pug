@@ -4,38 +4,41 @@ block head_content
   link(rel='stylesheet', href='/stylesheets/index.css?t='+sst)
 block content
   div(class="index-container")
-    ul(class="post-list")
-      include partails/carousel
-      each post in list
-        li(class="post-item")
-          if post.img != ""
-            a(href="" class="post-item-img")
-              img(src=post.img, alt="" id="no-view")
-            div(class="post-item-content-img")
-              h2(class="post-item-title")
-                a(href="/post/" + post.id)=post.title
-              p!=post.content
-              div(class="post-item-meta")
-                span(class="cop")= post.cop
-                  i
-                span= " 阅读" + post.view
-                span= " " + post.tag
-                span= " " + post.updateTime
-          else
-            div(class="post-item-content")
-              h2(class="post-item-title")
-                a(href="/post/" + post.id)=post.title
-              p!=post.content
-              div(class="post-item-meta")
-                span(class="cop")= post.cop
-                  i
-                span= " 阅读" + post.view
-                span= " " + post.tag
-                span= " " + post.updateTime
+    div(class= "post-container")
+      ul(class="post-list" id="post-list")
+        include partails/carousel
+        each post in list
+          li(class="post-item")
+            if post.img != ""
+              a(href="/post/" + post.id class="post-item-img")
+                img(src=post.img, alt="" id="no-view")
+              div(class="post-item-content-img")
+                h2(class="post-item-title")
+                  a(href="/post/" + post.id)=post.title
+                p!=post.content
+                div(class="post-item-meta")
+                  span(class="cop")= post.cop
+                    i
+                  span= " 阅读" + post.view
+                  span= " " + post.tag
+                  span= " " + post.updateTime
+            else
+              div(class="post-item-content")
+                h2(class="post-item-title")
+                  a(href="/post/" + post.id)=post.title
+                p!=post.content
+                div(class="post-item-meta")
+                  span(class="cop")= post.cop
+                    i
+                  span= " 阅读" + post.view
+                  span= " " + post.tag
+                  span= " " + post.updateTime
       if !tag
         div(class="next-pre")
-          a(href="/?page=" + next class="next")= "更早文章"
-          a(href="/?page=" + pre class="pre")= "最近文章"
+          button(id="more" class="index-more")= "查看更多"
     include partails/inside
+block scripts
+  script(src="/javascripts/more_post.js?t=" + sst)
+    
 
 
