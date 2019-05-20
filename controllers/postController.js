@@ -21,7 +21,7 @@ exports.post_admin = (req, res) => { post.adminArticle(res) };
 exports.post_update_get = (req, res) => { post.updateArticle(res, req) };
 
 // 由 GET 显示删除文章的表单
-exports.post_delete_get = (req, res) => { post.deleteArticle(res, req.params.id); };
+exports.post_delete_get = (req, res) => { post.deleteArticle(res, req.params.id, req.session.loginUser); };
 
 // get处理文章归档
 exports.post_archives_get = (req, res) => { post.archivesArticle(res); }

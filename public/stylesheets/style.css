@@ -5,7 +5,6 @@ html{
 body {
   margin: unset;
   font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
-
 }
 
 *{
@@ -164,6 +163,15 @@ footer .icp{
   display: inline-block;
   background-position-x: center;
   background-position-y: center;
+}
+
+.ads{
+  width: 100%;
+  overflow: hidden;
+}
+
+.comment{
+  overflow: hidden;
 }
 
 @media (max-width: 767px){

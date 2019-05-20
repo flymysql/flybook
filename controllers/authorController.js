@@ -17,7 +17,6 @@ exports.authorLogin = (req, res, next) => {
             }
             
             req.session.loginUser = user.name;
-            console.log(req)
             res.json({ret_code: 0, ret_msg: '登录成功'});                     
         });
     }else{

@@ -92,9 +92,11 @@ block content
                         desc: desc,
                         ifpage: $("[name='type']").filter(":checked")[0].value
                     },
-                    function(data,status){
-                        alert("文章发表成功");
+                    function(data){
+                        if(data == "succeed"){
+                            alert("文章发表成功");
                         window.location="/";
+                        }
                     });
                 });
             });
@@ -122,7 +124,10 @@ block content
                     success: function(data){
                         if(data.ret_code === 0){
                             location.reload();
-                        }   
+                        }
+                        else{
+                            alert("账号密码错误！！")
+                        }
                     }
                 });
             });

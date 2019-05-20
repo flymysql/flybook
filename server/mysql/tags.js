@@ -81,7 +81,8 @@ exports.queryOneTags = (res, req) =>{
             'list':result,
             'tag': true,
             'carousel': option.carousel,
-            'friends': config.friends
+            'friends': config.friends,
+            'sst' : new Date().getTime()
         }); 
     });
 }

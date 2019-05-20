@@ -2,7 +2,7 @@ const connection = require('../config/db').connection
 const config = require('../../config')
 const until = require('../../until/until')
 //serverStartTimestamp
-const sst = new Date().getTime()
+const sst = new Date().getTime();
 const option = {
     title: config.seo.title,
     icp: config.options.ICP,
@@ -137,11 +137,15 @@ exports.createArticle = (res, req) =>{
 };
 
 exports.insertArticle = (req, res) =>{
+    var isLogined = !req.session.loginUser;
+    if(isLogined){
+        res.end('error'); 
+        return;
+    }
     var date = until.nowDate;
     var content = req.body.content.replace(/'/g,"\"");
     var title = req.body.title.replace(/'/g,"\"");
     var desc = req.body.desc;
-    console.log(desc.length)
     if(desc.length > 100){
         desc = desc.substring(0,100);
     }
@@ -150,10 +154,8 @@ exports.insertArticle = (req, res) =>{
     if(req.body.ifpage == 'page'){
         pid = title;
     }
-    console.log(date)
     var sql = `INSERT INTO articles  VALUES('${pid}', '${title}', '${desc}', '${content}', '${req.body.img}', '${req.body.ifpage}', 0, 0, '${req.body.tag}', '${date}', '${date}')`;
     if(req.body.type == 'update'){
-        console.log('update')
         sql = `UPDATE articles SET title = '${title}', description = '${desc}', post_content = '${content}', img = '${req.body.img}',tag = '${req.body.tag}',updateTime = '${date}' where id = '${req.body.id}'`;
     }
     // sql = mysql.escape(sql);
@@ -195,7 +197,11 @@ exports.updateArticle = (res, req) =>{
     });
 };
 
-exports.deleteArticle = (res, id) =>{
+exports.deleteArticle = (res, id, islogin) =>{
+    if(!islogin){
+        res.end("you are not admin !!!");
+        return;
+    }
     var deltesql = `DELETE FROM articles WHERE id = '${id}'`;
     connection.query(deltesql,function(err,rows){
         if(err){
@@ -242,7 +248,6 @@ exports.post_search = (res, s) =>{
 
 
 exports.get_add_like = (res, req) => {
-    console.log(req.headers.referer)
     var id = req.headers.referer.replace(config.seo.index,"").replace("/post/","");
     var sql = 'update articles set `like` = `like`+1 where id ="' + id + '"';
     connection.query(sql, function(err, rows){

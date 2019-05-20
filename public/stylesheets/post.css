@@ -269,11 +269,32 @@ dd {
 }
 
 table {
-  border-spacing: 0;
+  margin: 20px 0;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    table-layout: fixed;
 }
 
 table td {
   padding: 0.5rem;
+}
+
+table th{
+  padding-bottom: 10px;
+  font-weight: 700;
+}
+
+table>tbody>tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+table td,
+table th{
+  border-bottom: 2px solid #ddd;
+  border-right: 1px solid #eee;
 }
 
 .container {
