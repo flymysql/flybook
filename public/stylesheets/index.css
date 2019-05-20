@@ -257,6 +257,11 @@ ul.post-list .post-item a.post-item-img img{
   .index-aside{
     display: none!important;
   }
+  .post-container{
+    width: 100%;
+    float: none;
+    padding-left:unset;
+  }
   ul.post-list{
     width: 100%;
     float: none;
