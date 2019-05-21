@@ -283,10 +283,10 @@ thead > tr{
 }
 
 
-figure table .hljs::before{
+.hljs::before{
   position: absolute;
   top: 14px;
-  left: -12px;
+  right: 12px;
   color: #fff;
   width: 25px;
   height: 25px;
@@ -297,6 +297,27 @@ figure table .hljs::before{
   font-size: 14px;
   content: "</>";
   background-color: #f66;
+}
+
+.LinkCard{
+  display: block;
+  text-align: center;
+  margin: 1em auto;
+  width: 400px;
+  background: #e7efee;
+  height: 70px;
+  line-height: 70px;
+  border-radius: 1em;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .hljs::before{
+    display: none;
+  }
+  .LinkCard{
+    width: unset;
+  }
 }
 
 table td {
