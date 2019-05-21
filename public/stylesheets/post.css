@@ -51,7 +51,6 @@ figure {
 }
 
 figure.highlight{
-  overflow: auto;
   margin: 20px 0;
   padding: 0;
   font-size: 13px;
@@ -269,13 +268,34 @@ dd {
 }
 
 table {
-  margin: 20px 0;
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
-    border: 1px solid #ddd;
+    border-left: 4px #5b707d solid;
     font-size: 14px;
     table-layout: fixed;
+    position: sticky;
+}
+
+thead > tr{
+  border-top: 2px solid #ada8a869
+}
+
+
+.hljs::before{
+  position: absolute;
+  top: 14px;
+  left: -12px;
+  color: #fff;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 25px;
+  font-weight: 700;
+  font-size: 14px;
+  content: "</>";
+  background-color: #f66;
 }
 
 table td {
