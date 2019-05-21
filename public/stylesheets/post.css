@@ -57,6 +57,7 @@ figure.highlight{
   color: #4d4d4c;
   background: #f7f7f7;
   line-height: 1.6;
+  position: sticky;
 }
 
 ::-moz-focus-inner {
@@ -282,7 +283,7 @@ thead > tr{
 }
 
 
-.hljs::before{
+figure table .hljs::before{
   position: absolute;
   top: 14px;
   left: -12px;
