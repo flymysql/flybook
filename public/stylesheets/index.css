@@ -83,11 +83,7 @@ ul.post-list .post-item a.post-item-img img{
 }
 
 .post-item .post-item-meta span.cop{
-  color: #6491e2;
-}
-.post-item .post-item-meta span.cop i::before{
-  color:#6491e2;
-  content: "✿";
+  color: #ea6f5a;
 }
 .post-content{
   max-width: 780px;

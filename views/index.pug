@@ -17,8 +17,7 @@ block content
                   a(href="/post/" + post.id)=post.title
                 p!=post.content
                 div(class="post-item-meta")
-                  span(class="cop")= post.cop
-                    i
+                  span(class="cop")= "✿" + post.cop
                   span= " 阅读" + post.view
                   span= " " + post.tag
                   span= " " + post.updateTime
@@ -28,8 +27,7 @@ block content
                   a(href="/post/" + post.id)=post.title
                 p!=post.content
                 div(class="post-item-meta")
-                  span(class="cop")= post.cop
-                    i
+                  span(class="cop")= "✿" + post.cop
                   span= " 阅读" + post.view
                   span= " " + post.tag
                   span= " " + post.updateTime
