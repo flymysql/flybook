@@ -1,8 +1,9 @@
 extends layout
 block head_content
   title= title + " | " + site.title
-  link(rel='stylesheet', href='/stylesheets/post.css?t='+sst)
   link(rel="stylesheet", href="/third-part/highlight/styles/github.css?t="+sst)
+  link(rel="stylesheet", href="https://unpkg.com/autocjs@1.3.0/dist/autoc.min.css")
+  link(rel='stylesheet', href='/stylesheets/post.css?t='+sst)
 block content
     div(class="post-content")
         h2(class="post-title")= title
@@ -37,6 +38,7 @@ block content
         div(class="tag-cloud-tags" id="tagcloud")
         include comment
 block scripts
+    script(src="https://unpkg.com/autocjs@1.3.0/dist/autoc.min.js")
     script(type="text/javascript" src="/third-part/highlight/highlight.pack.js?t="+sst)
     script.
         $("#like1").click(function(){
@@ -50,4 +52,11 @@ block scripts
             $('pre').each(function(i, block) {
                 hljs.highlightBlock(block);
             });
+        });
+        new AutocJS({
+            article: '.post-body',
+            isOnlyAnchors: true,
+            //selector: 'h1',
+            // 不配置 selector 属性，即使用默认选择器
+            title: '文章目录',
         });
