@@ -36,3 +36,18 @@ block content
                 (adsbygoogle = window.adsbygoogle || []).push({});
         div(class="tag-cloud-tags" id="tagcloud")
         include comment
+block scripts
+    script(type="text/javascript" src="/third-part/highlight/highlight.pack.js?t="+sst)
+    script.
+        $("#like1").click(function(){
+            $.get("/like-add", function(status){
+                if(status.code==1){
+                alert("谢谢你的喜欢！！")
+                }
+            });
+        });
+        $(function(){
+            $('pre').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        });
