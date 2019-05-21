@@ -467,7 +467,12 @@ body{
     background: #f46b4cbd;
     border-radius: 30px;
   }
-
+  .autocjs{
+    box-shadow:unset;
+  }
+  .autocjs-ft{
+    box-shadow: 0 2px 6px #c9dad7;
+  }
 @media (max-width: 768px) {
   .hljs::before{
     display: none;
@@ -480,11 +485,11 @@ body{
     border: 1px solid #DDD;
     border-top: 0;
     border-bottom: 0;
-    box-shadow: 0 1px 2px #999;
+    box-shadow:unset;
   }
   .autocjs-ft {
     position: fixed;
-    z-index: 1;
+    z-index: 99999999;
     top: 80%;
     right: 5px;
 
@@ -493,7 +498,7 @@ body{
     margin: -40px 0 0;
     background-color: #fff;
     border: 1px solid #DDD;
-    box-shadow: 0 3px 6px #666;
+    box-shadow: 0 1px 2px #5b707d;
 }
 .autocjs-switcher {
   height: 35px;
