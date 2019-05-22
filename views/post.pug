@@ -1,6 +1,8 @@
 extends layout
 block head_content
   title= title + " | " + site.title
+  meta(name="description" content=desc)
+  meta(name="keywords" content=tag+",兰州小红鸡,博客,技术博客,写作,阅读")
   link(rel="stylesheet", href="/third-part/highlight/styles/github.css?t="+sst)
   link(rel="stylesheet", href="https://unpkg.com/autocjs@1.3.0/dist/autoc.min.css")
   link(rel='stylesheet', href='/stylesheets/post.css?t='+sst)
@@ -38,7 +40,7 @@ block content
         div(class="tag-cloud-tags" id="tagcloud")
         include comment
 block scripts
-    script(src="https://unpkg.com/autocjs@1.3.0/dist/autoc.min.js")
+    script(src="/javascripts/autotoc.js")
     script(type="text/javascript" src="/third-part/highlight/highlight.pack.js?t="+sst)
     script.
         $("#like1").click(function(){

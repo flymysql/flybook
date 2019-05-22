@@ -91,6 +91,7 @@ exports.getArticleList = (res, page) =>{
     });
 };
 
+// 单文章页面
 exports.getArticleDetail = (res, id) =>{
     var selectsql=`select * from articles where id = "${id}"`;
     var updatetag = `update articles set visitors=visitors+1 where id = "${id}"`;
@@ -109,6 +110,7 @@ exports.getArticleDetail = (res, id) =>{
             'site':option,
             'title': rows[0].title,
             'content': rows[0].post_content,
+            'desc': rows[0].description, 
             'like': rows[0].like,
             'view': rows[0].visitors,
             'tag': rows[0].tag,
