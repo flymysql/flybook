@@ -48,7 +48,10 @@ app.use('/create', usersRouter);
 // });
 // 404 page
 app.use(function (req, res) {
-  if (!res.headersSent) {
+  if(req.url === '/favicon.ico') {
+    // 忽略
+  } 
+  else if (!res.headersSent) {
     res.redirect(301, '/404.html');
   }
 });
