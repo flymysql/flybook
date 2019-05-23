@@ -43,7 +43,9 @@ var observerimg = new IntersectionObserver(
         changes.forEach((change) => {
             if (change.intersectionRatio > 0) {
                 var img = change.target;
-                img.src = img.dataset.src;
+                if(img.dataset.src != undefined){
+                    img.src = img.dataset.src;
+                }
                 observerimg.unobserve(img);
             }
         })
