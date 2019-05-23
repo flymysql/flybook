@@ -13,7 +13,7 @@ block content
           li(class="post-item")
             if post.img != ""
               a(href="/post/" + post.id class="post-item-img")
-                img(src=post.img, alt="" id="no-view")
+                img(data-src=post.img, alt="" id="no-view" src="/images/loading.gif")
               div(class="post-item-content-img")
                 h2(class="post-item-title")
                   a(href="/post/" + post.id)=post.title

@@ -4,7 +4,7 @@ div(id="slide" class="slide")
         for item in carousel
             li
                 a(href=item.link target="_blank")
-                    img(src=item.img id="no-view")
+                    img(data-src=item.img id="no-view" src="/images/loading.gif")
     div
         span(class="prev_btn")= "<"
         span(class="next_btn")= ">"
