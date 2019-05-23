@@ -11,35 +11,57 @@ jQuery(document).ready(function () {
 var tagcloud = document.getElementById('tagcloud');
 var to_create = true;
 var create_tag = function(){
-$.ajax({
-    url: '/gettags',
-    type: 'get',
-    success: function(data){
-        if(data.code === 200){
-            var tags = data.data;
-            for(var i in tags){
-                if(tags[i]!=""){
-                    var node = document.createElement("a");
-                    node.setAttribute('style', 'font-size: 16px;');
-                    node.setAttribute('href', '/tag/' + tags[i]);
-                    node.innerHTML = '<div class="tag_img" style="background-image:url(https://image.idealli.com/tags/'+ tags[i] +'.png);"></div>' + tags[i];
-                    tagcloud.appendChild(node);
+    $.ajax({
+        url: '/gettags',
+        type: 'get',
+        success: function(data){
+            if(data.code === 200){
+                var tags = data.data;
+                for(var i in tags){
+                    if(tags[i]!=""){
+                        var node = document.createElement("a");
+                        node.setAttribute('style', 'font-size: 16px;');
+                        node.setAttribute('href', '/tag/' + tags[i]);
+                        node.innerHTML = '<div class="tag_img" style="background-image:url(https://image.idealli.com/tags/'+ tags[i] +'.png);"></div>' + tags[i];
+                        tagcloud.appendChild(node);
+                    }
                 }
+            }   
+        }
+    });
+}
+
+/**
+ * 
+ * 图片和标签懒加载
+ */
+function query(tag) {
+    return Array.from(document.getElementsByTagName(tag));
+}
+var observerimg = new IntersectionObserver(
+    (changes) => {
+        changes.forEach((change) => {
+            if (change.intersectionRatio > 0) {
+                var img = change.target;
+                img.src = img.dataset.src;
+                observerimg.unobserve(img);
             }
-        }   
+        })
     }
-});
-}
-if(tagcloud != null){
-var h = $('#tagcloud').offset().top;
-if(h < 1000){
-    create_tag();
-    to_create = false;
-}
-$(window).scroll(function(event){
-    if(to_create && (h-$(document).scrollTop() < 888)){
-        to_create = false;
-        create_tag();
+)
+var observertag = new IntersectionObserver(
+    (changes) => {
+        changes.forEach((change) => {
+            if (change.intersectionRatio > 0) {
+                create_tag();
+                observertag.unobserve(tagcloud);
+            }
+        })
     }
-});
-}
+)
+
+observertag.observe(tagcloud);
+
+query('img').forEach((item) => {
+    observerimg.observe(item);
+})

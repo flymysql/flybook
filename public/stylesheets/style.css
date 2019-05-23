@@ -169,7 +169,11 @@ footer .icp{
   width: 100%;
   overflow: hidden;
 }
-
+.ads-img,
+.ads-link{
+  width: 100%;
+  height: auto;
+}
 .comment{
   overflow: hidden;
 }
