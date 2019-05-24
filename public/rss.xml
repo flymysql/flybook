@@ -10,6 +10,58 @@
 
 
             <item>
+                <title>用node从头开始自己搭建一个动态博客</title>
+                <link>https://me.idealli.com/post/86b3cc61.html</link>
+                <guid>https://me.idealli.com/post/86b3cc61.html</guid>
+                <pubDate>Fri May 24 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <description>
+                搭了快一年的博客了，用过wordpress，也用过typecho，用的时间最长的是hexo。平常喜欢折腾，就一直在搞些杂七杂八的。也一直想自己动手做个属于自己的博客框架，奈何之前技术水平不够，觉得这种
+                </description>
+                <content:encoded>
+                <![CDATA[<div><div><div><div><div class="post-body" itemprop="articleBody">
+<p>搭了快一年的博客了，用过wordpress，也用过typecho，用的时间最长的是hexo。平常喜欢折腾，就一直在搞些杂七杂八的。也一直想自己动手做个属于自己的博客框架，奈何之前技术水平不够，觉得这种项目离自己的水平还有点距离，学了半年前端后（其实也没系统地学），最近看到node这个轻量级的后端语言以及express这个成熟的框架可以很快的搭起一个网站骨架。</p>
+<p>自己其实想要做的也很简单，一个轻量级的博客框架，只针对博客！对的，目标明确，这个框架应该只用来做博客，不考虑其他网站的用途。</p>
+<h2 id="网站骨架"><a class="header-anchor" href="#网站骨架">¶</a>网站骨架</h2>
+<p>那么有了目标，思维就变得清晰了，只针对博客，其实需要的东西就没那么多了。动手进行第一个版本的网站骨架设计（其实也就是想到哪写到哪）</p>
+<p>网站骨架如下</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── app.js</span><br><span class="line">├── bin					// 入口文件</span><br><span class="line">├── config.js				// 站点配置</span><br><span class="line">├── controllers			// 路由控制器</span><br><span class="line">├── package.json</span><br><span class="line">├── public					// 静态文件</span><br><span class="line">│   ├── images</span><br><span class="line">│   ├── javascripts</span><br><span class="line">│   └── stylesheets</span><br><span class="line">├── routes					// 路由</span><br><span class="line">├── server					// 数据库操作</span><br><span class="line">├── sessions				// 登录验证</span><br><span class="line">├── until					// 工具函数</span><br><span class="line">└── views					// 主题</span><br></pre></td></tr></tbody></table></figure>
+<p>第一个版本的数据库初始模型：只有一个文章模型，模型的属性包含一篇正常博客文章所需的内容。</p>
+<h2 id="todo列表"><a class="header-anchor" href="#todo列表">¶</a>todo列表</h2>
+<p>版本一计划开发周期一星期，目前迭代进度。</p>
+<p><strong>版本一迭代任务清单</strong></p>
+<p>开始时间：2019-05-11<br>
+计划完成时间:2019-05-16<br>
+计划周期：一周</p>
+<ul>
+<li>网站骨架</li>
+<li>首页页面渲染</li>
+<li>文章详情页渲染</li>
+<li>归档页面渲染</li>
+<li>前台登录验证的实现</li>
+<li>前台编写文章</li>
+<li>前台修改与删除文章</li>
+<li>后台文章</li>
+<li>自定义页面</li>
+<li>ajax渲染标签</li>
+<li>各个页面美化</li>
+<li>将博客搬过去</li>
+</ul>
+<h2 id="剧透"><a class="header-anchor" href="#剧透">¶</a>剧透</h2>
+<p>部分页面（未编写css进行美化，有点丑）</p>
+<h3 id="首页"><a class="header-anchor" href="#首页">¶</a>首页</h3>
+<p><img alt="" src="/images/loading.gif" data-src="/images/loading.gif" data-src="/images/loading.gif" data-src="/images/loading.gif"></p>
+<h3 id="文章详情页"><a class="header-anchor" href="#文章详情页">¶</a>文章详情页</h3>
+<p><img alt="" src="/images/loading.gif" data-src="/images/loading.gif" data-src="/images/loading.gif" data-src="/images/loading.gif"></p>
+<h3 id="前台编写文章"><a class="header-anchor" href="#前台编写文章">¶</a>前台编写文章</h3>
+<p><img alt="" src="/images/loading.gif" data-src="/images/loading.gif" data-src="/images/loading.gif" data-src="/images/loading.gif"></p>
+</div></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p>]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/86b3cc61.html#disqus_thread
+                </comments>
+            </item>
+            
+            <item>
                 <title>再次回到Linux，manjaro真香</title>
                 <link>https://me.idealli.com/post/b7872cd9.html</link>
                 <guid>https://me.idealli.com/post/b7872cd9.html</guid>
@@ -68,15 +120,31 @@
             </item>
             
             <item>
+                <title>新建文章"</title>
+                <link>https://me.idealli.com/post/9cbd5cb63</link>
+                <guid>https://me.idealli.com/post/9cbd5cb63</guid>
+                <pubDate>Fri May 24 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <description>
+                开始你的创作吧！""""ii"oo"""""
+                </description>
+                <content:encoded>
+                <![CDATA[<div><p>开始你的创作吧！</p><p>"""</p><p>"ii"oo"</p><p>""""</p></div><p><br></p>]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/9cbd5cb63#disqus_thread
+                </comments>
+            </item>
+            
+            <item>
                 <title>data-src test</title>
                 <link>https://me.idealli.com/post/2c53b8618</link>
                 <guid>https://me.idealli.com/post/2c53b8618</guid>
-                <pubDate>Thu May 23 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>Fri May 24 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
                 <description>
                 开始你的创作吧！
                 </description>
                 <content:encoded>
-                <![CDATA[<p>开始你的创作吧！</p><p><img src="/images/loading.gif" data-src="/uploads/images/imageup-1558586872911.png" style="max-width:100%;"><br></p>]]>
+                <![CDATA[<div><p>开始你的创作吧！</p><p><img src="/images/loading.gif" data-src="/images/loading.gif" data-src="/images/loading.gif" data-src="/uploads/images/imageup-1558586872911.png" style="max-width:100%;"><br></p></div><p><br></p>]]>
                 </content:encoded>
                 <comments>
                 https://me.idealli.com/post/2c53b8618#disqus_thread
@@ -117,22 +185,6 @@
                 </content:encoded>
                 <comments>
                 https://me.idealli.com/post/776c4a00.html#disqus_thread
-                </comments>
-            </item>
-            
-            <item>
-                <title>新建文章"</title>
-                <link>https://me.idealli.com/post/9cbd5cb63</link>
-                <guid>https://me.idealli.com/post/9cbd5cb63</guid>
-                <pubDate>Tue May 21 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
-                <description>
-                开始你的创作吧！
-                </description>
-                <content:encoded>
-                <![CDATA[<p>开始你的创作吧！</p><p>"""</p><p>"ii"oo"</p><p>""""</p>]]>
-                </content:encoded>
-                <comments>
-                https://me.idealli.com/post/9cbd5cb63#disqus_thread
                 </comments>
             </item>
             
@@ -1097,59 +1149,6 @@ X1,X2是输入信号，y是输出信号，w1，w2是权重，图中的圆圈被�
                 </content:encoded>
                 <comments>
                 https://me.idealli.com/post/d3f1788e3#disqus_thread
-                </comments>
-            </item>
-            
-            <item>
-                <title>用node从头开始自己搭建一个动态博客</title>
-                <link>https://me.idealli.com/post/86b3cc61.html</link>
-                <guid>https://me.idealli.com/post/86b3cc61.html</guid>
-                <pubDate>Tue May 14 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
-                <description>
-                
-搭了快一年的博客了，用过wordpress，也用过typecho，用的时间最长的是hexo。平常喜欢折腾，就一直在搞些杂七杂八的。也一直想自己动手做个属于自己的博客框架，奈何之前技术水平不够，觉得这种项目离自己的水平还有点距离，学了半年前
-                </description>
-                <content:encoded>
-                <![CDATA[<div class="post-body" itemprop="articleBody">
-<p>搭了快一年的博客了，用过wordpress，也用过typecho，用的时间最长的是hexo。平常喜欢折腾，就一直在搞些杂七杂八的。也一直想自己动手做个属于自己的博客框架，奈何之前技术水平不够，觉得这种项目离自己的水平还有点距离，学了半年前端后（其实也没系统地学），最近看到node这个轻量级的后端语言以及express这个成熟的框架可以很快的搭起一个网站骨架。</p>
-<p>自己其实想要做的也很简单，一个轻量级的博客框架，只针对博客！对的，目标明确，这个框架应该只用来做博客，不考虑其他网站的用途。</p>
-<h2 id="网站骨架"><a class="header-anchor" href="#网站骨架">¶</a>网站骨架</h2>
-<p>那么有了目标，思维就变得清晰了，只针对博客，其实需要的东西就没那么多了。动手进行第一个版本的网站骨架设计（其实也就是想到哪写到哪）</p>
-<p>网站骨架如下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br/><span class="line">├── app.js</span><br/><span class="line">├── bin					// 入口文件</span><br/><span class="line">├── config.js				// 站点配置</span><br/><span class="line">├── controllers			// 路由控制器</span><br/><span class="line">├── package.json</span><br/><span class="line">├── public					// 静态文件</span><br/><span class="line">│   ├── images</span><br/><span class="line">│   ├── javascripts</span><br/><span class="line">│   └── stylesheets</span><br/><span class="line">├── routes					// 路由</span><br/><span class="line">├── server					// 数据库操作</span><br/><span class="line">├── sessions				// 登录验证</span><br/><span class="line">├── until					// 工具函数</span><br/><span class="line">└── views					// 主题</span><br/></pre></td></tr></table></figure>
-<p>第一个版本的数据库初始模型：只有一个文章模型，模型的属性包含一篇正常博客文章所需的内容。</p>
-<h2 id="todo列表"><a class="header-anchor" href="#todo列表">¶</a>todo列表</h2>
-<p>版本一计划开发周期一星期，目前迭代进度。</p>
-<p><strong>版本一迭代任务清单</strong></p>
-<p>开始时间：2019-05-11<br/>
-计划完成时间:2019-05-16<br/>
-计划周期：一周</p>
-<ul>
-<li>网站骨架</li>
-<li>首页页面渲染</li>
-<li>文章详情页渲染</li>
-<li>归档页面渲染</li>
-<li>前台登录验证的实现</li>
-<li>前台编写文章</li>
-<li>前台修改与删除文章</li>
-<li>后台文章</li>
-<li>自定义页面</li>
-<li>ajax渲染标签</li>
-<li>各个页面美化</li>
-<li>将博客搬过去</li>
-</ul>
-<h2 id="剧透"><a class="header-anchor" href="#剧透">¶</a>剧透</h2>
-<p>部分页面（未编写css进行美化，有点丑）</p>
-<h3 id="首页"><a class="header-anchor" href="#首页">¶</a>首页</h3>
-<p><img alt="" src="https://image.idealli.com/blog/2019051401.png"/></p>
-<h3 id="文章详情页"><a class="header-anchor" href="#文章详情页">¶</a>文章详情页</h3>
-<p><img alt="" src="https://image.idealli.com/blog/20190514.png"/></p>
-<h3 id="前台编写文章"><a class="header-anchor" href="#前台编写文章">¶</a>前台编写文章</h3>
-<p><img alt="" src="https://image.idealli.com/blog/2019051402.png"/></p>
-</div>]]>
-                </content:encoded>
-                <comments>
-                https://me.idealli.com/post/86b3cc61.html#disqus_thread
                 </comments>
             </item>
             

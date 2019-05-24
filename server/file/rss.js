@@ -6,7 +6,7 @@ const config = require('../../config');
 var index = config.seo.index;
 
 var selectsql=`select post_content,id,title,updateTime,description from articles where type = 'post' order by updateTime desc limit 30`;
-var rss_content = `
+var head_content = `
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
     <channel>
         <title>${config.seo.title}</title>
@@ -17,6 +17,8 @@ var rss_content = `
         <generator>${index}/</generator>
 
 `;
+
+var rss_content = head_content;
 
 exports.createrss = function(){
     connection.query(selectsql, function(err, rows){
@@ -45,14 +47,16 @@ exports.createrss = function(){
         }
         rss_content = rss_content + `</channel>
         </rss>`
-        fs.writeFile('public/rss.xml', rss_content, {flag: 'a'}, function (err) {
+        fs.writeFile('public/rss.xml', rss_content, function (err) {
             if(err) {
              console.error(err);
              } else {
                 console.log('写入成功');
+                rss_content = head_content;
                 return;
              }
          });
+         rss_content = head_content;
          return;
     });
 }
