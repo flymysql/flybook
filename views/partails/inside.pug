@@ -21,7 +21,7 @@ div(class="index-aside")
         for link in friends
             li
                 a(href=link.link target="_blank" class="avatar")
-                    img(src="/images/loading.gif" data-src=link.img id="no-view")
+                    img(src="/images/loading.gif?t="+sst data-src=link.img id="no-view")
                 a(class="follow" href=link.link target="_blank")= "关注"
                 a(href=link.link target="_blank" class="index-name")= link.name
                 p= link.desc
@@ -30,5 +30,5 @@ div(class="index-aside")
     br
     div(class="ads")
         a(class="ads-link" href="https://www.vultr.com/?ref=7772625-4F" target="_blank")
-            img(class="ads-img" src="/images/loading.gif" data-src="/images/aside-ads.jpg" id="no-view")
+            img(class="ads-img" src="/images/loading.gif?t="+sst data-src="/images/aside-ads.jpg" id="no-view")
 <br style="clear:both;">

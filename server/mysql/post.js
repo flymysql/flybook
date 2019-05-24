@@ -17,7 +17,7 @@ const option = {
 const Articleslist = function(res, ifadmin){
     var selectsql=`select id,title,updateTime from articles where type = 'post' order by updateTime desc`;
     if(ifadmin){
-        selectsql = `select id,title,updateTime from articles`;
+        selectsql = `select id,title,updateTime from articles order by updateTime desc`;
     }
     var result= [];
     connection.query(selectsql,function(err,rows){
