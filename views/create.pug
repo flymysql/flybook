@@ -79,8 +79,14 @@ block content
                     if(img.indexOf("http") == -1){
                         img = null;
                     }
-                    var desc = $(".w-e-text").find("p")[0].textContent;
-                    console.log(desc)
+                    var desclist = $(".w-e-text").find("p");
+                    var desc = "";
+                    for(var i in desclist){
+                        if(desc.length > 100) break;
+                        if(desclist[i].textContent != undefined)
+                        desc = desc + desclist[i].textContent;
+                    }
+                    console.log(desc);
                     $.post("/insert_post",{
                         id: document.getElementById('title').dataset.id,
                         tag: $("#tag")[0].value,

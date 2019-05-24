@@ -178,6 +178,11 @@ footer .icp{
   overflow: hidden;
 }
 
+header .email{
+  color:#ea6f5a!important;
+  font-weight: 600;
+}
+
 @media (max-width: 767px){
 
   body{
@@ -216,6 +221,9 @@ footer .icp{
   color: #969696;
 }
 
+ header .archives{
+   display: none;
+ }
 .index-container{
   padding-top: unset!important;
 }

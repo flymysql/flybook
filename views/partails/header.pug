@@ -2,8 +2,9 @@ header(class="header")
     div(class="head-content")
         a(href="/" class="logo")
         a(class="btn" target="_blank" href="/create")="写文章"
-        a(class="normol-head" href="/archives")= "归档"
-        a(class="normol-head" href="/post/link")= "友链"
-        a(class="normol-head" href="/photos")= "相册"
+        a(class="archives normol-head" href="/archives")= "归档"
+        a(class="link normol-head" href="/post/link")= "友链"
+        a(class="photos normol-head" href="/photos")= "相册"
+        a(class="email normol-head" href="https://idealli.us19.list-manage.com/subscribe/post?u=33287015353c6d240f9052e96&id=9912499420")= "订阅"
         form(action="/search" accept-charset="UTF-8" method="get" class="normol-head")
             input(type="text" name="s" id ="s" placeholder="搜索" class="search-input")

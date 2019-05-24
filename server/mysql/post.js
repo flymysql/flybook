@@ -1,6 +1,7 @@
-const connection = require('../config/db').connection
-const config = require('../../config')
-const until = require('../../until/until')
+const connection = require('../config/db').connection;
+const config = require('../../config');
+const until = require('../../until/until');
+const createrss = require('../file/rss').createrss;
 //serverStartTimestamp
 const sst = new Date().getTime();
 const option = {
@@ -164,11 +165,11 @@ exports.insertArticle = (req, res) =>{
     // sql = mysql.escape(sql);
     // console.log(sql)
     connection.query(sql,function(err,rows){
-        // 如果标签不存在的话就创建新标签
         if(err){
             console.log(err)
         }
         else{
+            createrss();
             res.end('succeed'); 
         }
     });

@@ -56,9 +56,9 @@ module.exports ={
         desc: "免费分享各种学习视频，资源收集于网络！"
       },
       {
-        img: "https://c.disquscdn.com/uploads/users/32762/6397/avatar92.jpg?1557241158",
-        link: "https://me.idealli.com",
-        name: "闲置友情位",
+        img: "/images/Rss.png",
+        link: "/rss.xml",
+        name: "RSS订阅",
         desc: "友情位闲置中，欢迎入驻"
       }
     ]
