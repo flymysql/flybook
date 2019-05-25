@@ -11,8 +11,8 @@ div(class="index-aside")
         div(style='width: 98%; height: 65px; display: inline-block; border: 1px solid #eee; border-radius: 5px;    margin-top: 20px;')
             img(data-src='/images/qrcode.jpg', width='60', height='60', style='float: left;')
             div(style=' display: block;float: left; padding-left: 10px;')
-            div(style='font-size: 16px;font-weight: 600;')= "关注小鸡资源库"
-            div(style='font-size: 14px; font-weight: 200;')= "更多精彩资源免费放送！！"
+                div(style='font-size: 16px;font-weight: 600;')= "关注小鸡资源库"
+                div(style='font-size: 14px; font-weight: 200;')= "更多精彩资源免费放送！！"
     div(class="tag-cloud-tags" id="tagcloud")
     br
     hr
@@ -31,4 +31,20 @@ div(class="index-aside")
     div(class="ads")
         a(class="ads-link" href="https://www.vultr.com/?ref=7772625-4F" target="_blank")
             img(class="ads-img" src="/images/loading.gif?t="+sst data-src="/images/aside-ads.jpg" id="no-view")
+
+    div(class="site-info")
+        ul
+            a(target="_blank" href="/post/about")= " 关于小鸡 · "
+            a(target="_blank" href="/post/about")= " 联系小鸡 · "
+            a(target="_blank" href="/post/link")= " 添加友链 · "
+            a(target="_blank" href="/rss.xml?t="+sst)= " RSS订阅 · "
+            a(target="_blank" href="https://idealli.us19.list-manage.com/subscribe/post?u=33287015353c6d240f9052e96&id=9912499420")= " 邮件订阅 · "
+            a(target="_blank" href="https://www.github.com/flymysql")= " Github  · "
+            a(target="_blank" href="https://weibo.com/237199972")= " 微博 "
+        ul
+            span= "©2018-2019 " + site.title + " | " + site.icp 
+        ul
+            span= "  Theme by "
+            a(href="https://me.idealli.com/post/d3f1788e3")= "兰州小红鸡"
+
 <br style="clear:both;">
