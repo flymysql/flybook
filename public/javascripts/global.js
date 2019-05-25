@@ -30,7 +30,6 @@ var create_tag = function(){
         }
     });
 }
-
 /**
  * 
  * 图片和标签懒加载
@@ -67,3 +66,16 @@ observertag.observe(tagcloud);
 query('img').forEach((item) => {
     observerimg.observe(item);
 })
+//百度推送
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
