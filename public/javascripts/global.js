@@ -67,7 +67,7 @@ query('img').forEach((item) => {
     observerimg.observe(item);
 })
 //百度推送
-(function(){
+window.onload = function(){
     var bp = document.createElement('script');
     var curProtocol = window.location.protocol.split(':')[0];
     if (curProtocol === 'https') {
@@ -78,4 +78,4 @@ query('img').forEach((item) => {
     }
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(bp, s);
-})();
+}

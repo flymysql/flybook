@@ -1,5 +1,3 @@
-var createError = require('http-errors');
-const compression = require('compression');
 var express = require('express');
 var path = require('path');
 var bodyParser = require("body-parser");
@@ -23,7 +21,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser('flykey'));
-app.use(express.static(path.join(__dirname, 'public'), {maxAge: 86400000}));
+app.use(express.static(path.join(__dirname, 'public'), {maxAge: 8640000}));
 app.use(bodyParser.urlencoded({extended:true}));
 
 // login
@@ -34,7 +32,7 @@ app.use(session({
   saveUninitialized: false,  // 是否自动保存未初始化的会话，建议false
   resave: false,  // 是否每次都重新保存会话，建议false
   cookie: {
-      maxAge: 1000000000 * 1000  // 有效期，单位是毫秒
+      maxAge: 8640000 * 1000  // 有效期，单位是毫秒
   }
 }));
 
@@ -67,6 +65,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.use(compression());
 
 module.exports = app;

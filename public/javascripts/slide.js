@@ -1,6 +1,6 @@
 //window.onload=function(){//页面加载完成后
 	slideLlx("slide");//参数为字符串是外层容器的id,可以多次调用
-	slideLlx("slide_two");
+	// slideLlx("slide_two");
 	
 	//方法
 	function slideLlx(slideID){
