@@ -57,8 +57,8 @@ module.exports ={
       },
       {
         img: "/images/Rss.png",
-        link: "/rss.xml",
-        name: "RSS订阅",
+        link: "/post/email",
+        name: "邮件订阅",
         desc: "友情位闲置中，欢迎入驻"
       }
     ]
