@@ -373,10 +373,6 @@ footer {
 
 body{
 
-  background-image: url(/images/1029bg.jpg);
-  background-position: right bottom;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
 }
 
 .post-title{
@@ -478,6 +474,27 @@ body{
     font-size: 20px;
     font-weight: 500;
   }
+
+.post-aside{
+  position: fixed;
+  top: 80px;
+  right: 50%;
+  margin-right: -600px;
+  width: 200px;
+}
+
+/* 各屏幕宽度适配 */
+@media (max-width: 1200px) {
+  .post-aside{
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .head-content form{
+    display: none;
+  }
+}
 @media (max-width: 768px) {
   .hljs::before{
     display: none;

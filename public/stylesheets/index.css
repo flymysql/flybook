@@ -238,32 +238,7 @@ ul.post-list .post-item a.post-item-img img{
   height:300px;
   margin-bottom: 20px;
 }
-
-.site-info{
-  border-radius: 2px;
-  margin-bottom: 1.3rem;
-  line-height: 1.29;
-  color: #333;
-  margin-top: 2rem;
-  width: 96%;
-
-}
-
-.site-info ul{
-  font-size: .8em;
-  line-height: 1.6;
-  padding: 0;
-  margin: 0;
-}
-
-.site-info span,
-.site-info a{
-  color: #645c5ceb;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-  
+ 
 @media (max-width: 960px){
   .index-container{
     padding-left: unset;

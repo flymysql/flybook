@@ -103,6 +103,29 @@ input.search-input{
   -o-transition-delay: .1s;
 }
 
+.site-info{
+  border-radius: 2px;
+  margin-bottom: 1.3rem;
+  line-height: 1.29;
+  color: #333;
+  margin-top: 2rem;
+  width: 96%;
+
+}
+
+.site-info ul{
+  font-size: .8em;
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+}
+
+.site-info span,
+.site-info a{
+  color: #645c5ceb;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 /* 顶部结束 */
 

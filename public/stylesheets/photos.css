@@ -105,11 +105,11 @@ background-color: #121212;
 box-sizing: border-box;
 }
 
-
 .comment{
     width:60%;
     margin: auto;
 }
+
 
 @media (max-width: 767px){
 
