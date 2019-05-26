@@ -51,9 +51,6 @@ router.get('/tag/:id', postController.get_one_tag);
 // post获取search
 router.get('/search', postController.post_search);
 
-// get获取search
-router.get('/sitemap.xml', postController.get_sitemap);
-
 // get增加like
 router.get('/like-add', postController.get_add_like);
 

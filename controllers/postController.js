@@ -1,6 +1,5 @@
 var post = require('../server/mysql/post');
 var tags = require('../server/mysql/tags');
-var sitemap = require('../server/mysql/sitemap');
 
 
 exports.index = (req, res) => { post.getArticleList(res, req.query.page);};
@@ -34,9 +33,6 @@ exports.get_one_tag = (req, res) => { tags.queryOneTags(res, req) ;}
 
 // post获取搜索内容
 exports.post_search = (req, res) => { post.post_search(res, req.query.s)}
-
-// get获取sitemap
-exports.get_sitemap = (req, res) => { sitemap.get_sitemap(res) }
 
 // get新建标签
 exports.get_insert_tag = (req, res) => { tags.get_insert_tag(res, req.query.tagname) }
