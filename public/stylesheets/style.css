@@ -65,6 +65,10 @@ a{
   background-color: #ea6f5a;
   padding: 8px 15px;
   text-align: center;
+  text-shadow: 1px 1px black,2px 2px black,
+                 3px 3px black,4px 4px black, 
+                 3px 3px black,4px 4px black, 
+                 3px 3px black,4px 4px black;
 }
 
 .header .normol-head{
@@ -235,6 +239,7 @@ header .email{
   border-radius: 18px;
   text-align: center;
   margin: 8px 2px 0;
+  
 }
 
 .header .normol-head {
