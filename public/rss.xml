@@ -5,7 +5,7 @@
             <link>https://me.idealli.com</link>
             <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
             <description>桃李春风一杯酒，江湖夜雨十年灯</description>
-            <pubDate>2019-05-26</pubDate>
+            <pubDate>2019-05-27</pubDate>
             <generator>https://me.idealli.com/</generator>
 
     
@@ -13,12 +13,12 @@
                 <title>用node从头开始自己搭建一个动态博客</title>
                 <link>https://me.idealli.com/post/86b3cc61.html</link>
                 <guid>https://me.idealli.com/post/86b3cc61.html</guid>
-                <pubDate>Sun May 26 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-27</pubDate>
                 <description>
                 搭了快一年的博客了，用过wordpress，也用过typecho，用的时间最长的是hexo。平常喜欢折腾，就一直在搞些杂七杂八的。也一直想自己动手做个属于自己的博客框架，奈何之前技术水平不够，觉得这种
                 </description>
                 <content:encoded>
-                <![CDATA[<div><div><div><div><div><div><div><div><div><div><div><div class="post-body" itemprop="articleBody">
+                <![CDATA[<div><div><div><div><div><div><div><div><div><div><div><div><div><div class="post-body" itemprop="articleBody">
 <p>搭了快一年的博客了，用过wordpress，也用过typecho，用的时间最长的是hexo。平常喜欢折腾，就一直在搞些杂七杂八的。也一直想自己动手做个属于自己的博客框架，奈何之前技术水平不够，觉得这种项目离自己的水平还有点距离，学了半年前端后（其实也没系统地学），最近看到node这个轻量级的后端语言以及express这个成熟的框架可以很快的搭起一个网站骨架。</p>
 <p>自己其实想要做的也很简单，一个轻量级的博客框架，只针对博客！对的，目标明确，这个框架应该只用来做博客，不考虑其他网站的用途。</p>
 <h2 id="网站骨架"><a class="header-anchor" href="#网站骨架">¶</a>网站骨架</h2>
@@ -54,7 +54,7 @@
 <p><img alt="" src="/images/loading.gif" data-src="/images/loading.gif"></p>
 <h3 id="前台编写文章"><a class="header-anchor" href="#前台编写文章">¶</a>前台编写文章</h3>
 <p><img alt="" src="/images/loading.gif" data-src="/images/loading.gif"></p>
-</div></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p>]]>
+</div></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p>]]>
                 </content:encoded>
                 <comments>
                 https://me.idealli.com/post/86b3cc61.html#disqus_thread
@@ -65,7 +65,7 @@
                 <title>再次回到Linux，manjaro真香</title>
                 <link>https://me.idealli.com/post/b7872cd9.html</link>
                 <guid>https://me.idealli.com/post/b7872cd9.html</guid>
-                <pubDate>Fri May 24 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-24</pubDate>
                 <description>
                 昨天在写node.js的一个小网页，写到一半连接数据库的时候出了各种bug，反正就是连不上数据库，哎好气，然后顺手就换了个操作系统——manjaro（虽然一直想换回以前用的debian，不过感觉之前d
                 </description>
@@ -96,7 +96,7 @@
                 <title>继续前端？还是走一条其他的路？</title>
                 <link>https://me.idealli.com/post/1fb2e86a.html</link>
                 <guid>https://me.idealli.com/post/1fb2e86a.html</guid>
-                <pubDate>Fri May 24 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-24</pubDate>
                 <description>
                 自从决定不考研继续工作之后，在等待七月份去华为实习的这两三个月时间里，一直在纠结一件事，以后的技术栈应该往哪个方向发展？真的好迷茫，每次想到这里就觉得自己好菜，杂七杂八学了一堆，却好像什么也没学。
                 </description>
@@ -123,7 +123,7 @@
                 <title>新建文章"</title>
                 <link>https://me.idealli.com/post/9cbd5cb63</link>
                 <guid>https://me.idealli.com/post/9cbd5cb63</guid>
-                <pubDate>Fri May 24 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-24</pubDate>
                 <description>
                 开始你的创作吧！""""ii"oo"""""
                 </description>
@@ -139,7 +139,7 @@
                 <title>data-src test</title>
                 <link>https://me.idealli.com/post/2c53b8618</link>
                 <guid>https://me.idealli.com/post/2c53b8618</guid>
-                <pubDate>Fri May 24 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-24</pubDate>
                 <description>
                 开始你的创作吧！
                 </description>
@@ -155,7 +155,7 @@
                 <title>高仿简书的Next主题魔改版</title>
                 <link>https://me.idealli.com/post/776c4a00.html</link>
                 <guid>https://me.idealli.com/post/776c4a00.html</guid>
-                <pubDate>Tue May 21 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-21</pubDate>
                 <description>
                 这两天再次对博客主页进行大改造，效果不错，魔改一遍之后对整个Next主题的主页页面结构进行了重构，感觉以后整理整理都可以自己写个主题了
                 </description>
@@ -192,7 +192,7 @@
                 <title>深度学习笔记——误差的反向传播</title>
                 <link>https://me.idealli.com/post/6fe32b0d.html</link>
                 <guid>https://me.idealli.com/post/6fe32b0d.html</guid>
-                <pubDate>Mon May 20 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-20</pubDate>
                 <description>
                 通过数值微分计算神经网络的损失函数关于权重参数的梯度，虽然简单也容易实现，但是缺点是计算上比较费时间。而误差的反向传播法可以高效地计算梯度。
                 </description>
@@ -409,7 +409,7 @@ dL/dW = XT·(dL/dY)</p>
                 <title>用python做一个类c编译器——词法分析器</title>
                 <link>https://me.idealli.com/post/52e79625.html</link>
                 <guid>https://me.idealli.com/post/52e79625.html</guid>
-                <pubDate>Mon May 20 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-20</pubDate>
                 <description>
                 程序创建一个词法类——classword_list，在使用类构造一个示例对象时需传入一个文件名参数。而后，对象的初始化函数对该源代码进行切割，并返回一个字典，存放单词和单词所在的行号。接着，初始化函数调用单词分类函数
                 </description>
@@ -500,7 +500,7 @@ dL/dW = XT·(dL/dY)</p>
                 <title>数值微分和梯度法</title>
                 <link>https://me.idealli.com/post/21418b73.html</link>
                 <guid>https://me.idealli.com/post/21418b73.html</guid>
-                <pubDate>Mon May 20 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-20</pubDate>
                 <description>
                 利用微小的差分求导数的过程称为数值微分。以计算函数f在(x + h)和(x − h)之间的差分。因为这种计算方法以x为中心，计算它左右两边的差分，所以也称为中心差分（而(x + h)和x之间的差分称为前向差分）。
                 </description>
@@ -625,7 +625,7 @@ dL/dW = XT·(dL/dY)</p>
                 <title>深度学习入门——神经网络学习</title>
                 <link>https://me.idealli.com/post/8a7c7277.html</link>
                 <guid>https://me.idealli.com/post/8a7c7277.html</guid>
-                <pubDate>Mon May 20 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-20</pubDate>
                 <description>
                 这里所说的“学习”是指从训练数据中自动获取最优权重参数的过程。为了使神经网络能进行学习，将导入损失函数这一指标。而学习的目的就是以该损失函数为基准，找出能使它的值达到最小的权重参数。为了找出尽可能小的
                 </description>
@@ -716,7 +716,7 @@ dL/dW = XT·(dL/dY)</p>
                 <title>深度学习入门—手写文字识别机</title>
                 <link>https://me.idealli.com/post/6afd50bb.html</link>
                 <guid>https://me.idealli.com/post/6afd50bb.html</guid>
-                <pubDate>Mon May 20 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-20</pubDate>
                 <description>
                 和求解机器学习问题的步骤（分成学习和推理两个阶段进行）一样， 使用神经网络解决问题时，也需要首先使用训练数据（学习数据）进 行权重参数的学习；进行推理时，使用刚才学习到的参数，对输入 数据进行分类。
                 </description>
@@ -797,7 +797,7 @@ dL/dW = XT·(dL/dY)</p>
                 <title>深度学习预热——感知机</title>
                 <link>https://me.idealli.com/post/9a152e11.html</link>
                 <guid>https://me.idealli.com/post/9a152e11.html</guid>
-                <pubDate>Mon May 20 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-20</pubDate>
                 <description>
                 感知机是由美国学者Frank Rosenblatt在1957年提出来的。为何我们现在还要学习这一很久以前就有 的算法呢？因为感知机也是作为神经网络（深度学习）的起源的算法。因此， 学习感知机的构造也就
                 </description>
@@ -907,7 +907,7 @@ X1,X2是输入信号，y是输出信号，w1，w2是权重，图中的圆圈被�
                 <title>深度学习入门——神经网络</title>
                 <link>https://me.idealli.com/post/a09e1285.html</link>
                 <guid>https://me.idealli.com/post/a09e1285.html</guid>
-                <pubDate>Mon May 20 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-20</pubDate>
                 <description>
                 之前介绍的感知机，不足的是——权重的设定工作需要人工进行。
 而神经网络，的出现就是为了解决刚才的问题。具体地讲，神经网络的一 个重要性质是它可以自动地从数据中学习到合适的权重参数。
@@ -1069,7 +1069,7 @@ X1,X2是输入信号，y是输出信号，w1，w2是权重，图中的圆圈被�
                 <title>深度学习预热——Matplotlib库的简单用法</title>
                 <link>https://me.idealli.com/post/e5c17407.html</link>
                 <guid>https://me.idealli.com/post/e5c17407.html</guid>
-                <pubDate>Mon May 20 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-20</pubDate>
                 <description>
                 可以使用matplotlib的pyplot模块绘制图形。话不多说，我们来看一个 绘制sin函数曲线的例子。
                 </description>
@@ -1100,7 +1100,7 @@ X1,X2是输入信号，y是输出信号，w1，w2是权重，图中的圆圈被�
                 <title>Flybook-用node.js从零开始搭一个简约而不简单的博客站点</title>
                 <link>https://me.idealli.com/post/d3f1788e3</link>
                 <guid>https://me.idealli.com/post/d3f1788e3</guid>
-                <pubDate>Sun May 19 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-19</pubDate>
                 <description>
                 前言：玩了快一年博客了，一直用的第三方框架，比如WordPress，typecho，hexo等。其中hexo用的最久，期间把nex主题改得乱七八糟。上周看完node的文档后，受前辈柠檬酸的启发，决定自己用node搭一个博客web应用。历时一周，完成初步版本，本博客整体UI风模仿简书。
                 </description>
@@ -1156,7 +1156,7 @@ X1,X2是输入信号，y是输出信号，w1，w2是权重，图中的圆圈被�
                 <title>hexo建站笔记——带图标的标签云</title>
                 <link>https://me.idealli.com/post/eccf2c93.html</link>
                 <guid>https://me.idealli.com/post/eccf2c93.html</guid>
-                <pubDate>Tue May 07 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-7</pubDate>
                 <description>
                 
 最近闲着没事看到掘金的网站标签带有icon图标，想着自己也搞一个。想到的实现方法很简单，也有很多种，比如像之前做彩色标签云一样用页面脚本在加载的时候修改标签云dom并且添加相应节点。
@@ -1223,7 +1223,7 @@ extsourcecss\_custom**文件夹下的<code>custom.styl</code>文件添加相应�
                 <title>给hexo静态博客添加动态相册功能</title>
                 <link>https://me.idealli.com/post/73ad4183.html</link>
                 <guid>https://me.idealli.com/post/73ad4183.html</guid>
-                <pubDate>Tue May 07 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-7</pubDate>
                 <description>
                 
 
@@ -1370,7 +1370,7 @@ hexo建站笔记之带图标的标签云
                 <title>五一小长假——武汉三日游</title>
                 <link>https://me.idealli.com/post/a9670015.html</link>
                 <guid>https://me.idealli.com/post/a9670015.html</guid>
-                <pubDate>Sun May 05 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-5-5</pubDate>
                 <description>
                 
 这个五一小长假和女朋友一起去了武汉。到处都是人人人人人人人人从从从从众众众众。。。
@@ -1447,7 +1447,7 @@ hexo建站笔记之带图标的标签云
                 <title>disqus评论系统被墙后设置代理实现墙内访问</title>
                 <link>https://me.idealli.com/post/c7139a41.html</link>
                 <guid>https://me.idealli.com/post/c7139a41.html</guid>
-                <pubDate>Mon Apr 29 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-4-29</pubDate>
                 <description>
                 
 缘起：前天把博客的评论搬到disqus后，电脑端一直访问正常，但是手机端一直显示不出评论，我以为是什么其他的原因，后来仔细一想，是我电脑端一直有开代理，可以访问外网，所以没问题。。。哎把这事给忘了，看来disqus是被墙的死死的了。网站找
@@ -1562,7 +1562,7 @@ hexo建站笔记之带图标的标签云
                 <title>将任意第三方评论导入Disqus系统</title>
                 <link>https://me.idealli.com/post/9b521ff7.html</link>
                 <guid>https://me.idealli.com/post/9b521ff7.html</guid>
-                <pubDate>Sun Apr 28 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-4-28</pubDate>
                 <description>
                 
 喜欢折腾的我又换了评论系统，虽然之前的valine一直用的很舒服，奈何人都是善变的，何况一个喜欢折腾的人。这次换的是disqus评论系统，我垂涎已久的一个评论系统，终于可以换上了。
@@ -1629,7 +1629,7 @@ hexo建站笔记之带图标的标签云
                 <title>LeetCode趣题分享 | 一个除法函数</title>
                 <link>https://me.idealli.com/post/5eb20022.html</link>
                 <guid>https://me.idealli.com/post/5eb20022.html</guid>
-                <pubDate>Fri Apr 26 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-4-26</pubDate>
                 <description>
                 
 今天刷Leetcode遇到一个题目挺有趣，虽然思路有了，然而处理整型数溢出处理好久。也可以看出自己在这方面的薄弱。原题地址
@@ -1713,7 +1713,7 @@ k 是一个正整数，它的值小于或等于链表的长度。如果节点总
                 <title>Leetcode刷题第一周汇总</title>
                 <link>https://me.idealli.com/post/7cec70c9.html</link>
                 <guid>https://me.idealli.com/post/7cec70c9.html</guid>
-                <pubDate>Sat Apr 20 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-4-20</pubDate>
                 <description>
                 
 这两天刷了十几道Leetcode的算法题，还是做算法有趣，现在对这周做的源码进行汇总。
@@ -1847,7 +1847,7 @@ p 可能为空，且只包含从 a-z 的小写字母，以及字符 . 和 *。</
                 <title>安装LNMP环境并搭建wordpress博客</title>
                 <link>https://me.idealli.com/post/57c368d4.html</link>
                 <guid>https://me.idealli.com/post/57c368d4.html</guid>
-                <pubDate>Thu Apr 18 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-4-18</pubDate>
                 <description>
                 
 ¶购买云服务器
@@ -2012,7 +2012,7 @@ vultr官网
                 <title>桃李春风一杯酒，江湖夜雨十年灯</title>
                 <link>https://me.idealli.com/post/d46a767e.html</link>
                 <guid>https://me.idealli.com/post/d46a767e.html</guid>
-                <pubDate>Mon Apr 15 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-4-15</pubDate>
                 <description>
                 
 
@@ -2076,7 +2076,7 @@ vultr官网
                 <title>深度学习预热——Numpy库的简单使用</title>
                 <link>https://me.idealli.com/post/7d96d4e6.html</link>
                 <guid>https://me.idealli.com/post/7d96d4e6.html</guid>
-                <pubDate>Tue Apr 09 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-4-9</pubDate>
                 <description>
                 
 
@@ -2177,7 +2177,7 @@ array([[19, 22],<br/>
                 <title>华为勇敢星实习生面试经历，已拿offer</title>
                 <link>https://me.idealli.com/post/b09b1c0c.html</link>
                 <guid>https://me.idealli.com/post/b09b1c0c.html</guid>
-                <pubDate>Mon Apr 08 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-4-8</pubDate>
                 <description>
                 
 两个礼拜前，华为来学校招实习生（勇敢星实习）我也随便跟着投一投。很快便收到了性格测试的链接，这玩意正常填写就好了，但是不知道为什么很多同学的性格测试都不行，现场被要求重做。
@@ -2233,7 +2233,7 @@ array([[19, 22],<br/>
                 <title>机器学习常见算法模型练习——线性回归</title>
                 <link>https://me.idealli.com/post/13b460a8.html</link>
                 <guid>https://me.idealli.com/post/13b460a8.html</guid>
-                <pubDate>Sun Mar 24 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-3-24</pubDate>
                 <description>
                 
 ¶什么是线性回归
@@ -2311,7 +2311,7 @@ array([[19, 22],<br/>
                 <title>机器学习常见算法模型练习——决策树</title>
                 <link>https://me.idealli.com/post/a9a07428.html</link>
                 <guid>https://me.idealli.com/post/a9a07428.html</guid>
-                <pubDate>Thu Mar 21 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-3-21</pubDate>
                 <description>
                 
 ¶决策树
@@ -2368,7 +2368,7 @@ array([[19, 22],<br/>
                 <title>腾讯前端暑期实习生电话面试小经历</title>
                 <link>https://me.idealli.com/post/6f063057.html</link>
                 <guid>https://me.idealli.com/post/6f063057.html</guid>
-                <pubDate>Sun Mar 10 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-3-10</pubDate>
                 <description>
                 
 缘起 上周接到一个腾讯视频的电话，说是要电话面试，可把我懵逼了一下，当时没想起来有投过腾讯的简历，后来回去打开腾讯招聘的官网才发现一年前在腾讯投了简历，那是大二暑假的时候投的。大概是那时候时间还没到，现在大三了，简历才进入简历池，又看了会
@@ -2453,7 +2453,7 @@ array([[19, 22],<br/>
                 <title>爬虫爬取国内IT平台文章并直接导入wordpress网站</title>
                 <link>https://me.idealli.com/post/c8e6091b.html</link>
                 <guid>https://me.idealli.com/post/c8e6091b.html</guid>
-                <pubDate>Sat Feb 16 2019 00:00:00 GMT+0800 (中国标准时间)</pubDate>
+                <pubDate>2019-2-16</pubDate>
                 <description>
                 
 

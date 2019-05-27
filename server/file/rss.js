@@ -6,7 +6,7 @@ const config = require('../../config');
 var index = config.seo.index;
 
 var rsssql=`select post_content,id,title,updateTime,description from articles where type = 'post' order by updateTime desc limit 30`;
-var sitemapsql=`select id,updateTime from articles order by updateTime`;
+var sitemapsql=`select id,updateTime from articles order by updateTime desc`;
 
 exports.createrss = function(){
     var rss_content = `
@@ -27,12 +27,14 @@ exports.createrss = function(){
             return;
         }
         for(var i in rows){
+            var time = rows[i].updateTime;
+            var pubdata = time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate();
             rss_content = rss_content + `
             <item>
                 <title>${rows[i].title}</title>
                 <link>${index}/post/${rows[i].id}</link>
                 <guid>${index}/post/${rows[i].id}</guid>
-                <pubDate>${rows[i].updateTime}</pubDate>
+                <pubDate>${pubdata}</pubDate>
                 <description>
                 ${rows[i].description}
                 </description>
@@ -68,10 +70,12 @@ exports.createrss = function(){
             return;
         }
         for(var i in rows){
+            var time = rows[i].updateTime;
+            var pubdata = time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate();
             sitemap_content = sitemap_content + `
             <url>
                 <loc>${index}/post/${rows[i].id}</loc>
-                <lastmod>${rows[i].updateTime}</lastmod>
+                <lastmod>${pubdata}</lastmod>
             </url>
             `;
 
