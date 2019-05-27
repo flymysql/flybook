@@ -46,13 +46,6 @@ exports.createrss = function(){
                 </comments>
             </item>
             `;
-            sitemap_content = sitemap_content + `
-            <url>
-                <loc>${index}/post/${rows[i].id}</loc>
-                <lastmod>${rows[i].updateTime}</lastmod>
-            </url>
-            `;
-
         }
         rss_content = rss_content + `</channel>
         </rss>`;
