@@ -37,31 +37,38 @@ var create_tag = function(){
 function query(tag) {
     return Array.from(document.getElementsByTagName(tag));
 }
-var observerimg = new IntersectionObserver(
-    (changes) => {
-        changes.forEach((change) => {
-            if (change.intersectionRatio > 0) {
-                var img = change.target;
-                if(img.dataset.src != undefined){
-                    img.src = img.dataset.src;
-                }
-                observerimg.unobserve(img);
-            }
-        })
-    }
-)
-var observertag = new IntersectionObserver(
-    (changes) => {
-        changes.forEach((change) => {
-            if (change.intersectionRatio > 0) {
-                create_tag();
-                observertag.unobserve(tagcloud);
-            }
-        })
-    }
-)
 const imglist = query('img');
-if(observerimg == undefined || observertag == undefined){
+try{
+    var observerimg = new IntersectionObserver(
+        (changes) => {
+            changes.forEach((change) => {
+                if (change.intersectionRatio > 0) {
+                    var img = change.target;
+                    if(img.dataset.src != undefined){
+                        img.src = img.dataset.src;
+                    }
+                    observerimg.unobserve(img);
+                }
+            })
+        }
+    )
+    var observertag = new IntersectionObserver(
+        (changes) => {
+            changes.forEach((change) => {
+                if (change.intersectionRatio > 0) {
+                    create_tag();
+                    observertag.unobserve(tagcloud);
+                }
+            })
+        }
+    )
+    observertag.observe(tagcloud);
+    imglist.forEach((item) => {
+        observerimg.observe(item);
+    })
+    console.log("懒加载程序正常执行！");
+}
+catch(err){
     console.log("该浏览器不支持图片懒加载，启动强制加载")
     imglist.forEach((item) => {
         if(item.dataset.src != undefined){
@@ -69,13 +76,6 @@ if(observerimg == undefined || observertag == undefined){
         }
     })
     create_tag();
-}
-else{
-    console.log("懒加载程序正常执行！")
-    observertag.observe(tagcloud);
-    imglist.forEach((item) => {
-        observerimg.observe(item);
-    })
 }
 
 //百度推送
