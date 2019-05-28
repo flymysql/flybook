@@ -5,7 +5,7 @@
             <link>https://me.idealli.com</link>
             <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
             <description>桃李春风一杯酒，江湖夜雨十年灯</description>
-            <pubDate>2019-05-27</pubDate>
+            <pubDate>2019-05-28</pubDate>
             <generator>https://me.idealli.com/</generator>
 
     
@@ -13,12 +13,12 @@
                 <title>用node从头开始自己搭建一个动态博客</title>
                 <link>https://me.idealli.com/post/86b3cc61.html</link>
                 <guid>https://me.idealli.com/post/86b3cc61.html</guid>
-                <pubDate>2019-5-27</pubDate>
+                <pubDate>2019-5-28</pubDate>
                 <description>
                 搭了快一年的博客了，用过wordpress，也用过typecho，用的时间最长的是hexo。平常喜欢折腾，就一直在搞些杂七杂八的。也一直想自己动手做个属于自己的博客框架，奈何之前技术水平不够，觉得这种
                 </description>
                 <content:encoded>
-                <![CDATA[<div><div><div><div><div><div><div><div><div><div><div><div><div><div><div class="post-body" itemprop="articleBody">
+                <![CDATA[<div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div class="post-body" itemprop="articleBody">
 <p>搭了快一年的博客了，用过wordpress，也用过typecho，用的时间最长的是hexo。平常喜欢折腾，就一直在搞些杂七杂八的。也一直想自己动手做个属于自己的博客框架，奈何之前技术水平不够，觉得这种项目离自己的水平还有点距离，学了半年前端后（其实也没系统地学），最近看到node这个轻量级的后端语言以及express这个成熟的框架可以很快的搭起一个网站骨架。</p>
 <p>自己其实想要做的也很简单，一个轻量级的博客框架，只针对博客！对的，目标明确，这个框架应该只用来做博客，不考虑其他网站的用途。</p>
 <h2 id="网站骨架"><a class="header-anchor" href="#网站骨架">¶</a>网站骨架</h2>
@@ -49,12 +49,12 @@
 <h2 id="剧透"><a class="header-anchor" href="#剧透">¶</a>剧透</h2>
 <p>部分页面（未编写css进行美化，有点丑）</p>
 <h3 id="首页"><a class="header-anchor" href="#首页">¶</a>首页</h3>
-<p><img alt="" src="/images/loading.gif" data-src="/images/loading.gif"></p>
+<p><img alt="" src="/images/loading.gif"></p>
 <h3 id="文章详情页"><a class="header-anchor" href="#文章详情页">¶</a>文章详情页</h3>
-<p><img alt="" src="/images/loading.gif" data-src="/images/loading.gif"></p>
+<p><img alt="" src="/images/loading.gif"></p>
 <h3 id="前台编写文章"><a class="header-anchor" href="#前台编写文章">¶</a>前台编写文章</h3>
-<p><img alt="" src="/images/loading.gif" data-src="/images/loading.gif"></p>
-</div></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p>]]>
+<p><img alt="" src="/images/loading.gif"></p>
+</div></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p></div><p><br></p>]]>
                 </content:encoded>
                 <comments>
                 https://me.idealli.com/post/86b3cc61.html#disqus_thread

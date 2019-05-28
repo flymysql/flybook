@@ -60,12 +60,24 @@ var observertag = new IntersectionObserver(
         })
     }
 )
+const imglist = query('img');
+if(observerimg == undefined || observertag == undefined){
+    console.log("该浏览器不支持图片懒加载，启动强制加载")
+    imglist.forEach((item) => {
+        if(item.dataset.src != undefined){
+            item.src = item.dataset.src;
+        }
+    })
+    create_tag();
+}
+else{
+    console.log("懒加载程序正常执行！")
+    observertag.observe(tagcloud);
+    imglist.forEach((item) => {
+        observerimg.observe(item);
+    })
+}
 
-observertag.observe(tagcloud);
-
-query('img').forEach((item) => {
-    observerimg.observe(item);
-})
 //百度推送
 window.onload = function(){
     var bp = document.createElement('script');
