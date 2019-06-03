@@ -10,10 +10,11 @@ cp -rf flybook/until ./
 cp -rf flybook/public/javascripts ./public/
 cp -rf flybook/public/third-part ./public/
 cp -rf flybook/public/stylesheets ./public/
+cp -rf flybook/public/others ./public/
 cp -rf flybook/views ./
 cp -rf flybook/config.js ./
 cp -rf flybook/package.json ./
 cp -rf flybook/LICENSE ./
 cp -rf flybook/README.md ./
-cp -rf flybook/update.sh ./
 rm -rf flybook
+cp -rf flybook/update.sh ./
