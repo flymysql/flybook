@@ -114,7 +114,11 @@ button {
 blockquote {
   margin: 0 0 1rem;
   padding: 0 0 0 0.5rem;
-  border-left: 4px solid #6E6E6E;
+  border-left: 4px solid #ca8383;
+  letter-spacing: 0.1em;
+  color: #171515ba;
+  /* color: #39483c; */
+  line-height: 2em;
 }
 
 cite {
