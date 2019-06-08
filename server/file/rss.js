@@ -9,6 +9,7 @@ var rsssql=`select post_content,id,title,updateTime,description from articles wh
 var sitemapsql=`select id,updateTime from articles order by updateTime desc`;
 
 exports.createrss = function(){
+    var today = until.nowDate();
     var rss_content = `
     <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
         <channel>
@@ -16,7 +17,7 @@ exports.createrss = function(){
             <link>${index}</link>
             <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
             <description>${config.options.description}</description>
-            <pubDate>${until.nowDate}</pubDate>
+            <pubDate>${today}</pubDate>
             <generator>${index}/</generator>
 
     `;
