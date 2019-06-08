@@ -141,7 +141,8 @@ p {
   margin: 0 0 1.5rem;
   letter-spacing: 0.3px;
   line-height: 2em;
-  color:#213346
+  font-size:16px;
+  color:#213346;
 }
 
 p:last-child {

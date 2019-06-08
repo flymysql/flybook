@@ -145,7 +145,7 @@ exports.insertArticle = (req, res) =>{
         res.end('error'); 
         return;
     }
-    var date = until.nowDate;
+    var date = until.nowDate();
     var content = req.body.content.replace(/'/g,'"');
     if(content.indexOf("data-src=")==-1){
         content = content.replace(/src=/g,'src="https://me.idealli.com/images/load.gif" data-src=')

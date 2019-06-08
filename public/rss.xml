@@ -5,10 +5,52 @@
             <link>https://me.idealli.com</link>
             <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
             <description>桃李春风一杯酒，江湖夜雨十年灯</description>
-            <pubDate>2019-05-28</pubDate>
+            <pubDate>()=>{
+    // 获取当前日期
+    var date = new Date();
+
+    // 获取当前月份
+    var nowMonth = date.getMonth() + 1;
+
+    // 获取当前是几号
+    var strDate = date.getDate();
+
+    // 添加分隔符“-”
+    var seperator = "-";
+
+    // 对月份进行处理，1-9月在前面添加一个“0”
+    if (nowMonth >= 1 && nowMonth <= 9) {
+    nowMonth = "0" + nowMonth;
+    }
+
+    // 对月份进行处理，1-9号在前面添加一个“0”
+    if (strDate >= 0 && strDate <= 9) {
+    strDate = "0" + strDate;
+    }
+
+    // 最后拼接字符串，得到一个格式为(yyyy-MM-dd)的日期
+    var nowDate = date.getFullYear() + seperator + nowMonth + seperator + strDate;
+    return nowDate;
+}</pubDate>
             <generator>https://me.idealli.com/</generator>
 
     
+            <item>
+                <title>新建文章</title>
+                <link>https://me.idealli.com/post/6bc658b0e</link>
+                <guid>https://me.idealli.com/post/6bc658b0e</guid>
+                <pubDate>2019-6-8</pubDate>
+                <description>
+                测试
+                </description>
+                <content:encoded>
+                <![CDATA[<p>测试</p>]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/6bc658b0e#disqus_thread
+                </comments>
+            </item>
+            
             <item>
                 <title>用node从头开始自己搭建一个动态博客</title>
                 <link>https://me.idealli.com/post/86b3cc61.html</link>
@@ -2446,68 +2488,6 @@ array([[19, 22],<br/>
                 </content:encoded>
                 <comments>
                 https://me.idealli.com/post/6f063057.html#disqus_thread
-                </comments>
-            </item>
-            
-            <item>
-                <title>爬虫爬取国内IT平台文章并直接导入wordpress网站</title>
-                <link>https://me.idealli.com/post/c8e6091b.html</link>
-                <guid>https://me.idealli.com/post/c8e6091b.html</guid>
-                <pubDate>2019-2-16</pubDate>
-                <description>
-                
-
-前几天闲着没事新建了一个wordpress站点，想着用来转发一些IT资讯文章来赚流量（https://www.idealli.com）于是自己写了几个小爬虫用来爬取其他平台文章并且直接导入到自己的word press站点。
-
-
-¶Bea
-                </description>
-                <content:encoded>
-                <![CDATA[<div class="post-body" itemprop="articleBody">
-<blockquote>
-<p>前几天闲着没事新建了一个wordpress站点，想着用来转发一些IT资讯文章来赚流量（<a href="https://www.idealli.com" rel="noopener" target="_blank">https://www.idealli.com</a>）于是自己写了几个小爬虫用来爬取其他平台文章并且直接导入到自己的word press站点。</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="beautifulsoup的使用"><a class="header-anchor" href="#beautifulsoup的使用">¶</a>BeautifulSoup的使用</h2>
-<p>首先需要安装模块</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ pip install BeautifulSoup4</span><br/><span class="line">$ pip install requests</span><br/></pre></td></tr></table></figure>
-<p>我感觉我这个模块使用的比较肤浅，只是用来<code>find_all()</code>,基本上没有用上其他的函数，不过也够用了。<br/>
-爬虫爬取后的数据处理无非也就是寻找指定标签，例如</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br/><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br/><span class="line"><span class="keyword">import</span> requests,sys</span><br/><span class="line"></span><br/><span class="line">requests.adapters.DEFAULT_RETRIES = <span class="number">5</span></span><br/><span class="line">s = requests.session()</span><br/><span class="line">s.keep_alive = <span class="keyword">False</span></span><br/><span class="line"><span class="keyword">try</span>:</span><br/><span class="line">    req = s.get(url = link)</span><br/><span class="line">    bf = BeautifulSoup(req.text,<span class="string">"html.parser"</span>)</span><br/><span class="line">    s.close</span><br/><span class="line">    req.close</span><br/><span class="line"></span><br/><span class="line">    texts = bf.find(<span class="string">div</span>,class_=<span class="string">article fmt article__content</span>)</span><br/><span class="line">    origin = <span class="string">u"&lt;p&gt;来源：&lt;a target=_blank href="</span></span><br/><span class="line">    origin = origin.encode(<span class="string">utf-8</span>)</span><br/><span class="line">    texts = str(texts) + origin + str(link) +<span class="string">" rel=noopener&gt;"</span> + str(link) + <span class="string">"&lt;/a&gt;&lt;/p&gt;"</span></span><br/><span class="line">    title = bf.find(<span class="string">h1</span>,id=<span class="string">articleTitle</span>).find(<span class="string">a</span>).text</span><br/><span class="line">    </span><br/><span class="line">    tim = <span class="string">2019-01-19 20:20:20</span></span><br/><span class="line">    author = bf.find(<span class="string">div</span>, class_=<span class="string">article__authormeta</span>).find(<span class="string">strong</span>).text</span><br/><span class="line">    tag = bf.find(<span class="string">a</span>,class_=<span class="string">tag</span>).get(<span class="string">data-original-title</span>)</span><br/><span class="line">    time.sleep(<span class="number">2</span>)</span><br/><span class="line"><span class="keyword">except</span>:</span><br/><span class="line">    print(<span class="string">"	######################
-
-	error!
-
-	#######################"</span>)</span><br/><span class="line">    time.sleep(<span class="number">3</span>)</span><br/></pre></td></tr></table></figure>
-<p>以上主要就用到了<code>find</code>函数</p>
-<h2 id="连接wordpress的数据库并导入"><a class="header-anchor" href="#连接wordpress的数据库并导入">¶</a>连接wordpress的数据库并导入</h2>
-<p>如果是本地端远程连接数据库，在<code>python</code>连接数据库之前，首先要确定数据库是开放连接的，这个自行百度如何开放数据库的远程连接。</p>
-<p>如果是服务器上执行爬虫，直接在服务器上导入数据库，那么就不用，连接地址直接就是<code>localhost</code></p>
-<p>数据库的连接需要导入第三方模块，我用的是<code>pymysql</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ pip install pymysql</span><br/></pre></td></tr></table></figure>
-<h3 id="使用pymysql连接数据库"><a class="header-anchor" href="#使用pymysql连接数据库">¶</a>使用pymysql连接数据库</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br/><span class="line"></span><br/><span class="line"><span class="comment"># 连接数据库需要，IP，user，密码，库名</span></span><br/><span class="line">db = pymysql.connect(host=<span class="string"></span>, user=<span class="string">""</span>, passwd=<span class="string"></span>, db=<span class="string"></span>)</span><br/><span class="line"></span><br/><span class="line"><span class="comment"># 设置游标</span></span><br/><span class="line">cursor = db.cursor()</span><br/><span class="line"></span><br/><span class="line"><span class="comment"># 一个查询是否有重复文章的例子</span></span><br/><span class="line">check_title=<span class="string">"SELECT `ID` FROM `wp_posts` WHERE `post_title` = "</span> + title + <span class="string">""</span></span><br/><span class="line"><span class="keyword">try</span>:</span><br/><span class="line">    cursor.execute(check_title)</span><br/><span class="line"><span class="keyword">except</span>:</span><br/><span class="line">    print(<span class="string">"error"</span>)</span><br/></pre></td></tr></table></figure>
-<h2 id="爬虫结构"><a class="header-anchor" href="#爬虫结构">¶</a>爬虫结构</h2>
-<p>整个爬虫就三个函数</p>
-<ol>
-<li>
-<p>一个是获取文章连接的函数，这个函数需要从特别的网页入口中获取网站的文章连接，一般可以是网站的标签页，文章连接比较多</p>
-</li>
-<li>
-<p>第二个函数是文章内容的获取函数，将获取的文章html内容解析出来，得到自己想要的东西</p>
-</li>
-<li>
-<p>第三个函数就是将获取的文章内容导入数据库</p>
-</li>
-</ol>
-<p class="note">
-由于导入数据库时涉及多表的插入与查询，所以探索过程还是很麻烦的，要注意标签的插入，作者的插入，标签索引的插入，最重要的还有标签索引与文章id的关系表，如果没有这个表，文章将无法显示！！！
-</p>
-<p>最后献上源码，放在GitHub，记得点颗star哦</p>
-<p><a href="https://github.com/flymysql/Post_to_wordpress" rel="noopener" target="_blank">https://github.com/flymysql/Post_to_wordpress</a></p>
-</div>]]>
-                </content:encoded>
-                <comments>
-                https://me.idealli.com/post/c8e6091b.html#disqus_thread
                 </comments>
             </item>
             </channel>
