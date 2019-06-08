@@ -402,6 +402,7 @@ body{
     border: 1px solid #ddd;
     border-radius: 50%;
     vertical-align: middle;
+    box-shadow:unset;
   }
   .author .info {
     vertical-align: middle;

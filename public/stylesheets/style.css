@@ -42,7 +42,7 @@ a{
 
 .header a.logo{
   float: left;
-  height: 45px;
+  height: 55px;
   padding: 0;
   width: 335px;
   background: url(/images/headerico.png);
@@ -227,8 +227,8 @@ header .email{
 }
 .header a.logo{
   background: url(/images/headerico2.png);
-  width: 40px;
-  height: 40px;
+  width: 55px;
+  height: 55px;
   background-size: auto 100%;
   background-repeat: no-repeat;
 }
