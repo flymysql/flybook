@@ -100,14 +100,14 @@ ul.post-list .post-item a.post-item-img img{
 }
 
 .archives-post-item .archives-title{
-  display: inline-block;
+  display: inline;
   margin-left: 10px;
   margin-top: unset;
   margin-bottom: unset;
 }
 
 .archives-post-item .archives-title a{
-  display: inline-block;
+  display: inline;
   font-size: 16px;
   color: #585353cc;
   text-decoration: none;

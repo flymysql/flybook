@@ -226,9 +226,10 @@ header .email{
   display: none;
 }
 .header a.logo{
+  margin-top: 3px;
   background: url(/images/headerico2.png);
-  width: 55px;
-  height: 55px;
+  width: 52px;
+  height: 52px;
   background-size: auto 100%;
   background-repeat: no-repeat;
 }
