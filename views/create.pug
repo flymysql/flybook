@@ -36,10 +36,11 @@ block content
                     span= "新建标签"
                     input(type="text", name="tagname")
                     input(type="submit", value="提交")
-                a(href="/admin")= "文章列表"
+                a(href="/admin" class="ad_button")= "文章列表"
                 if update
                     a(href="/delete/" + id)= "删除文章"
-
+                br
+                br
         script(src="/javascripts/wangEditor.min.js?t="+sst)
         script(src="/javascripts/jQuery.min.js?t="+sst)
         script.

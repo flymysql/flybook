@@ -85,3 +85,9 @@ footer{
         width: 96%;
     }
 }
+
+.ad_button{
+    height: 60px;
+    line-height: 60px;
+    color: darkcyan;
+}

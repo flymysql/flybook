@@ -91,3 +91,5 @@ window.onload = function(){
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(bp, s);
 }
+
+document.getElementById("qrcode").src="http://qr.topscan.com/api.php?&w=200&text=" + window.location.href;
