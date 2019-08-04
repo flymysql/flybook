@@ -5,36 +5,26 @@
             <link>https://me.idealli.com</link>
             <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
             <description>桃李春风一杯酒，江湖夜雨十年灯</description>
-            <pubDate>()=>{
-    // 获取当前日期
-    var date = new Date();
-
-    // 获取当前月份
-    var nowMonth = date.getMonth() + 1;
-
-    // 获取当前是几号
-    var strDate = date.getDate();
-
-    // 添加分隔符“-”
-    var seperator = "-";
-
-    // 对月份进行处理，1-9月在前面添加一个“0”
-    if (nowMonth >= 1 && nowMonth <= 9) {
-    nowMonth = "0" + nowMonth;
-    }
-
-    // 对月份进行处理，1-9号在前面添加一个“0”
-    if (strDate >= 0 && strDate <= 9) {
-    strDate = "0" + strDate;
-    }
-
-    // 最后拼接字符串，得到一个格式为(yyyy-MM-dd)的日期
-    var nowDate = date.getFullYear() + seperator + nowMonth + seperator + strDate;
-    return nowDate;
-}</pubDate>
+            <pubDate>2019-08-04</pubDate>
             <generator>https://me.idealli.com/</generator>
 
     
+            <item>
+                <title>新建文章</title>
+                <link>https://me.idealli.com/post/bb8298b92</link>
+                <guid>https://me.idealli.com/post/bb8298b92</guid>
+                <pubDate>2019-8-4</pubDate>
+                <description>
+                开始你的创作吧！
+                </description>
+                <content:encoded>
+                <![CDATA[<p>开始你的创作吧！</p><p><br></p>]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/bb8298b92#disqus_thread
+                </comments>
+            </item>
+            
             <item>
                 <title>新建文章</title>
                 <link>https://me.idealli.com/post/6bc658b0e</link>
@@ -2403,91 +2393,6 @@ array([[19, 22],<br/>
                 </content:encoded>
                 <comments>
                 https://me.idealli.com/post/a9a07428.html#disqus_thread
-                </comments>
-            </item>
-            
-            <item>
-                <title>腾讯前端暑期实习生电话面试小经历</title>
-                <link>https://me.idealli.com/post/6f063057.html</link>
-                <guid>https://me.idealli.com/post/6f063057.html</guid>
-                <pubDate>2019-3-10</pubDate>
-                <description>
-                
-缘起 上周接到一个腾讯视频的电话，说是要电话面试，可把我懵逼了一下，当时没想起来有投过腾讯的简历，后来回去打开腾讯招聘的官网才发现一年前在腾讯投了简历，那是大二暑假的时候投的。大概是那时候时间还没到，现在大三了，简历才进入简历池，又看了会
-                </description>
-                <content:encoded>
-                <![CDATA[<div class="post-body" itemprop="articleBody">
-<p><strong>缘起</strong> 上周接到一个腾讯视频的电话，说是要电话面试，可把我懵逼了一下，当时没想起来有投过腾讯的简历，后来回去打开腾讯招聘的官网才发现一年前在腾讯投了简历，那是大二暑假的时候投的。大概是那时候时间还没到，现在大三了，简历才进入简历池，又看了会儿招聘信息，明白了这是腾讯暑期实习生的面试。</p>
-<p>这是我第一次面试，虽然是，电话面试，但还是挺紧张，时间定在第二天下午3：00，面试岗位为web前端,晚上回去开始看书复习。。。</p>
-<a id="more"></a>
-<p>当天晚上，我拿出了数据结构，c++，网络技术。。。。。。emmmm对的，一点经验都没有的我完全不知道该看啥，又感觉看什么都来不及，数据结构算法那么多，c++也不知道会问啥，不过电话面试应该不会让写代码啥的，网络技术也好多，看了基础的东西</p>
-<p>就这样稀里糊涂看了一晚上！~第二天早上起来继续复习，这时候我意识到，我面试的是前端岗位呀！不应该看点前端内容吗？！</p>
-<p>打开浏览器开始搜索<strong>前端面试题</strong>。。。</p>
-<p>又是一个多小时的紧凑复习，越复习越感觉自己越菜，自己虽然平常一直在写一些前端的小东西，但是涉及面还不是很广，有很多基础的东西还是没接触到，比如后面会让我非常难堪的缓存问题，非常基础并且前端面试经常会问到的问题，然而因为我平时做的没有涉及到缓存，也没主动去了解，被问的哑口无言，菜鸡哭泣。。。</p>
-<h2 id="面试内容"><a class="header-anchor" href="#面试内容">¶</a>面试内容</h2>
-<p>下午三点准时打来了电话，先是自我介绍，之前是有打好草稿的，然而讲的时候还是支支吾吾拖泥带水，最后被打断直接开始问问题了。。</p>
-<ol>
-<li>
-<p>js的原型链是什么</p>
-</li>
-<li>
-<p>前端优化策略列举</p>
-</li>
-<li>
-<p>闭包是什么</p>
-</li>
-<li>
-<p>ajax如何实现</p>
-</li>
-<li>
-<p>怎么处理跨域</p>
-</li>
-<li>
-<p>get和post的区别</p>
-</li>
-<li>
-<p>事件代理解释</p>
-</li>
-<li>
-<p>web端cookie的设置和获取方法</p>
-</li>
-<li>
-<p>vuejs的双向绑定</p>
-</li>
-<li>
-<p>缓存技术</p>
-</li>
-<li>
-<p>http2与http1的区别</p>
-</li>
-<li>
-<p>说一个排序算法</p>
-</li>
-<li>
-<p>将两个链表合并成一个链表</p>
-</li>
-<li>
-<p>给3升和5升的水杯如何倒出4升的水</p>
-</li>
-<li>
-<p>1000瓶酒中一瓶有毒，有若干只小白鼠，小白鼠可以在24小时后测出是否有毒（喝死掉就是有毒）如何用最少的小白鼠找出毒酒</p>
-</li>
-<li>
-<p>谈谈项目经历</p>
-</li>
-</ol>
-<p>。。。。。。有点忘了</p>
-<h3 id="还是被刷了"><a class="header-anchor" href="#还是被刷了">¶</a>还是被刷了</h3>
-<p>后面一星期又打了两次电话</p>
-<p>一共面了三次，最后还是被刷了，不过也挺有趣，毕竟第一次面试，还是涨经验了。<br/>
-然而我也不太想做前端，，，继续学习算法好了</p>
-<p>还是要感谢腾讯的宝贵面试机会哈</p>
-<p>继续复习考研了</p>
-<p>加油！！！</p>
-</div>]]>
-                </content:encoded>
-                <comments>
-                https://me.idealli.com/post/6f063057.html#disqus_thread
                 </comments>
             </item>
             </channel>

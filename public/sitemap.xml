@@ -1,5 +1,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
             <url>
+                <loc>https://me.idealli.com/post/bb8298b92</loc>
+                <lastmod>2019-8-4</lastmod>
+            </url>
+            
+            <url>
                 <loc>https://me.idealli.com/post/6bc658b0e</loc>
                 <lastmod>2019-6-8</lastmod>
             </url>
@@ -10,17 +15,17 @@
             </url>
             
             <url>
-                <loc>https://me.idealli.com/post/2c53b8618</loc>
-                <lastmod>2019-5-24</lastmod>
-            </url>
-            
-            <url>
                 <loc>https://me.idealli.com/post/9cbd5cb63</loc>
                 <lastmod>2019-5-24</lastmod>
             </url>
             
             <url>
                 <loc>https://me.idealli.com/post/1fb2e86a.html</loc>
+                <lastmod>2019-5-24</lastmod>
+            </url>
+            
+            <url>
+                <loc>https://me.idealli.com/post/2c53b8618</loc>
                 <lastmod>2019-5-24</lastmod>
             </url>
             
@@ -55,11 +60,6 @@
             </url>
             
             <url>
-                <loc>https://me.idealli.com/post/6fe32b0d.html</loc>
-                <lastmod>2019-5-20</lastmod>
-            </url>
-            
-            <url>
                 <loc>https://me.idealli.com/post/e5c17407.html</loc>
                 <lastmod>2019-5-20</lastmod>
             </url>
@@ -70,12 +70,17 @@
             </url>
             
             <url>
+                <loc>https://me.idealli.com/post/21418b73.html</loc>
+                <lastmod>2019-5-20</lastmod>
+            </url>
+            
+            <url>
                 <loc>https://me.idealli.com/post/52e79625.html</loc>
                 <lastmod>2019-5-20</lastmod>
             </url>
             
             <url>
-                <loc>https://me.idealli.com/post/21418b73.html</loc>
+                <loc>https://me.idealli.com/post/6fe32b0d.html</loc>
                 <lastmod>2019-5-20</lastmod>
             </url>
             
@@ -210,12 +215,12 @@
             </url>
             
             <url>
-                <loc>https://me.idealli.com/post/dfb0224d.html</loc>
+                <loc>https://me.idealli.com/post/9c59c426.html</loc>
                 <lastmod>2018-12-15</lastmod>
             </url>
             
             <url>
-                <loc>https://me.idealli.com/post/9c59c426.html</loc>
+                <loc>https://me.idealli.com/post/dfb0224d.html</loc>
                 <lastmod>2018-12-15</lastmod>
             </url>
             
@@ -265,12 +270,12 @@
             </url>
             
             <url>
-                <loc>https://me.idealli.com/post/e8d13fc.html</loc>
+                <loc>https://me.idealli.com/post/d6caa003.html</loc>
                 <lastmod>2018-11-7</lastmod>
             </url>
             
             <url>
-                <loc>https://me.idealli.com/post/d6caa003.html</loc>
+                <loc>https://me.idealli.com/post/e8d13fc.html</loc>
                 <lastmod>2018-11-7</lastmod>
             </url>
             

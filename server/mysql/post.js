@@ -2,6 +2,7 @@ const connection = require('../config/db').connection;
 const config = require('../../config');
 const until = require('../../until/until');
 const createrss = require('../file/rss').createrss;
+var users = require('../config/user').items;
 //serverStartTimestamp
 const sst = new Date().getTime();
 const option = {
@@ -11,6 +12,13 @@ const option = {
     pagenum: 20,
     avator: "",
     carousel: config.carousel,
+}
+
+var ifLogin = function (name) {
+    for (i in users) {
+        if (users[i].name === name) return true;
+    }
+    return false;
 }
 
 // 文章归档和后台使用同一个模板渲染
@@ -126,7 +134,8 @@ exports.createArticle = (res, req) =>{
     // 生成一个随机字符串作为文章id
     var id = Math.random().toString(16).substr(6);
     var loginUser = sess.loginUser;
-    var isLogined = !!loginUser;
+    var isLogined = ifLogin(loginUser);
+    console.log(isLogined);
     // var isLogined = !!loginUser;
     res.render('create', {
         'update': false,
@@ -140,8 +149,10 @@ exports.createArticle = (res, req) =>{
 };
 
 exports.insertArticle = (req, res) =>{
-    var isLogined = !req.session.loginUser;
-    if(isLogined){
+    var sess = req.session;
+    var isLogined  = ifLogin(sess.loginUser);
+    if(!isLogined){
+        console.log("passwd error");
         res.end('error'); 
         return;
     }
@@ -180,7 +191,11 @@ exports.insertArticle = (req, res) =>{
 exports.updateArticle = (res, req) =>{
     var sess = req.session;
     var loginUser = sess.loginUser;
-    var isLogined = !!loginUser;
+    var isLogined = ifLogin(loginUser);
+    if(!isLogined){
+        res.end('error'); 
+        return;
+    }
     var selectsql=`select * from articles where id = '${req.params.id}'`;
     connection.query(selectsql,function(err,rows){
         if(err){
