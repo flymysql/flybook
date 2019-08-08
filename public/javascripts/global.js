@@ -35,13 +35,16 @@ var create_tag = function(){
  * 图片和标签懒加载
  */
 function query(tag) {
-    return Array.from(document.getElementsByTagName(tag));
+    // return Array.from(document.getElementsByTagName(tag));
+    return document.getElementsByTagName(tag);
 }
 const imglist = query('img');
-try{
+
+if (typeof IntersectionObserver == "function"){
+    console.log("浏览器支持懒加载");
     var observerimg = new IntersectionObserver(
-        (changes) => {
-            changes.forEach((change) => {
+        function (changes) {
+            changes.forEach( function (change) {
                 if (change.intersectionRatio > 0) {
                     var img = change.target;
                     if(img.dataset.src != undefined){
@@ -53,8 +56,8 @@ try{
         }
     )
     var observertag = new IntersectionObserver(
-        (changes) => {
-            changes.forEach((change) => {
+        function (changes) {
+            changes.forEach( function (change) {
                 if (change.intersectionRatio > 0) {
                     create_tag();
                     observertag.unobserve(tagcloud);
@@ -63,20 +66,22 @@ try{
         }
     )
     observertag.observe(tagcloud);
-    imglist.forEach((item) => {
-        observerimg.observe(item);
-    })
+    for (var i = 0; i < imglist.length; i++) {
+        observerimg.observe(imglist[i]);
+    }
     console.log("懒加载程序正常执行！");
 }
-catch(err){
+else {
     console.log("该浏览器不支持图片懒加载，启动强制加载")
-    imglist.forEach((item) => {
+    for (var i = 0; i < imglist.length; i++) {
+        var item = imglist[i];
         if(item.dataset.src != undefined){
             item.src = item.dataset.src;
         }
-    })
+    }
     create_tag();
 }
+
 
 //百度推送
 window.onload = function(){
