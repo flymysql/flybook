@@ -40,7 +40,7 @@ exports.createrss = function(){
                 ${rows[i].description}
                 </description>
                 <content:encoded>
-                <![CDATA[${rows[i].post_content.replace(/src="https:\/\/me.idealli.com\/images\/load.gif" data-src="/g,'src="')}]]>
+                <![CDATA[${rows[i].post_content}]]>
                 </content:encoded>
                 <comments>
                 ${index}/post/${rows[i].id}#disqus_thread
