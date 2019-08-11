@@ -158,9 +158,6 @@ exports.insertArticle = (req, res) =>{
     }
     var date = until.nowDate();
     var content = req.body.content.replace(/'/g,'"');
-    if(content.indexOf("data-src=")==-1){
-        content = content.replace(/src=/g,'src="https://me.idealli.com/images/load.gif" data-src=')
-    }
     var title = req.body.title.replace(/'/g,'"');
     var desc = req.body.desc;
     if(desc.length > 100){
