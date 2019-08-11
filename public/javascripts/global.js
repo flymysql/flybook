@@ -33,7 +33,7 @@ var create_tag = function(){
 /**
  * 
  * 图片和标签懒加载
- */
+ 
 function query(tag) {
     // return Array.from(document.getElementsByTagName(tag));
     return document.getElementsByTagName(tag);
@@ -81,7 +81,7 @@ else {
     }
     create_tag();
 }
-
+*/
 
 //百度推送
 window.onload = function(){
