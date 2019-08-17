@@ -14,6 +14,7 @@ const option = {
     carousel: config.carousel,
 }
 
+// 判断是否登陆
 var ifLogin = function (name) {
     for (i in users) {
         if (users[i].name === name) return true;
@@ -129,6 +130,7 @@ exports.getArticleDetail = (res, id) =>{
     });
 };
 
+// 后台写文章页面
 exports.createArticle = (res, req) =>{
     var sess = req.session;
     // 生成一个随机字符串作为文章id
@@ -148,6 +150,7 @@ exports.createArticle = (res, req) =>{
     });
 };
 
+// 文章插入操作
 exports.insertArticle = (req, res) =>{
     var sess = req.session;
     var isLogined  = ifLogin(sess.loginUser);
@@ -185,6 +188,7 @@ exports.insertArticle = (req, res) =>{
     });
 };
 
+// 文章更新操作
 exports.updateArticle = (res, req) =>{
     var sess = req.session;
     var loginUser = sess.loginUser;
@@ -215,6 +219,7 @@ exports.updateArticle = (res, req) =>{
     });
 };
 
+// 文章删除操作
 exports.deleteArticle = (res, id, islogin) =>{
     if(!islogin){
         res.end("you are not admin !!!");
@@ -230,6 +235,7 @@ exports.deleteArticle = (res, id, islogin) =>{
     });
 }
 
+// 文章搜索
 exports.post_search = (res, s) =>{
     var searchsql = `SELECT * FROM articles WHERE post_content LIKE '%${s}%' or title like '%${s}%'`;
     var result= [];
@@ -264,7 +270,7 @@ exports.post_search = (res, s) =>{
     });
 }
 
-
+// 点击喜欢事件，like+1
 exports.get_add_like = (res, req) => {
     var id = req.headers.referer.replace(config.seo.index,"").replace("/post/","");
     var sql = 'update articles set `like` = `like`+1 where id ="' + id + '"';
@@ -282,9 +288,49 @@ exports.get_add_like = (res, req) => {
     })
 }
 
+// 相册渲染
 exports.render_photos = (res => {
     res.render('photos', {
         'sst':sst,
         'site':option,
     })
 })
+
+// 站点安装
+exports.installWeb = (res, req) => {
+    var sess = req.session;
+    var loginUser = sess.loginUser;
+    var isLogined = ifLogin(loginUser);
+    if (isLogined) {
+        console.log("islogin")
+        var install_sql = "CREATE TABLE `articles` (`id` varchar(20) NOT NULL, `title` varchar(255) DEFAULT NULL,`description` varchar(255) DEFAULT NULL, `post_content` longtext NOT NULL,`img` varchar(255) DEFAULT NULL,`type` varchar(10) DEFAULT 'post', `visitors` bigint(20) DEFAULT '0',`like` bigint(20) DEFAULT '0', `tag` varchar(255) DEFAULT NULL, `createTime` date DEFAULT NULL,`updateTime` date DEFAULT NULL  ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC; CREATE TABLE `tags` (`id` int(10) NOT NULL,`name` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8; ALTER TABLE `articles` ADD PRIMARY KEY (`id`) USING BTREE,ADD KEY `id` (`id`);ALTER TABLE `tags`ADD PRIMARY KEY (`id`);ALTER TABLE `tags`MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22; COMMIT;INSERT INTO `articles` (`id`, `title`, `description`, `post_content`, `img`, `type`, `visitors`, `like`, `tag`, `createTime`, `updateTime`) VALUES('872fdc4f6', 'Hello World！', '<p>欢迎使用flybook搭建你的站点</p><p>开始你的创作吧！</p><p><br></p>', '<p>欢迎使用flybook搭建你的站点</p><p>开始你的创作吧！</p><p><br></p>', '', 'post', 0, 0, '随想', '2019-05-18', '2019-05-18');"
+        connection.query(install_sql, function(err, rows){
+            if (err) {
+                console.log(err);
+                res.end("error");
+                return;
+            }
+            else {
+                res.render('install', {
+                    'site':option,
+                    'isLogined': isLogined,
+                    'name': loginUser,
+                    'type': 'insert',
+                    'id': '000000',
+                    'sst': sst
+                });
+            }
+        });
+    }
+    else {
+        console.log("login")
+        res.render('install', {
+            'site':option,
+            'isLogined': isLogined,
+            'name': loginUser,
+            'type': 'insert',
+            'id': '000000',
+            'sst': sst
+        });
+    }
+}

@@ -6,6 +6,9 @@ const postController = require('../controllers/postController');
 
 const upload = require('../server/file/images').post_img_upload
 
+// 站点安装
+router.get('/install', postController.install);
+
 // 首页
 router.get('/', postController.index);
 

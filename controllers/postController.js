@@ -1,6 +1,7 @@
 var post = require('../server/mysql/post');
 var tags = require('../server/mysql/tags');
 
+exports.install = (req, res) => { post.installWeb(res, req); }
 
 exports.index = (req, res) => { post.getArticleList(res, req.query.page);};
 

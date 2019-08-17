@@ -1,0 +1,36 @@
+extends layout
+block head_content
+    title= "站点安装"
+    link(rel='stylesheet', href='/stylesheets/create.css?t='+sst)
+block content
+    if isLogined
+        p(style="margin-top: 200px; font-size: 30px; padding-left:40%;")= "站点数据库安装成功！！" 
+    else
+        div.
+            <form method="POST" action="/login" class="login">
+                <input type="text" id="name" name="name" value="levy" />
+                <input type="password" id="password" name="password" value="123456" />
+                <input type="submit" value="登录" id="login" />
+            </form>
+        script(src="/javascripts/jQuery.min.js")
+        script.
+            $('#login').click(function(evt){
+                evt.preventDefault();
+
+                $.ajax({
+                    url: '/login',
+                    type: 'POST',
+                    data: {
+                        name: $('#name').val(),
+                        password: $('#password').val()
+                    },
+                    success: function(data){
+                        if(data.ret_code === 0){
+                            location.reload();
+                        }
+                        else{
+                            alert("账号密码错误！！")
+                        }
+                    }
+                });
+            });
