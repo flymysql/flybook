@@ -30,31 +30,8 @@ var create_tag = function(){
         }
     });
 }
-/**
- * 
- * 图片和标签懒加载
- 
-function query(tag) {
-    // return Array.from(document.getElementsByTagName(tag));
-    return document.getElementsByTagName(tag);
-}
-const imglist = query('img');
-
 if (typeof IntersectionObserver == "function"){
     console.log("浏览器支持懒加载");
-    var observerimg = new IntersectionObserver(
-        function (changes) {
-            changes.forEach( function (change) {
-                if (change.intersectionRatio > 0) {
-                    var img = change.target;
-                    if(img.dataset.src != undefined){
-                        img.src = img.dataset.src;
-                    }
-                    observerimg.unobserve(img);
-                }
-            })
-        }
-    )
     var observertag = new IntersectionObserver(
         function (changes) {
             changes.forEach( function (change) {
@@ -66,22 +43,12 @@ if (typeof IntersectionObserver == "function"){
         }
     )
     observertag.observe(tagcloud);
-    for (var i = 0; i < imglist.length; i++) {
-        observerimg.observe(imglist[i]);
-    }
     console.log("懒加载程序正常执行！");
 }
 else {
     console.log("该浏览器不支持图片懒加载，启动强制加载")
-    for (var i = 0; i < imglist.length; i++) {
-        var item = imglist[i];
-        if(item.dataset.src != undefined){
-            item.src = item.dataset.src;
-        }
-    }
     create_tag();
 }
-*/
 
 //百度推送
 window.onload = function(){
