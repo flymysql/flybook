@@ -39,9 +39,6 @@ router.get('/delete/:id', postController.post_delete_get);
 // get文章归档
 router.get('/archives', postController.post_archives_get);
 
-// get文章归档
-router.get('/archives', postController.post_archives_get);
-
 // get标签列表
 router.get('/gettags', postController.post_tags_get);
 
@@ -56,6 +53,9 @@ router.get('/search', postController.post_search);
 
 // get增加like
 router.get('/like-add', postController.get_add_like);
+
+// get获取友链
+router.get('/link', postController.get_link);
 
 // get增加photos
 router.get('/photos', postController.get_photos);

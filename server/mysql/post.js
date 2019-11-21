@@ -288,6 +288,33 @@ exports.get_add_like = (res, req) => {
     })
 }
 
+// 友链页面渲染
+exports.get_link = (res, req) => {
+    var sql = 'SELECT * FROM `links` WHERE 1';
+    var links = []
+    connection.query(sql, function(err, rows){
+        if(err){
+            console.log(err)
+            res.json({
+                code:0
+            })
+            return;
+        }
+        for(var i in rows){
+            links.push({
+                'name':rows[i].name,
+                'src': rows[i].src,
+                'href': rows[i].href,
+                'desc': rows[i].desc
+            });
+        }
+        res.render('link', {
+            'site':option,
+            'links':links
+        })
+    })
+}
+
 // 相册渲染
 exports.render_photos = (res => {
     res.render('photos', {
