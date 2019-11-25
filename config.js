@@ -3,6 +3,16 @@ module.exports ={
         title:"兰州小红鸡",
         index:"https://me.idealli.com"
     },
+    author:{
+      "小鸡": {
+        head_img:"/images/head.png",
+        blog_name: "小鸡"
+      },
+      "Valky":{
+        head_img:"/images/head_r.jpg",
+        blog_name: "Valky"
+      }
+    },
     options:{
         avatar:"/images/avatar.jpg",   
         nickname:"兰州小红鸡",    

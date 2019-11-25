@@ -238,6 +238,14 @@ ul.post-list .post-item a.post-item-img img{
   height:300px;
   margin-bottom: 20px;
 }
+
+.author_head{
+  display: inline-block!important;
+  margin-right: 6px;
+  height: 18px;
+  width: 18px;
+  border-radius: 9px;
+}
  
 @media (max-width: 960px){
   .index-container{

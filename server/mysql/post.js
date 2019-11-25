@@ -75,6 +75,8 @@ exports.getArticleList = (res, page) =>{
                 'like': rows[i].like,
                 'view': rows[i].visitors,
                 'tag': rows[i].tag,
+                'author': rows[i].author,
+                'author_head': config.author[rows[i].author].head_img,
                 'img': rows[i].img,
                 'cop': "原创",
                 'updateTime': time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate()
@@ -122,6 +124,9 @@ exports.getArticleDetail = (res, id) =>{
             'content': rows[0].post_content,
             'desc': rows[0].description, 
             'like': rows[0].like,
+            'author': rows[0].author,
+            'head_img': config.author[rows[0].author].head_img,
+            'blog_name': config.author[rows[0].author].blog_name,
             'view': rows[0].visitors,
             'tag': rows[0].tag,
             'updateTime': time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate(),
@@ -146,7 +151,8 @@ exports.createArticle = (res, req) =>{
         'name': loginUser,
         'type': 'insert',
         'id': id,
-        'sst': sst
+        'sst': sst,
+        'authors': config.author
     });
 };
 
@@ -171,9 +177,9 @@ exports.insertArticle = (req, res) =>{
     if(req.body.ifpage == 'page'){
         pid = title;
     }
-    var sql = `INSERT INTO articles  VALUES('${pid}', '${title}', '${desc}', '${content}', '${req.body.img}', '${req.body.ifpage}', 0, 0, '${req.body.tag}', '${date}', '${date}')`;
+    var sql = `INSERT INTO articles  VALUES('${pid}', '${title}', '${desc}', '${content}', '${req.body.img}', '${req.body.ifpage}', 0, 0, '${req.body.tag}', '${date}', '${date}','${req.body.author}')`;
     if(req.body.type == 'update'){
-        sql = `UPDATE articles SET title = '${title}', description = '${desc}', post_content = '${content}', img = '${req.body.img}',tag = '${req.body.tag}',updateTime = '${date}' where id = '${req.body.id}'`;
+        sql = `UPDATE articles SET title = '${title}', description = '${desc}', post_content = '${content}', img = '${req.body.img}',tag = '${req.body.tag}',updateTime = '${date}',author = '${req.body.author}' where id = '${req.body.id}'`;
     }
     // sql = mysql.escape(sql);
     // console.log(sql)
@@ -211,6 +217,7 @@ exports.updateArticle = (res, req) =>{
             'content': rows[0].post_content,
             'tag': rows[0].tag,
             'img': rows[0].img,
+            'author': rows[0].author,
             'isLogined': isLogined,
             'name': loginUser,
             'type': 'update',

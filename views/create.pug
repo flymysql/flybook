@@ -21,7 +21,9 @@ block content
                 else
                     input(type="text" value="随想" id="tag")
                 span= "作者"
-                input(type="text" value="小鸡" id="author")
+                select(name="author_select" class="author_select" id="author_select")
+                    each author in authors
+                        option(value=author.blog_name)= author.blog_name
                 if update
                     input(type="text" value=img id="img")
                 else
@@ -92,7 +94,7 @@ block content
                         id: document.getElementById('title').dataset.id,
                         tag: $("#tag")[0].value,
                         title: $("#title")[0].value,
-                        author: $("#author")[0].value,
+                        author: $("#author_select")[0].value,
                         img: img,
                         type: document.getElementById('btn1').dataset.type,
                         content: editor.txt.html(),

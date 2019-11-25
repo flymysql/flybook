@@ -88,6 +88,10 @@ exports.queryOneTags = (res, req) =>{
 }
 
 exports.get_insert_tag = (res, name) => {
+    if(name == "" || name.length < 1 || name == undefined) {
+        res.end("error!");
+        return;
+    }
     var insertsql = `insert into tags value(null, '${name}')`;
     connection.query(insertsql, function(err, rows){
         if(err){
