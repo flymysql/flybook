@@ -241,8 +241,9 @@ ul.post-list .post-item a.post-item-img img{
 
 .author_head{
   display: inline-block!important;
-  margin-right: 6px;
+  margin-right: 4px;
   height: 18px;
+  vertical-align: middle;
   width: 18px;
   border-radius: 9px;
 }

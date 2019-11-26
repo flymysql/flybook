@@ -19,8 +19,9 @@ block content
                   a(href="/post/" + post.id)=post.title
                 p!=post.content
                 div(class="post-item-meta")
-                  img(src=post.author_head class="author_head")
-                  span(class="author")= post.author
+                  a(href="/search?s="+post.author)
+                    img(src=post.author_head class="author_head")
+                    span(class="author")= post.author
                   span(class="cop")= "✿" + post.cop
                   span= " 阅读" + post.view
                   span= " " + post.tag
@@ -31,8 +32,9 @@ block content
                   a(href="/post/" + post.id)=post.title
                 p!=post.content
                 div(class="post-item-meta")
-                  img(src=post.author_head class="author_head")
-                  span(class="author")= post.author
+                  a(href="/search?s="+post.author)
+                    img(src=post.author_head class="author_head")
+                    span(class="author")= post.author
                   span(class="cop")= "✿" + post.cop
                   span= " 阅读" + post.view
                   span= " " + post.tag

@@ -10,11 +10,11 @@ block content
     div(class="post-content")
         h2(class="post-title")= title
         div(class="author")
-            a(class="avatar" href="/post/about" target="_blank")
+            a(class="avatar" href="/post/about"+author target="_blank")
                 img(src=head_img id="no-view")
             div(class="info")
                 span(class="name")
-                    a(href="/" target="_blank")= author
+                    a(href="/search?s="+author target="_blank")= author
                 a(class="follow" href="/post/email" target="_blank")
                     span= "关注"
                 div(class="meta")

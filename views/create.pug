@@ -147,7 +147,7 @@ block content
                         if(data.ret_code === 0){
                             var exp = new Date();
                             exp.setTime(exp.getTime() + 8640000000);
-                            document.cookie = "name" + "="+ escape($('#name').val()) + ";expires=" + exp.toGMTString();
+                            document.cookie = "name" + "="+ $('#name').val() + ";expires=" + exp.toGMTString();
                             location.reload();
                         }
                         else{

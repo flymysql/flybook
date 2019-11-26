@@ -245,7 +245,14 @@ exports.deleteArticle = (res, id, islogin) =>{
 
 // 文章搜索
 exports.post_search = (res, s) =>{
-    var searchsql = `SELECT * FROM articles WHERE post_content LIKE '%${s}%' or title like '%${s}%'`;
+    var searchsql = ``;
+    if(s in config.author){
+        // 搜索的是作者名字
+        searchsql = `SELECT * FROM articles WHERE author = '${s}'`;
+    }
+    else{
+        searchsql = `SELECT * FROM articles WHERE post_content LIKE '%${s}%' or title like '%${s}%'`;
+    }
     var result= [];
     connection.query(searchsql,function(err,rows){
         if(err){
@@ -260,6 +267,8 @@ exports.post_search = (res, s) =>{
                 'content':rows[i].description,
                 'like': rows[i].like,
                 'view': rows[i].visitors,
+                'author': rows[i].author,
+                'author_head': config.author[rows[i].author].head_img,
                 'tag': rows[i].tag,
                 'img': rows[i].img,
                 'cop': "原创",
