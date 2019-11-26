@@ -1,6 +1,9 @@
 header(class="header")
     div(class="head-content")
-        a(href="/" class="logo")
+        if !header_logo
+            a(href="/" class="logo")
+        else
+            a(href="/" class="logo" style="background-image:" + "url(" + header_logo + ");")
         a(class="btn" target="_blank" href="/create")="写文章"
         a(class="archives normol-head" href="/archives" target="_blank")= "归档"
         a(class="link normol-head" href="/post/link" target="_blank")= "友链"

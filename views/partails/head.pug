@@ -1,4 +1,7 @@
 meta(name="viewport" content="width=device-width, initial-scale=1.0")
-link(rel="icon" type="image/png" sizes="32x32" href="/images/logo4.png?t="+sst)
+if !logo
+    link(rel="icon" type="image/png" sizes="32x32" href="/images/logo4.png?t="+sst)
+else
+    link(rel="icon" type="image/png" sizes="32x32" href="/images/" + logo + "?t="+sst)
 block head_content
 link(rel='stylesheet', href='/stylesheets/style.css?t='+sst)

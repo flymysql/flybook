@@ -6,11 +6,15 @@ module.exports ={
     author:{
       "小鸡": {
         head_img:"/images/head.png",
-        blog_name: "小鸡"
+        blog_name: "小鸡",
+        header_logo: "/images/headerico.png",
+        logo: "logo4.png"
       },
       "Valky":{
         head_img:"/images/head_r.jpg",
-        blog_name: "Valky"
+        blog_name: "Valky",
+        header_logo: "/images/headerico_r.png",
+        logo: "headerico2_r.png"
       }
     },
     options:{

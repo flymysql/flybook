@@ -127,6 +127,8 @@ exports.getArticleDetail = (res, id) =>{
             'author': rows[0].author,
             'head_img': config.author[rows[0].author].head_img,
             'blog_name': config.author[rows[0].author].blog_name,
+            'header_logo' : config.author[rows[0].author].header_logo,
+            'logo' : config.author[rows[0].author].logo,
             'view': rows[0].visitors,
             'tag': rows[0].tag,
             'updateTime': time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate(),
@@ -152,7 +154,6 @@ exports.createArticle = (res, req) =>{
         'type': 'insert',
         'id': id,
         'sst': sst,
-        'authors': config.author
     });
 };
 

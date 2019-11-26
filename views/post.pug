@@ -51,6 +51,7 @@ block scripts
             app_key: 'zM95HhjgwuUXtm9jsasnKFyr',
             placeholder: '✍写评论'
         });
+
         $("#like1").click(function(){
             $.get("/like-add", function(status){
                 if(status.code==1){

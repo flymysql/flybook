@@ -20,10 +20,6 @@ block content
                     input(type="text" value=tag id="tag")
                 else
                     input(type="text" value="随想" id="tag")
-                span= "作者"
-                select(name="author_select" class="author_select" id="author_select")
-                    each author in authors
-                        option(value=author.blog_name)= author.blog_name
                 if update
                     input(type="text" value=img id="img")
                 else
@@ -31,7 +27,9 @@ block content
                 button(id="btn1" data-type=type)= "发表"
                 <input type="radio" name="type" value="post" checked="" style="width: 1em;">文章
                 <input type="radio" name="type" value="page" style="width: 1em;">页面
-
+                p(class="author_tag")= "作者 "
+                span(id="author_name" class="author_name")
+                span(style="color: #999;")= "(清除cookie后可重新登陆切换账号)"
             div(class="other-option")
                 br
                 form(action="/insert_tag", method="get" target="_blank")
@@ -46,6 +44,21 @@ block content
         script(src="/javascripts/wangEditor.min.js?t="+sst)
         script(src="/javascripts/jQuery.min.js?t="+sst)
         script.
+            // 获取指定名称的cookie
+            function getCookie(name){
+                var strcookie = document.cookie;//获取cookie字符串
+                var arrcookie = strcookie.split("; ");//分割
+                //遍历匹配
+                for ( var i = 0; i < arrcookie.length; i++) {
+                    var arr = arrcookie[i].split("=");
+                    if (arr[0] == name){
+                        return arr[1];
+                    }
+                }
+                return "";
+            }
+            var author = getCookie("name");
+            $("#author_name").text(author);
             var E = window.wangEditor; 
             var editor = new E( document.getElementById('editor') );
             //- editor.customConfig.uploadImgServer = '/upload';
@@ -94,7 +107,7 @@ block content
                         id: document.getElementById('title').dataset.id,
                         tag: $("#tag")[0].value,
                         title: $("#title")[0].value,
-                        author: $("#author_select")[0].value,
+                        author: author,
                         img: img,
                         type: document.getElementById('btn1').dataset.type,
                         content: editor.txt.html(),
@@ -132,6 +145,9 @@ block content
                     },
                     success: function(data){
                         if(data.ret_code === 0){
+                            var exp = new Date();
+                            exp.setTime(exp.getTime() + 8640000000);
+                            document.cookie = "name" + "="+ escape($('#name').val()) + ";expires=" + exp.toGMTString();
                             location.reload();
                         }
                         else{
