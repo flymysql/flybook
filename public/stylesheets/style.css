@@ -254,7 +254,7 @@ header .email{
 }
 .header a.logo{
   margin-top: 3px;
-  background: url(/images/headerico2.png);
+  background-image: url(/images/headerico2.png)!important;
   width: 52px;
   height: 52px;
   background-size: auto 100%;

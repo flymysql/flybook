@@ -23,10 +23,14 @@ var ifLogin = function (name) {
 }
 
 // 文章归档和后台使用同一个模板渲染
-const Articleslist = function(res, ifadmin){
+const Articleslist = function(res,flag, ifadmin){
+    var type = "post";
+    if(flag) {
+        type = "cao"
+    }
     var selectsql=`select id,title,updateTime from articles where type = 'post' order by updateTime desc`;
     if(ifadmin){
-        selectsql = `select id,title,updateTime from articles order by updateTime desc`;
+        selectsql = `select id,title,updateTime from articles  where type = '${type}' order by updateTime desc`;
     }
     var result= [];
     connection.query(selectsql,function(err,rows){
@@ -51,8 +55,8 @@ const Articleslist = function(res, ifadmin){
     });
 }
 
-exports.adminArticle = (res =>Articleslist(res, true));
-exports.archivesArticle = (res => Articleslist(res, false));
+exports.adminArticle = (res, flag) =>Articleslist(res,flag, true);
+exports.archivesArticle = (res => Articleslist(res, 0, false));
 
 /**
  * 获取文章列表
@@ -151,7 +155,7 @@ exports.createArticle = (res, req) =>{
         'site':option,
         'isLogined': isLogined,
         'name': loginUser,
-        'type': 'insert',
+        'status': 'insert',
         'id': id,
         'sst': sst,
     });
@@ -180,7 +184,7 @@ exports.insertArticle = (req, res) =>{
     }
     var sql = `INSERT INTO articles  VALUES('${pid}', '${title}', '${desc}', '${content}', '${req.body.img}', '${req.body.ifpage}', 0, 0, '${req.body.tag}', '${date}', '${date}','${req.body.author}')`;
     if(req.body.type == 'update'){
-        sql = `UPDATE articles SET title = '${title}', description = '${desc}', post_content = '${content}', img = '${req.body.img}',tag = '${req.body.tag}',updateTime = '${date}',author = '${req.body.author}' where id = '${req.body.id}'`;
+        sql = `UPDATE articles SET title = '${title}', description = '${desc}', post_content = '${content}', img = '${req.body.img}',type = '${req.body.ifpage}', tag = '${req.body.tag}',updateTime = '${date}',author = '${req.body.author}' where id = '${req.body.id}'`;
     }
     // sql = mysql.escape(sql);
     // console.log(sql)
@@ -221,7 +225,7 @@ exports.updateArticle = (res, req) =>{
             'author': rows[0].author,
             'isLogined': isLogined,
             'name': loginUser,
-            'type': 'update',
+            'status': 'update',
             'sst': sst
         }); 
     });
@@ -233,7 +237,7 @@ exports.deleteArticle = (res, id, islogin) =>{
         res.end("you are not admin !!!");
         return;
     }
-    var deltesql = `DELETE FROM articles WHERE id = '${id}'`;
+    var deltesql = `UPDATE articles SET type="delete" WHERE id = '${id}'`;
     connection.query(deltesql,function(err,rows){
         if(err){
             console.log(err);

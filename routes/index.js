@@ -30,6 +30,9 @@ router.post('/logout', authorController.authorLogin)
 // get后台文章列表
 router.get('/admin', postController.post_admin);
 
+// get后台文章草稿
+router.get('/draft', postController.post_draft);
+
 // get更新文章
 router.get('/update/:id', postController.post_update_get);
 

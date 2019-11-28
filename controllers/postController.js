@@ -15,7 +15,10 @@ exports.post_create_get = (req, res) => { post.createArticle(res, req) };
 exports.post_insert_post = (req, res) => { post.insertArticle(req, res) };
 
 // 文章列表后台
-exports.post_admin = (req, res) => { post.adminArticle(res) };
+exports.post_admin = (req, res) => { post.adminArticle(res, 0) };
+
+// 文章草稿后台
+exports.post_draft = (req, res) => { post.adminArticle(res, 1) };
 
 // 由 GET 显示修改文章的表单
 exports.post_update_get = (req, res) => { post.updateArticle(res, req) };

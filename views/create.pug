@@ -4,16 +4,22 @@ block head_content
   link(rel='stylesheet', href='/stylesheets/create.css?t='+sst)
 block content
     if isLogined
-        div(class="post-content")
+        div(class="menu-admin")
+            div(class="menu-author")
+                img(src="/images/head.png", alt="author" class="menu-author-head" id="author-img")
+                span(id="author_name" class="author_name")
+                p(class="author_tag")= "退出"
+            div(class="other-option")
+                a(href="/admin" class="menu-block" target="_blank")= "文章列表"
+                a(href="/draft" class="menu-block" target="_blank")= "草稿箱"
+                a(href="https://flymysql.leanapp.cn/" class="menu-block" target="_blank")= "评论管理"
+                a(href="/update/about" id="author-about" class="menu-block")= "个人介绍"
+                button(class="menu-block" onclick="site_set" style="border: unset;text-align: left;")= "设置"
+        div(class="post-content" id="btn1" data-status=status)
             if update
                 input(type="text" value=title id="title" data-id=id)
             else
                 input(type="text" value="新建文章" id="title" data-id=id)
-            div(id="editor")
-                if update
-                    div!=content
-                else
-                    p= "开始你的创作吧！"
             div(class="post-control")
                 span= "关键词"
                 if update
@@ -24,23 +30,14 @@ block content
                     input(type="text" value=img id="img")
                 else
                     input(type="text" value="封面链接" id="img")
-                button(id="btn1" data-type=type)= "发表"
-                <input type="radio" name="type" value="post" checked="" style="width: 1em;">文章
-                <input type="radio" name="type" value="page" style="width: 1em;">页面
-                p(class="author_tag")= "作者 "
-                span(id="author_name" class="author_name")
-                span(style="color: #999;")= "(清除cookie后可重新登陆切换账号)"
-            div(class="other-option")
-                br
-                form(action="/insert_tag", method="get" target="_blank")
-                    span= "新建标签"
-                    input(type="text", name="tagname")
-                    input(type="submit", value="提交")
-                a(href="/admin" class="ad_button")= "文章列表"
+                button(class="btn1" onclick="to_push(\"page\")")= "存为页面"
+                button(class="btn1" onclick="to_push(\"cao\")")= "存为草稿"
+                button(class="btn1" onclick="to_push(\"post\")")= "发表文章"
+            div(id="editor")
                 if update
-                    a(href="/delete/" + id)= "删除文章"
-                br
-                br
+                    div!=content
+                else
+                    p= "开始你的创作吧！"
         script(src="/javascripts/wangEditor.min.js?t="+sst)
         script(src="/javascripts/jQuery.min.js?t="+sst)
         script.
@@ -59,6 +56,8 @@ block content
             }
             var author = getCookie("name");
             $("#author_name").text(author);
+            $("#author-img")[0].src="/images/"+author+".png";
+            $("#author-about")[0].href="/update/about"+author;
             var E = window.wangEditor; 
             var editor = new E( document.getElementById('editor') );
             //- editor.customConfig.uploadImgServer = '/upload';
@@ -88,42 +87,47 @@ block content
                 // 上传代码返回结果之后，将图片插入到编辑器中
                 
             }
-            editor.create();
-            $(document).ready(function(){
-                $("#btn1").click(function(){
-                    var img = $("#img")[0].value;
-                    if(img.indexOf("http") == -1){
-                        img = null;
-                    }
-                    var desclist = $(".w-e-text").find("p");
-                    var desc = "";
-                    for(var i in desclist){
-                        if(desc.length > 100) break;
-                        if(desclist[i].textContent != undefined)
-                        desc = desc + desclist[i].textContent;
-                    }
-                    console.log(desc);
-                    $.post("/insert_post",{
-                        id: document.getElementById('title').dataset.id,
-                        tag: $("#tag")[0].value,
-                        title: $("#title")[0].value,
-                        author: author,
-                        img: img,
-                        type: document.getElementById('btn1').dataset.type,
-                        content: editor.txt.html(),
-                        desc: desc,
-                        ifpage: $("[name='type']").filter(":checked")[0].value
-                    },
-                    function(data){
-                        if(data == "succeed"){
-                            alert("文章发表成功");
-                        window.location="/";
+            function to_push(type){
+                var img = $("#img")[0].value;
+                if(img.indexOf("http") == -1){
+                    img = null;
+                }
+                var desclist = $(".w-e-text").find("p");
+                var desc = "";
+                for(var i in desclist){
+                    if(desc.length > 100) break;
+                    if(desclist[i].textContent != undefined)
+                    desc = desc + desclist[i].textContent;
+                }
+                console.log(desc);
+                $.post("/insert_post",{
+                    id: document.getElementById('title').dataset.id,
+                    tag: $("#tag")[0].value,
+                    title: $("#title")[0].value,
+                    author: author,
+                    img: img,
+                    type: document.getElementById('btn1').dataset.status,
+                    content: editor.txt.html(),
+                    desc: desc,
+                    ifpage: type
+                },
+                function(data){
+                    if(data == "succeed"){
+                        if(type == "cao"){
+                            alert("保存成功！");
                         }
-                    });
+                        else{
+                            alert("文章发表成功");
+                            window.location="/";
+                        }
+                    }
                 });
-            });
-   
-            
+            }
+            editor.create();
+            function site_set(){
+                alert("set")
+            }
+
     else
         div.
             <form method="POST" action="/login" class="login">
