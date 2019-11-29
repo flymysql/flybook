@@ -1,8 +1,8 @@
 extends layout
 block head_content
   title= site.title
-  meta(name="description" content="兰州小红鸡的博客，代码记录成长")
-  meta(name="keywords" content="兰州小红鸡,博客,技术博客,写作,阅读")
+  meta(name="description" content='"' + site.description + '"')
+  meta(name="keywords" content='"'+site.keywords+'"')
   link(rel='stylesheet', href='/stylesheets/index.css?t='+sst)
 block content
   div(class="index-container")

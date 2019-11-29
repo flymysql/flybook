@@ -12,6 +12,8 @@ const option = {
     pagenum: 20,
     avator: "",
     carousel: config.carousel,
+    keywords: config.seo.keywords,
+    description: config.seo.description
 }
 
 // 判断是否登陆

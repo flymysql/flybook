@@ -63,6 +63,12 @@ router.get('/link', postController.get_link);
 // get增加photos
 router.get('/photos', postController.get_photos);
 
+// 获取站点配置
+router.get('/get_config', authorController.get_config);
+
+// 更新站点配置
+router.post('/push_config', authorController.push_config);
+
 // post上传图片
 router.post('/upload', upload.array('imageup',10), function (req, res, next) {
     // req.file 是 `avatar` 文件的信息

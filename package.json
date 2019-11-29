@@ -5,11 +5,12 @@
   "scripts": {
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www",
-    "pmstart": "./node_modules/.bin/pm2 start ./bin/www --name=\"blog\"",
+    "pmstart": "./node_modules/.bin/pm2 start ./bin/www --name=\"blog\" --watch --ignore-watch=\"^(?!config).*$\"",
     "pmstop": "./node_modules/.bin/pm2 stop all",
-    "pmrestart": "./node_modules/.bin/pm2 restart all",
+    "pmrestart": "./node_modules/.bin/pm2 restart all --watch --ignore-watch=^(?!config).*$",
     "update": "sh update.sh"
   },
+  "watch":["./config.js"],
   "dependencies": {
     "async": "^2.6.2",
     "compression": "^1.7.4",

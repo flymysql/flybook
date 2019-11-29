@@ -1,8 +1,25 @@
 module.exports ={
+    // 站点信息
     seo:{
         title:"兰州小红鸡",
-        index:"https://me.idealli.com"
+        index:"https://me.idealli.com",
+        keywords:"兰州小红鸡,博客,技术博客,写作,阅读",
+        description:"兰州小红鸡的博客，代码记录成长",
     },
+    // 数据库配置
+    db:{
+        host     : '',
+        user     : '',
+        password : '',
+        database : '',
+        multipleStatements: true
+    },
+    // 用户配置
+    users: [
+        {name: 'test', password: '123456'},
+        {name: 'test2', password: '123456'}
+    ],
+    // 作者信息
     author:{
       "小鸡": {
         head_img:"/images/head.png",
@@ -17,6 +34,7 @@ module.exports ={
         logo: "headerico2_r.png"
       }
     },
+    // 站点信息
     options:{
         avatar:"/images/avatar.jpg",   
         nickname:"兰州小红鸡",    
@@ -24,6 +42,7 @@ module.exports ={
         ICP:"闽ICP备18025365号",
         copyright:"© 2018"
     },
+    // 首页轮播图设置
     carousel:[
         {
           'link':'https://me.idealli.com/post/d46a767e.html',
@@ -50,9 +69,10 @@ module.exports ={
           'img':'/images/111302.png'
         },
      ],
+     // 首页友链
      friends:[
       {
-        img: "http://blog.idealli.com/wp-content/uploads/2019/04/cropped-1000.jpg",
+        img: "https://me.idealli.com/images/head_r.jpg",
         link: "http://blog.idealli.com/",
         name: "pink",
         desc: "博主的可爱女友"
