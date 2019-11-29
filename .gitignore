@@ -1,2 +1,3 @@
 node_modules
-server/mysql/db.js
+sessions
+config.js
