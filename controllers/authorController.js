@@ -64,7 +64,6 @@ exports.authorLogout = (req, res, next) => {
     console.log(users[0].name)
     if (loginUser == users[0].name) {
         var new_config = req.body.new_config.toString();
-        console.log(new_config)
         fs.writeFile('./config.js', new_config, function (err) {
             if(err) {
              console.error(err);

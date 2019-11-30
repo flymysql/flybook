@@ -8,19 +8,25 @@ module.exports ={
     },
     // 数据库配置
     db:{
-        host     : '',
-        user     : '',
-        password : '',
-        database : '',
+        host:  '120.77.183.14',
+        user     : 'www_idealli_com',
+        password : 'test',
+        database : 'www_idealli_com',
         multipleStatements: true
     },
     // 用户配置
     users: [
-        {name: 'test', password: '123456'},
-        {name: 'test2', password: '123456'}
+        {name: '小鸡', password: '123456'},
+        {name: 'Valky', password: '123456'}
     ],
     // 作者信息
     author:{
+      "佚名": {
+        head_img:"/images/head.png",
+        blog_name: "佚名",
+        header_logo: "/images/headerico.png",
+        logo: "logo4.png"
+      },
       "小鸡": {
         head_img:"/images/head.png",
         blog_name: "小鸡",

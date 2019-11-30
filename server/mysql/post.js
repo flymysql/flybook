@@ -74,6 +74,10 @@ exports.getArticleList = (res, page) =>{
         }
         for(var i in rows){
             var time = rows[i].updateTime;
+            var author_info = config.author[rows[i].author];
+            if (author_info == undefined) {
+                author_info = config.author["佚名"];
+            }
             result.push({
                 'id':rows[i].id,
                 'title':rows[i].title, 
@@ -82,7 +86,7 @@ exports.getArticleList = (res, page) =>{
                 'view': rows[i].visitors,
                 'tag': rows[i].tag,
                 'author': rows[i].author,
-                'author_head': config.author[rows[i].author].head_img,
+                'author_head': author_info.head_img,
                 'img': rows[i].img,
                 'cop': "原创",
                 'updateTime': time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate()
@@ -124,6 +128,10 @@ exports.getArticleDetail = (res, id) =>{
             return;
         }
         var time = rows[0].updateTime;
+        var author_info = config.author[rows[0].author];
+        if (author_info == undefined) {
+            author_info = config.author["佚名"];
+        }
         res.render('post', {
             'site':option,
             'title': rows[0].title,
@@ -131,10 +139,10 @@ exports.getArticleDetail = (res, id) =>{
             'desc': rows[0].description, 
             'like': rows[0].like,
             'author': rows[0].author,
-            'head_img': config.author[rows[0].author].head_img,
-            'blog_name': config.author[rows[0].author].blog_name,
-            'header_logo' : config.author[rows[0].author].header_logo,
-            'logo' : config.author[rows[0].author].logo,
+            'head_img': author_info.head_img,
+            'blog_name': author_info.blog_name,
+            'header_logo' : author_info.header_logo,
+            'logo' : author_info.logo,
             'view': rows[0].visitors,
             'tag': rows[0].tag,
             'updateTime': time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate(),
@@ -267,6 +275,10 @@ exports.post_search = (res, s) =>{
         }
         for(var i in rows){
             var time = rows[i].updateTime;
+            var author_info = config.author[rows[i].author];
+            if (author_info == undefined) {
+                author_info = config.author["佚名"];
+            }
             result.push({
                 'id':rows[i].id,
                 'title':rows[i].title, 
@@ -274,7 +286,7 @@ exports.post_search = (res, s) =>{
                 'like': rows[i].like,
                 'view': rows[i].visitors,
                 'author': rows[i].author,
-                'author_head': config.author[rows[i].author].head_img,
+                'author_head': author_info.head_img,
                 'tag': rows[i].tag,
                 'img': rows[i].img,
                 'cop': "原创",
