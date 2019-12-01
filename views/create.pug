@@ -38,7 +38,7 @@ block content
                 button(class="btn1" onclick="to_push(\"post\")")= "发表文章"
             div(id="editor")
                 if update
-                    div(id="post_content")!=content
+                    div(id="update_content")!=content
                 else
                     p= "开始你的创作吧！"
         script(src="/javascripts/wangEditor.min.js?t="+sst)
@@ -104,6 +104,10 @@ block content
                     desc = desc + desclist[i].textContent;
                 }
                 console.log(desc);
+                var post_content = editor.txt.html();
+                if ($("#update_content").length != 0) {
+                    post_content = $("#update_content")[0].innerHTML;
+                }
                 $.post("/insert_post",{
                     id: document.getElementById('title').dataset.id,
                     tag: $("#tag")[0].value,
@@ -111,7 +115,7 @@ block content
                     author: author,
                     img: img,
                     type: document.getElementById('btn1').dataset.status,
-                    content: $("#post_content")[0].innerHTML,
+                    content: post_content,
                     desc: desc,
                     ifpage: type
                 },
