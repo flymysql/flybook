@@ -28,16 +28,17 @@ block content
                     input(type="text" value=tag id="tag")
                 else
                     input(type="text" value="随想" id="tag")
+                span= "封面"
                 if update
                     input(type="text" value=img id="img")
                 else
-                    input(type="text" value="封面链接" id="img")
+                    input(type="text" value="图片链接" id="img")
                 button(class="btn1" onclick="to_push(\"page\")")= "存为页面"
                 button(class="btn1" onclick="to_push(\"cao\")")= "存为草稿"
                 button(class="btn1" onclick="to_push(\"post\")")= "发表文章"
             div(id="editor")
                 if update
-                    div!=content
+                    div(id="post_content")!=content
                 else
                     p= "开始你的创作吧！"
         script(src="/javascripts/wangEditor.min.js?t="+sst)
@@ -110,7 +111,7 @@ block content
                     author: author,
                     img: img,
                     type: document.getElementById('btn1').dataset.status,
-                    content: editor.txt.html(),
+                    content: $("#post_content")[0].innerHTML,
                     desc: desc,
                     ifpage: type
                 },
