@@ -1,0 +1,172 @@
+
+    <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+        <channel>
+            <title>兰州小红鸡</title>
+            <link>https://me.idealli.com</link>
+            <atom:link href="/rss.xml" rel="self" type="application/rss+xml"/>
+            <description>桃李春风一杯酒，江湖夜雨十年灯</description>
+            <pubDate>2019-12-05</pubDate>
+            <generator>https://me.idealli.com/</generator>
+
+    
+            <item>
+                <title>新建文章77777</title>
+                <link>https://me.idealli.com/post/0256e29ae</link>
+                <guid>https://me.idealli.com/post/0256e29ae</guid>
+                <pubDate>2019-12-5</pubDate>
+                <description>
+                开始你的创
+                </description>
+                <content:encoded>
+                <![CDATA[<p>开始你的创</p><p><br></p><pre><code class="language-css">test ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg</code></pre><p><br></p>]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/0256e29ae#disqus_thread
+                </comments>
+            </item>
+            
+            <item>
+                <title>12yue</title>
+                <link>https://me.idealli.com/post/a30f640f</link>
+                <guid>https://me.idealli.com/post/a30f640f</guid>
+                <pubDate>2019-12-5</pubDate>
+                <description>
+                今天去考科二，一遍过了，下周练一练科三，争取在12月把驾照拿上。明天美团的面试，虽然已经签了华为的三方，给的薪资也很满意，但是综合考虑，还是想多一点其他的选择。然而前提是面试也得过哈，已经好久没做前端
+                </description>
+                <content:encoded>
+                <![CDATA[<p>今天去考科二，一遍过了，下周练一练科三，争取在12月把驾照拿上。</p><p>明天美团的面试，虽然已经签了华为的三方，给的薪资也很满意，但是综合考虑，还是想多一点其他的选择。然而前提是面试也得过哈，已经好久没做前端了，之前在华为实习干得都是嵌入式的软件开发，用的C语言。感觉一天复习前端也不知道要看什么，凉凉</p><p>下周考六级，哎，英语一直就那样了，原本是想哪个六级证书，明年去公司的时候申请外派，去国外待一年，现在想想不用也没关系，就没那么迫切想要六级成绩，虽然我也考不过。]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/a30f640f#disqus_thread
+                </comments>
+            </item>
+            
+            <item>
+                <title>新建文章test1</title>
+                <link>https://me.idealli.com/post/3bb08845c</link>
+                <guid>https://me.idealli.com/post/3bb08845c</guid>
+                <pubDate>2019-12-1</pubDate>
+                <description>
+                开始你的创作吧！test1
+                </description>
+                <content:encoded>
+                <![CDATA[<div><p>开始你的创作吧！</p></div>]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/3bb08845c#disqus_thread
+                </comments>
+            </item>
+            
+            <item>
+                <title>新建文章test3</title>
+                <link>https://me.idealli.com/post/acd566dd9</link>
+                <guid>https://me.idealli.com/post/acd566dd9</guid>
+                <pubDate>2019-12-1</pubDate>
+                <description>
+                test3
+                </description>
+                <content:encoded>
+                <![CDATA[<p>test3</p>]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/acd566dd9#disqus_thread
+                </comments>
+            </item>
+            
+            <item>
+                <title>新建文章test2</title>
+                <link>https://me.idealli.com/post/8495a9efc</link>
+                <guid>https://me.idealli.com/post/8495a9efc</guid>
+                <pubDate>2019-12-1</pubDate>
+                <description>
+                开始你的创作吧！test2
+                </description>
+                <content:encoded>
+                <![CDATA[<p>开始你的创作吧！</p><p>test2</p>]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/8495a9efc#disqus_thread
+                </comments>
+            </item>
+            
+            <item>
+                <title>草稿2</title>
+                <link>https://me.idealli.com/post/15afe94a1</link>
+                <guid>https://me.idealli.com/post/15afe94a1</guid>
+                <pubDate>2019-11-28</pubDate>
+                <description>
+                开始你的创作吧！
+                </description>
+                <content:encoded>
+                <![CDATA[<div><p>开始你的创作吧！</p><p><br></p></div><p><br></p>]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/15afe94a1#disqus_thread
+                </comments>
+            </item>
+            
+            <item>
+                <title>新建文章</title>
+                <link>https://me.idealli.com/post/f1045a92</link>
+                <guid>https://me.idealli.com/post/f1045a92</guid>
+                <pubDate>2019-11-28</pubDate>
+                <description>
+                开始你的创作吧！
+                </description>
+                <content:encoded>
+                <![CDATA[<p>开始你的创作吧！</p><p><br></p>]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/f1045a92#disqus_thread
+                </comments>
+            </item>
+            
+            <item>
+                <title>小鸡测试</title>
+                <link>https://me.idealli.com/post/305381152</link>
+                <guid>https://me.idealli.com/post/305381152</guid>
+                <pubDate>2019-11-25</pubDate>
+                <description>
+                开始你的创作吧！
+                </description>
+                <content:encoded>
+                <![CDATA[<p>开始你的创作吧！</p><p><br></p>]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/305381152#disqus_thread
+                </comments>
+            </item>
+            
+            <item>
+                <title>女友测试</title>
+                <link>https://me.idealli.com/post/3a248d117</link>
+                <guid>https://me.idealli.com/post/3a248d117</guid>
+                <pubDate>2019-11-25</pubDate>
+                <description>
+                开始你的创作吧！
+                </description>
+                <content:encoded>
+                <![CDATA[<p>开始你的创作吧！</p><p><br></p>]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/3a248d117#disqus_thread
+                </comments>
+            </item>
+            
+            <item>
+                <title>Hello World！</title>
+                <link>https://me.idealli.com/post/872fdc4f6</link>
+                <guid>https://me.idealli.com/post/872fdc4f6</guid>
+                <pubDate>2019-5-18</pubDate>
+                <description>
+                <p>欢迎使用flybook搭建你的站点</p><p>开始你的创作吧！</p><p><br></p>
+                </description>
+                <content:encoded>
+                <![CDATA[<p>欢迎使用flybook搭建你的站点</p><p>开始你的创作吧！</p><p><br></p>]]>
+                </content:encoded>
+                <comments>
+                https://me.idealli.com/post/872fdc4f6#disqus_thread
+                </comments>
+            </item>
+            </channel>
+        </rss>

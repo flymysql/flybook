@@ -6,7 +6,7 @@ const config = require('../../config');
 var index = config.seo.index;
 
 var rsssql=`select post_content,id,title,updateTime,description from articles where type = 'post' order by updateTime desc limit 30`;
-var sitemapsql=`select id,updateTime from articles order by updateTime desc`;
+var sitemapsql=`select id,updateTime from articles where type = 'post' or type = 'page' order by updateTime desc`;
 
 exports.createrss = function(){
     var today = until.nowDate();
@@ -65,6 +65,9 @@ exports.createrss = function(){
         }
         for(var i in rows){
             var time = rows[i].updateTime;
+            if (time == null){
+                time = "2019-09-05"
+            }
             var pubdata = time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate();
             sitemap_content = sitemap_content + `
             <url>

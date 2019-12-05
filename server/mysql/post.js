@@ -187,6 +187,7 @@ exports.insertArticle = (req, res) =>{
     if(desc.length > 100){
         desc = desc.substring(0,100);
     }
+    console.log(content)
     // var title = req.body.title.replace("\"","\\\"")
     var pid = req.body.id;
     if(req.body.ifpage == 'page'){
@@ -200,7 +201,18 @@ exports.insertArticle = (req, res) =>{
     // console.log(sql)
     connection.query(sql,function(err,rows){
         if(err){
-            console.log(err)
+            // id存在
+            if(err.sqlState == 23000){
+                sql = `UPDATE articles SET title = '${title}', description = '${desc}', post_content = '${content}', img = '${req.body.img}',type = '${req.body.ifpage}', tag = '${req.body.tag}',updateTime = '${date}',author = '${req.body.author}' where id = '${req.body.id}'`
+                connection.query(sql,function(err2,rows) {
+                    if(err2){
+                        console.log(err2)
+                    }
+                    else{
+                        res.end('succeed'); 
+                    }
+                });
+            }
         }
         else{
             createrss();
