@@ -42,8 +42,8 @@ module.exports ={
     },
     // valine评论插件
     valine:{
-      app_id: '你的valine id',
-      app_key: '你的valine key'
+      app_id: 'CODUI37tPwbXtbN2NzB64mhy-gzGzoHsz',
+      app_key: 'zM95HhjgwuUXtm9jsasnKFyr'
     },
     // 首页轮播图设置
     carousel:[

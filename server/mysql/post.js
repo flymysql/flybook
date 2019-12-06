@@ -281,7 +281,7 @@ exports.post_search = (res, s) =>{
     var rows = [];
     if(s in config.author){
         // 搜索的是作者名字
-        rows = db_post.filter({author: s})
+        rows = db_post.filter({author: s, type: "post"})
         .sortBy(function(o){
             var t = o.updateTime.split('-');
             return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));
@@ -290,7 +290,7 @@ exports.post_search = (res, s) =>{
     else{
         // 搜索关键词
         rows = db_post.filter(function(o) {
-            if (o.content.indexOf(s) == -1 && o.title.indexOf(s) == -1)
+            if (o.content.indexOf(s) == -1 && o.title.indexOf(s) == -1 && type == "post")
                 return false
             return true;
         }).sortBy(function(o){
@@ -323,6 +323,7 @@ exports.post_search = (res, s) =>{
     res.render('index', {
         'site':option,
         'list':result,
+        'index_aside': config.index_aside,
         'tag': true,
         'carousel': option.carousel,
         'friends': config.friends,

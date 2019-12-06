@@ -11,6 +11,9 @@ const option = {
     pagenum: 10,
     avator: "",
     carousel: config.carousel,
+    keywords: config.seo.keywords,
+    description: config.seo.description,
+    footer: config.footer_menu
 }
 
 exports.queryAllTags = (res)=>{
@@ -52,6 +55,7 @@ exports.queryOneTags = (res, req) =>{
     
     res.render('index', { 
         'site':option,
+        'index_aside': config.index_aside,
         'list':result,
         'tag': true,
         'carousel': option.carousel,
