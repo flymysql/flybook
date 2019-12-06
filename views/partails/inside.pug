@@ -1,13 +1,8 @@
 div(class="index-aside")
     .rights(style='width:100%; height: 220px; margin-right: 0px;float: right;')
-        a(href='/tag/%E9%9A%8F%E6%83%B3/', target='_blank', style='text-align: right; width: 80%;')
-            img(src='/images/110604.jpg', width='100%' id="no-view")
-        a(href='/tag/资源/', target='_blank', style='  width: 80%; text-align: right;')
-            img(src='/images/110605.jpg', width='100%' id="no-view")
-        a(href='/post/about', target='_blank', style=' width: 80%; text-align: right;')
-            img(src='/images/110606.jpg', width='100%' id="no-view")
-        a(href='/archives', target='_blank', style='width: 80%;text-align: right;')
-            img(src='/images/110607.png', width='100%' id="no-view")
+        each asd in index_aside
+            a(href=asd.link target='_blank' style='text-align: right; width: 80%;')
+                img(src=asd.img width='100%' id="no-view")
     div(class="tag-cloud-tags" id="tagcloud")
     br
     span= "推荐作者"
@@ -28,17 +23,12 @@ div(class="index-aside")
 
     div(class="site-info")
         ul
-            a(target="_blank" href="/post/about")= " 关于小鸡 · "
-            a(target="_blank" href="/post/about")= " 联系小鸡 · "
-            a(target="_blank" href="/post/link")= " 添加友链 · "
-            a(target="_blank" href="/rss.xml?t="+sst)= " RSS订阅 · "
-            a(target="_blank" href="/post/email")= " 邮件订阅 · "
-            a(target="_blank" href="https://www.github.com/flymysql")= " Github  · "
-            a(target="_blank" href="https://weibo.com/237199972")= " 微博 "
+            each foo in site.footer
+                a(target="_blank" href=foo.link)= foo.desc
         ul
             span= "©2018-2019 " + site.title + " | " + site.icp 
         ul
             span= "  Theme by "
-            a(href="https://me.idealli.com/post/d3f1788e3")= "兰州小红鸡"
+            a(href="https://me.idealli.com/post/d3f1788e3")= "Flybook"
 
 <br style="clear:both;">

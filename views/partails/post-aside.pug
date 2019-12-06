@@ -7,10 +7,5 @@ div(class="post-aside")
         div="扫描左边二维码在手机上阅读，喜欢本文的朋友可以转发并分享！谢谢支持"
     div(class="site-info")
         ul
-            a(target="_blank" href="/post/about")= " 关于小鸡 · "
-            a(target="_blank" href="/post/about")= " 联系小鸡 · "
-            a(target="_blank" href="/post/link")= " 添加友链 · "
-            a(target="_blank" href="/rss.xml?t="+sst)= " RSS订阅 · "
-            a(target="_blank" href="/post/email")= " 邮件订阅 · "
-            a(target="_blank" href="https://www.github.com/flymysql")= " Github  · "
-            a(target="_blank" href="https://weibo.com/237199972")= " 微博 "
+            each foo in site.footer
+                a(target="_blank" href=foo.link)= foo.desc

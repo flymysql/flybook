@@ -42,8 +42,8 @@ module.exports ={
     },
     // valine评论插件
     valine:{
-      app_id: '',
-      app_key: ''
+      app_id: '你的valine id',
+      app_key: '你的valine key'
     },
     // 首页轮播图设置
     carousel:[
@@ -72,6 +72,25 @@ module.exports ={
           'img':'/images/111302.png'
         },
      ],
+     // 首页侧边栏
+     index_aside: [
+       {
+         img: "/images/110604.jpg",
+         link: "/tag/%E9%9A%8F%E6%83%B3/"
+       },
+       {
+        img: "/images/110605.jpg",
+        link: "/tag/资源"
+      },
+      {
+        img: "/images/110606.jpg",
+        link: "/post/about小鸡"
+      },
+      {
+        img: "/images/110607.png",
+        link: "/archives"
+      }
+     ],
      // 首页友链
      friends:[
       {
@@ -99,6 +118,34 @@ module.exports ={
         desc: "友情位闲置中，欢迎入驻"
       }
     ],
+    // 标签云
     tags: ["随想","博客","机器学习","教程","邻家酒肆","前端","深度学习","算法","小程序",
-          "资源","cpp","html","javascript","python","sql","node","wordpress"]
+          "资源","cpp","html","javascript","python","sql","node","wordpress"],
+    // 页脚菜单栏
+    footer_menu:[
+      {
+        desc: "关于小鸡",
+        link: "/post/about"
+      },
+      {
+        desc: "联系小鸡",
+        link: "/post/about"
+      },
+      {
+        desc: "RSS订阅",
+        link: "/rss.xml"
+      },
+      {
+        desc: "邮件订阅",
+        link: "/post/email"
+      },
+      {
+        desc: "Github",
+        link: "https://www.github.com/flymysql"
+      },
+      {
+        desc: "微博",
+        link: "https://weibo.com/237199972"
+      },
+    ]
 }

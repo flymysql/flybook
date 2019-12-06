@@ -1,14 +1,9 @@
 footer
     div(class="col")
-        a(target="_blank" href="/post/about")= " 关于小鸡 · "
-        a(target="_blank" href="/post/about")= " 联系小鸡 · "
-        a(target="_blank" href="/post/link")= " 添加友链 · "
-        a(target="_blank" href="/rss.xml?t="+sst)= " RSS订阅 · "
-        a(target="_blank" href="/post/email")= " 邮件订阅 · "
-        a(target="_blank" href="https://www.github.com/flymysql")= " Github  · "
-        a(target="_blank" href="https://weibo.com/237199972")= " 微博  · "
-        span= "  Theme by "
-        a(href="https://me.idealli.com/post/d3f1788e3")= "兰州小红鸡"
+        each foo in site.footer
+            a(target="_blank" href=foo.link)= foo.desc
+        span= "power by "
+        a(href="https://me.idealli.com/post/d3f1788e3")= "Flybook"
         div(class="icp")
             span
                 a(target="_blank" href="https://flymysql.leanapp.cn/")= "©2018-2019 " + site.title + " | " + site.icp 

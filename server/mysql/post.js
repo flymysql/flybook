@@ -16,7 +16,8 @@ const option = {
     avator: "",
     carousel: config.carousel,
     keywords: config.seo.keywords,
-    description: config.seo.description
+    description: config.seo.description,
+    footer: config.footer_menu
 }
 
 // 判断是否登陆
@@ -66,28 +67,6 @@ const Articleslist = function(res,flag, ifadmin){
         'list': result,
         'sst': sst
     })
-    /*
-    connection.query(selectsql,function(err,rows){
-        if(err){
-            console.log(err);
-            return;
-        }
-        for(var i in rows){
-            var time = rows[i].updateTime;
-            result.push({
-                'id':rows[i].id,
-                'title':rows[i].title, 
-                'updateTime': time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate()
-            });
-        }
-        res.render('archives', {
-            'ifadmin': ifadmin,
-            'site': option,
-            'list': result,
-            'sst': sst
-        })
-    });
-    */
 }
 
 exports.adminArticle = (res, flag) =>Articleslist(res,flag, true);
@@ -131,6 +110,7 @@ exports.getArticleList = (res, page) =>{
             res.render('index', { 
                 'site':option,
                 'list':result,
+                'index_aside': config.index_aside,
                 'next': parseInt(page)+1 || 1,
                 'pre': parseInt(page)-1>=0? parseInt(page)-1 : 0,
                 'carousel': option.carousel,

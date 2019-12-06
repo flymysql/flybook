@@ -173,10 +173,11 @@ footer col{
   width: 70.83333%;
   display: inline-block;
 }
-
+.site-info a,
 footer a{
   color: #666666!important;
   display: inline-block;
+  margin-right: 12px;
 }
 
 footer .icp{

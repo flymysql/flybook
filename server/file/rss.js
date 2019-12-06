@@ -28,7 +28,7 @@ exports.createrss = function(){
         return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));
     })
     .value()
-    for(var i = 0; i <= 30 && i <= rows.length; i++){
+    for(var i = 0; i <= 30 && i < rows.length; i++){
         rss_content = rss_content + `
             <item>
                 <title>${rows[i].title}</title>
