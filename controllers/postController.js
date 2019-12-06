@@ -38,8 +38,6 @@ exports.get_one_tag = (req, res) => { tags.queryOneTags(res, req) ;}
 // post获取搜索内容
 exports.post_search = (req, res) => { post.post_search(res, req.query.s)}
 
-// get新建标签
-exports.get_insert_tag = (req, res) => { tags.get_insert_tag(res, req.query.tagname) }
 
 // get增加like
 exports.get_add_like = (req, res) => { post.get_add_like(res, req) }

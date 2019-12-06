@@ -6,14 +6,6 @@ module.exports ={
         keywords:"兰州小红鸡,博客,技术博客,写作,阅读",
         description:"兰州小红鸡的博客，代码记录成长",
     },
-    // 数据库配置
-    db:{
-        host:  '120.77.183.14',
-        user     : 'www_idealli_com',
-        password : 'test',
-        database : 'www_idealli_com',
-        multipleStatements: true
-    },
     // 用户配置
     users: [
         {name: '小鸡', password: '123456'},
@@ -47,6 +39,11 @@ module.exports ={
         description:"桃李春风一杯酒，江湖夜雨十年灯",
         ICP:"闽ICP备18025365号",
         copyright:"© 2018"
+    },
+    // valine评论插件
+    valine:{
+      app_id: 'CODUI37tPwbXtbN2NzB64mhy-gzGzoHsz',
+      app_key: 'zM95HhjgwuUXtm9jsasnKFyr'
     },
     // 首页轮播图设置
     carousel:[
@@ -101,5 +98,7 @@ module.exports ={
         name: "邮件订阅",
         desc: "友情位闲置中，欢迎入驻"
       }
-    ]
+    ],
+    tags: ["随想","博客","机器学习","教程","邻家酒肆","前端","深度学习","算法","小程序",
+          "资源","cpp","html","javascript","python","sql","node","wordpress"]
 }

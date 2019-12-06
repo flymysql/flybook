@@ -45,9 +45,6 @@ router.get('/archives', postController.post_archives_get);
 // get标签列表
 router.get('/gettags', postController.post_tags_get);
 
-// get新建标签
-router.get('/insert_tag', postController.get_insert_tag);
-
 // get单个标签
 router.get('/tag/:id', postController.get_one_tag);
 

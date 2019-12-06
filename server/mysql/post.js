@@ -1,8 +1,11 @@
-const connection = require('../config/db').connection;
 const config = require('../../config');
 const until = require('../../until/until');
 const createrss = require('../file/rss').createrss;
 var users = require('../config/user').items;
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+const adapter_post = new FileSync('server/db/post.json') 
+const db_post = low(adapter_post)
 //serverStartTimestamp
 const sst = new Date().getTime();
 const option = {
@@ -30,11 +33,40 @@ const Articleslist = function(res,flag, ifadmin){
     if(flag) {
         type = "cao"
     }
-    var selectsql=`select id,title,updateTime from articles where type = 'post' order by updateTime desc`;
+    var rows = [];
+    // var selectsql=`select id,title,updateTime from articles where type = 'post' order by updateTime desc`;
     if(ifadmin){
-        selectsql = `select id,title,updateTime from articles  where type = '${type}' order by updateTime desc`;
+        rows = db_post.filter({type: type})
+        .sortBy(function(o){
+            var t = o.updateTime.split('-');
+            return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));
+        })
+        .value()
+        //selectsql = `select id,title,updateTime from articles  where type = '${type}' order by updateTime desc`;
+    } else {
+        rows = db_post.filter({type: "post"})
+        .sortBy(function(o){
+            var t = o.updateTime.split('-');
+            return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));
+        })
+        .value()
     }
     var result= [];
+    for(var i in rows){
+        var time = rows[i].updateTime;
+        result.push({
+            'id':rows[i].id,
+            'title':rows[i].title, 
+            'updateTime': time
+        });
+    }
+    res.render('archives', {
+        'ifadmin': ifadmin,
+        'site': option,
+        'list': result,
+        'sst': sst
+    })
+    /*
     connection.query(selectsql,function(err,rows){
         if(err){
             console.log(err);
@@ -55,6 +87,7 @@ const Articleslist = function(res,flag, ifadmin){
             'sst': sst
         })
     });
+    */
 }
 
 exports.adminArticle = (res, flag) =>Articleslist(res,flag, true);
@@ -65,13 +98,15 @@ exports.archivesArticle = (res => Articleslist(res, 0, false));
  */
 exports.getArticleList = (res, page) =>{
     var pagenum = page * option.pagenum || 0;
-    var selectsql=`select * from articles where type = 'post' order by updateTime desc limit ${pagenum}, ${option.pagenum}`;
     var result= [];
-    connection.query(selectsql,function(err,rows){
-        if(err){
-            console.log(err);
-            return;
-        }
+    var rows =db_post.filter({type: "post"})
+                    .sortBy(function(o){
+                        var t = o.updateTime.split('-');
+                        return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));
+                    })
+                    .slice(pagenum, pagenum + option.pagenum) 
+                    .value()
+    if (rows != []) {
         for(var i in rows){
             var time = rows[i].updateTime;
             var author_info = config.author[rows[i].author];
@@ -81,7 +116,7 @@ exports.getArticleList = (res, page) =>{
             result.push({
                 'id':rows[i].id,
                 'title':rows[i].title, 
-                'content':rows[i].description,
+                'content':rows[i].desc,
                 'like': rows[i].like,
                 'view': rows[i].visitors,
                 'tag': rows[i].tag,
@@ -89,10 +124,9 @@ exports.getArticleList = (res, page) =>{
                 'author_head': author_info.head_img,
                 'img': rows[i].img,
                 'cop': "原创",
-                'updateTime': time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate()
+                'updateTime': time
             });
         }
-        // console.log(result);
         if(page == undefined){
             res.render('index', { 
                 'site':option,
@@ -110,45 +144,40 @@ exports.getArticleList = (res, page) =>{
                 'code': 1
             });
         }
-    });
+    }
 };
 
 // 单文章页面
 exports.getArticleDetail = (res, id) =>{
-    var selectsql=`select * from articles where id = "${id}"`;
-    var updatetag = `update articles set visitors=visitors+1 where id = "${id}"`;
-    connection.query(updatetag);
-    connection.query(selectsql,function(err,rows){
-        if(err){
-        console.log(err);
+    var rows = db_post.get(id)
+                        .value()
+    if(rows == undefined){
+        res.render('404');
         return;
-        }
-        if(rows[0] == undefined){
-            res.render('404');
-            return;
-        }
-        var time = rows[0].updateTime;
-        var author_info = config.author[rows[0].author];
-        if (author_info == undefined) {
-            author_info = config.author["佚名"];
-        }
-        res.render('post', {
-            'site':option,
-            'title': rows[0].title,
-            'content': rows[0].post_content,
-            'desc': rows[0].description, 
-            'like': rows[0].like,
-            'author': rows[0].author,
-            'head_img': author_info.head_img,
-            'blog_name': author_info.blog_name,
-            'header_logo' : author_info.header_logo,
-            'logo' : author_info.logo,
-            'view': rows[0].visitors,
-            'tag': rows[0].tag,
-            'updateTime': time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate(),
-            'sst': sst
-        });
+    }
+    var time = rows.updateTime;
+    var author_info = config.author[rows.author];
+    if (author_info == undefined) {
+        author_info = config.author["佚名"];
+    }
+    res.render('post', {
+        'site':option,
+        'title': rows.title,
+        'content': rows.content,
+        'desc': rows.desc, 
+        'like': rows.like,
+        'author': rows.author,
+        'head_img': author_info.head_img,
+        'blog_name': author_info.blog_name,
+        'header_logo' : author_info.header_logo,
+        'logo' : author_info.logo,
+        'view': rows.visitors,
+        'tag': rows.tag,
+        'updateTime': time,
+        'valine': config.valine,
+        'sst': sst
     });
+    db_post.get(id).assign({visitors:Number(rows.visitors)+1}).write()
 };
 
 // 后台写文章页面
@@ -187,38 +216,41 @@ exports.insertArticle = (req, res) =>{
     if(desc.length > 100){
         desc = desc.substring(0,100);
     }
-    console.log(content)
     // var title = req.body.title.replace("\"","\\\"")
     var pid = req.body.id;
     if(req.body.ifpage == 'page'){
         pid = title;
     }
-    var sql = `INSERT INTO articles  VALUES('${pid}', '${title}', '${desc}', '${content}', '${req.body.img}', '${req.body.ifpage}', 0, 0, '${req.body.tag}', '${date}', '${date}','${req.body.author}')`;
     if(req.body.type == 'update'){
-        sql = `UPDATE articles SET title = '${title}', description = '${desc}', post_content = '${content}', img = '${req.body.img}',type = '${req.body.ifpage}', tag = '${req.body.tag}',updateTime = '${date}',author = '${req.body.author}' where id = '${req.body.id}'`;
-    }
-    // sql = mysql.escape(sql);
-    // console.log(sql)
-    connection.query(sql,function(err,rows){
-        if(err){
-            // id存在
-            if(err.sqlState == 23000){
-                sql = `UPDATE articles SET title = '${title}', description = '${desc}', post_content = '${content}', img = '${req.body.img}',type = '${req.body.ifpage}', tag = '${req.body.tag}',updateTime = '${date}',author = '${req.body.author}' where id = '${req.body.id}'`
-                connection.query(sql,function(err2,rows) {
-                    if(err2){
-                        console.log(err2)
-                    }
-                    else{
-                        res.end('succeed'); 
-                    }
-                });
-            }
+        db_post.get(pid).assign({
+            title: title,
+            desc: desc,
+            content: content,
+            img: req.body.img,
+            type: req.body.ifpage,
+            tag: req.body.tag,
+            updateTime: date,
+            author: req.body.author
+        }).write()
+    } else {
+        db_post.set(pid, {
+                id: pid,
+                title: title,
+                desc: desc,
+                content: content,
+                img: req.body.img,
+                type: req.body.ifpage,
+                visitors: 0,
+                like: 0,
+                tag: req.body.tag,
+                createTime: date,
+                updateTime: date,
+                author: req.body.author
+                })
+            .write()
         }
-        else{
-            createrss();
-            res.end('succeed'); 
-        }
-    });
+    createrss();
+    res.end('succeed'); 
 };
 
 // 文章更新操作
@@ -230,27 +262,26 @@ exports.updateArticle = (res, req) =>{
         res.end('error'); 
         return;
     }
-    var selectsql=`select * from articles where id = '${req.params.id}'`;
-    connection.query(selectsql,function(err,rows){
-        if(err){
-            console.log(err);
-            return;
-        }
-        res.render('create', {
-            'update': true,
-            'id': req.params.id,
-            'site': option,
-            'title': rows[0].title,
-            'content': rows[0].post_content,
-            'tag': rows[0].tag,
-            'img': rows[0].img,
-            'author': rows[0].author,
-            'isLogined': isLogined,
-            'name': loginUser,
-            'status': 'update',
-            'sst': sst
-        }); 
-    });
+    var rows = db_post.get(req.params.id)
+                    .value()
+    if(rows == undefined){
+        res.render('404');
+        return;
+    }
+    res.render('create', {
+        'update': true,
+        'id': req.params.id,
+        'site': option,
+        'title': rows.title,
+        'content': rows.content,
+        'tag': rows.tag,
+        'img': rows.img,
+        'author': rows.author,
+        'isLogined': isLogined,
+        'name': loginUser,
+        'status': 'update',
+        'sst': sst
+    }); 
 };
 
 // 文章删除操作
@@ -259,84 +290,80 @@ exports.deleteArticle = (res, id, islogin) =>{
         res.end("you are not admin !!!");
         return;
     }
-    var deltesql = `UPDATE articles SET type="delete" WHERE id = '${id}'`;
-    connection.query(deltesql,function(err,rows){
-        if(err){
-            console.log(err);
-            return;
-        }
-        res.send('succeed');
-    });
+    db_post.get(id)
+        .assign({ type: 'delete'})
+        .write()
+    res.send('succeed');
 }
 
 // 文章搜索
 exports.post_search = (res, s) =>{
-    var searchsql = ``;
+    var rows = [];
     if(s in config.author){
         // 搜索的是作者名字
-        searchsql = `SELECT * FROM articles WHERE author = '${s}'`;
+        rows = db_post.filter({author: s})
+        .sortBy(function(o){
+            var t = o.updateTime.split('-');
+            return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));
+        }).value()
     }
     else{
-        searchsql = `SELECT * FROM articles WHERE post_content LIKE '%${s}%' or title like '%${s}%'`;
+        // 搜索关键词
+        rows = db_post.filter(function(o) {
+            if (o.content.indexOf(s) == -1 && o.title.indexOf(s) == -1)
+                return false
+            return true;
+        }).sortBy(function(o){
+            var t = o.updateTime.split('-');
+            return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));
+        }).value()
     }
     var result= [];
-    connection.query(searchsql,function(err,rows){
-        if(err){
-        console.log(err);
-            return;
+    for(var i in rows){
+        var time = rows[i].updateTime;
+        var author_info = config.author[rows[i].author];
+        if (author_info == undefined) {
+            author_info = config.author["佚名"];
         }
-        for(var i in rows){
-            var time = rows[i].updateTime;
-            var author_info = config.author[rows[i].author];
-            if (author_info == undefined) {
-                author_info = config.author["佚名"];
-            }
-            result.push({
-                'id':rows[i].id,
-                'title':rows[i].title, 
-                'content':rows[i].description,
-                'like': rows[i].like,
-                'view': rows[i].visitors,
-                'author': rows[i].author,
-                'author_head': author_info.head_img,
-                'tag': rows[i].tag,
-                'img': rows[i].img,
-                'cop': "原创",
-                'updateTime': time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate()
-            });
-        }
-        // console.log(result);
-        res.render('index', {
-            'site':option,
-            'list':result,
-            'tag': true,
-            'carousel': option.carousel,
-            'friends': config.friends,
-            'sst': sst
-        }); 
-    });
+        result.push({
+            'id':rows[i].id,
+            'title':rows[i].title, 
+            'content':rows[i].desc,
+            'like': rows[i].like,
+            'view': rows[i].visitors,
+            'author': rows[i].author,
+            'author_head': author_info.head_img,
+            'tag': rows[i].tag,
+            'img': rows[i].img,
+            'cop': "原创",
+            'updateTime': time
+        });
+    }
+    // console.log(result);
+    res.render('index', {
+        'site':option,
+        'list':result,
+        'tag': true,
+        'carousel': option.carousel,
+        'friends': config.friends,
+        'sst': sst
+    }); 
 }
 
 // 点击喜欢事件，like+1
 exports.get_add_like = (res, req) => {
-    var id = req.headers.referer.replace(config.seo.index,"").replace("/post/","");
-    var sql = 'update articles set `like` = `like`+1 where id ="' + id + '"';
-    connection.query(sql, function(err, rows){
-        if(err){
-            console.log(err)
-            res.json({
-                code:0
-            })
-            return;
-        }
-        res.json({
-            code:1
-        })
+    var index = req.headers.referer.indexOf("/post/");
+    var id = req.headers.referer.slice(index+6, req.headers.referer.length);
+    var old = db_post.get(id).value()
+    db_post.get(id).assign({like:Number(old.like)+1}).write()
+    res.json({
+        code:1
     })
 }
 
 // 友链页面渲染
 exports.get_link = (res, req) => {
+    /*
     var sql = 'SELECT * FROM `links` WHERE 1';
     var links = []
     connection.query(sql, function(err, rows){
@@ -360,6 +387,7 @@ exports.get_link = (res, req) => {
             'links':links
         })
     })
+    */
 }
 
 // 相册渲染
@@ -369,42 +397,3 @@ exports.render_photos = (res => {
         'site':option,
     })
 })
-
-// 站点安装
-exports.installWeb = (res, req) => {
-    var sess = req.session;
-    var loginUser = sess.loginUser;
-    var isLogined = ifLogin(loginUser);
-    if (isLogined) {
-        console.log("islogin")
-        var install_sql = "CREATE TABLE `articles` (`id` varchar(20) NOT NULL, `title` varchar(255) DEFAULT NULL,`description` varchar(255) DEFAULT NULL, `post_content` longtext NOT NULL,`img` varchar(255) DEFAULT NULL,`type` varchar(10) DEFAULT 'post', `visitors` bigint(20) DEFAULT '0',`like` bigint(20) DEFAULT '0', `tag` varchar(255) DEFAULT NULL, `createTime` date DEFAULT NULL,`updateTime` date DEFAULT NULL  ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC; CREATE TABLE `tags` (`id` int(10) NOT NULL,`name` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8; ALTER TABLE `articles` ADD PRIMARY KEY (`id`) USING BTREE,ADD KEY `id` (`id`);ALTER TABLE `tags`ADD PRIMARY KEY (`id`);ALTER TABLE `tags`MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22; COMMIT;INSERT INTO `articles` (`id`, `title`, `description`, `post_content`, `img`, `type`, `visitors`, `like`, `tag`, `createTime`, `updateTime`) VALUES('872fdc4f6', 'Hello World！', '<p>欢迎使用flybook搭建你的站点</p><p>开始你的创作吧！</p><p><br></p>', '<p>欢迎使用flybook搭建你的站点</p><p>开始你的创作吧！</p><p><br></p>', '', 'post', 0, 0, '随想', '2019-05-18', '2019-05-18');"
-        connection.query(install_sql, function(err, rows){
-            if (err) {
-                console.log(err);
-                res.end("error");
-                return;
-            }
-            else {
-                res.render('install', {
-                    'site':option,
-                    'isLogined': isLogined,
-                    'name': loginUser,
-                    'type': 'insert',
-                    'id': '000000',
-                    'sst': sst
-                });
-            }
-        });
-    }
-    else {
-        console.log("login")
-        res.render('install', {
-            'site':option,
-            'isLogined': isLogined,
-            'name': loginUser,
-            'type': 'insert',
-            'id': '000000',
-            'sst': sst
-        });
-    }
-}
