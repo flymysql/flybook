@@ -5,9 +5,9 @@
   "scripts": {
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www",
-    "pmstart": "pm2 start ./bin/www --name=\"blog\" --watch --ignore-watch=\"logs node_modules sessions public/uploads\"",
+    "pmstart": "pm2 start ./bin/www --name=\"blog\" --watch --ignore-watch=\"logs node_modules server sessions public/uploads\"",
     "pmstop": "pm2 stop all",
-    "pmrestart": "./node_modules/.bin/pm2 restart all --watch --ignore-watch=\"logs node_modules sessions public/uploads\"",
+    "pmrestart": "./node_modules/.bin/pm2 restart all --watch --ignore-watch=\"logs node_modules server sessions public/uploads\"",
     "update": "sh update.sh"
   },
   "watch": [
