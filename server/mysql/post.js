@@ -293,7 +293,7 @@ exports.post_search = (res, s) =>{
     else{
         // 搜索关键词
         rows = db_post.filter(function(o) {
-            if (o.content.indexOf(s) == -1 && o.title.indexOf(s) == -1 && type == "post")
+            if (o.content.indexOf(s) == -1 && o.title.indexOf(s) == -1 || type != "post")
                 return false
             return true;
         }).sortBy(function(o){
