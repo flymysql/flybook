@@ -129,8 +129,11 @@ exports.getArticleList = (res, page) =>{
 
 // 单文章页面
 exports.getArticleDetail = (res, id) =>{
-    var rows = db_post.get(id)
-                        .value()
+    var ht = id.indexOf(".html");
+    if( ht != -1) {
+        id = id.slice(0, ht);
+    }
+    var rows = db_post.get(id).value()
     if(rows == undefined){
         res.render('404');
         return;
@@ -229,7 +232,7 @@ exports.insertArticle = (req, res) =>{
                 })
             .write()
         }
-    createrss();
+    createrss(db_post);
     res.end('succeed'); 
 };
 

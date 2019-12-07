@@ -2,13 +2,9 @@
 const fs = require('fs');
 const until = require('../../until/until');
 const config = require('../../config');
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-const adapter_post = new FileSync('server/db/post.json') 
-const db_post = low(adapter_post)
 var index = config.seo.index;
 
-exports.createrss = function(){
+exports.createrss = function(db_post){
     var today = until.nowDate();
     var rss_content = `
     <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
