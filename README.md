@@ -138,12 +138,6 @@
 git clone https://github.com/flymysql/flybook.git
 ```
 
-#### 填写数据库账号信息
-
-进入路径`server\config\db.js`下，里面有两个文件。
-1. db.js 中填写你的数据库信息
-2. user.js 填写你的用户信息
-
 #### 生成环境安装
 进入项目文件夹文件夹后安装生产环境
 ```
