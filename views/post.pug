@@ -3,7 +3,6 @@ block head_content
   title= title + " | " + blog_name
   meta(name="description" content=desc)
   meta(name="keywords" content=tag+","+ site.keywords)
-  link(rel="stylesheet", href="https://unpkg.com/autocjs@1.3.0/dist/autoc.min.css")
   link(rel='stylesheet', href='/stylesheets/post.css?t='+sst)
 block content
     include partails/post-aside  
@@ -36,40 +35,4 @@ block content
         div(class="comment" id="comment" data-vkey=valine.app_key data-vid=valine.app_id)
          
 block scripts
-    script(src="/javascripts/autotoc.js")
-    script(type="text/javascript" src="/third-part/highlight/highlight.pack.js?t="+sst)
-    script(src="https://cloud.panjunwen.com/av-min.js?t="+sst)
-    script(src="/javascripts/valine.min.js?t=" + sst)
-    script.
-        new Valine({
-            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
-            av: AV, 
-            el: '#comment',
-            lang: 'zh-cn',
-            emoticon_url: 'https://cloud.panjunwen.com/alu',
-            emoticon_list: ["吐.png","喷血.png","狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","中指.png","尴尬.png","瞅你.png","想一想.png","中枪.png","得意.png","肿包.png","扇耳光.png","亲亲.png","惊喜.png","脸红.png","无所谓.png","便便.png","愤怒.png","蜡烛.png","献黄瓜.png","内伤.png","投降.png","观察.png","看不见.png","击掌.png","抠鼻.png","邪恶.png","看热闹.png","口水.png","抽烟.png","锁眉.png","装大款.png","吐舌.png","无奈.png","长草.png","赞一个.png","呲牙.png","无语.png","阴暗.png","不出所料.png","咽气.png","期待.png","高兴.png","吐血倒地.png","哭泣.png","欢呼.png","黑线.png","喜极而泣.png","喷水.png","深思.png","鼓掌.png","暗地观察.png"],
-            app_id: $("#comment")[0].dataset.vid,
-            app_key: $("#comment")[0].dataset.vkey,
-            placeholder: '✍写评论'
-        });
-        $("#comment")[0].dataset.vid = "😜";
-        $("#comment")[0].dataset.vkey = "😜"
-        $("#like1").click(function(){
-            $.get("/like-add", function(status){
-                if(status.code==1){
-                alert("谢谢你的喜欢！！")
-                }
-            });
-        });
-        $(function(){
-            $('pre').each(function(i, block) {
-                hljs.highlightBlock(block);
-            });
-        });
-        new AutocJS({
-            article: '.post-body',
-            isOnlyAnchors: true,
-            //selector: 'h1',
-            // 不配置 selector 属性，即使用默认选择器
-            title: '文章目录',
-        });
+    script(src="/javascripts/post.js")
