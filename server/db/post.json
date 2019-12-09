@@ -6,7 +6,7 @@
     "content": "<p>欢迎使用flybook！</p><p><br></p>",
     "img": "",
     "type": "post",
-    "visitors": 1,
+    "visitors": 3,
     "like": 0,
     "tag": "随想",
     "createTime": "2019-12-06",
@@ -39,6 +39,20 @@
     "tag": "随想",
     "createTime": "2019-12-07",
     "updateTime": "2019-12-07",
+    "author": "小鸡"
+  },
+  "7bd13b6ec": {
+    "id": "7bd13b6ec",
+    "title": "新建文章",
+    "desc": "开始你的创作吧！",
+    "content": "<p>开始你的创作吧！</p><p><br></p>",
+    "img": "",
+    "type": "cao",
+    "visitors": 0,
+    "like": 0,
+    "tag": "随想",
+    "createTime": "2019-12-09",
+    "updateTime": "2019-12-09",
     "author": "小鸡"
   }
 }

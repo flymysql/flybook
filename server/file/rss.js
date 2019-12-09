@@ -24,6 +24,7 @@ exports.createrss = function(db_post){
         return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));
     })
     .value()
+    // rss渲染
     for(var i = 0; i <= 30 && i < rows.length; i++){
         rss_content = rss_content + `
             <item>
@@ -52,6 +53,9 @@ exports.createrss = function(db_post){
             console.log('写入rss成功');
             }
         });
+
+    // 站点地图渲染
+    // 渲染文章列表
     for(var i in rows){
         var time = rows[i].updateTime;
         if (time == null){
@@ -61,6 +65,15 @@ exports.createrss = function(db_post){
         <url>
             <loc>${index}/post/${rows[i].id}</loc>
             <lastmod>${time}</lastmod>
+        </url>
+        `;
+    }
+    // 渲染tag
+    for(var i in config.tags){
+        sitemap_content = sitemap_content + `
+        <url>
+            <loc>${index}/tag/${config.tags[i]}</loc>
+            <lastmod>${today}</lastmod>
         </url>
         `;
     }

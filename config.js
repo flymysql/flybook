@@ -48,10 +48,6 @@ module.exports ={
     // 首页轮播图设置
     carousel:[
         {
-          'link':'https://me.idealli.com/post/d46a767e.html',
-          'img':'/images/2019042801.png'
-        },
-        {
           'link':'https://me.idealli.com/post/651cfd47.html',
           'img':'/images/18123106.jpg'
         },

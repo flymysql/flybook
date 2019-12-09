@@ -20,7 +20,8 @@ block content
                 div(class="meta")
                     span= "阅读" + view
                     span= " 喜欢" + like
-                    span= " " + tag
+                    a(href="/tag/"+tag style="color:#969696")
+                        span= " " + tag
                     span= " 更新" + updateTime
 
         article(class="post-body")

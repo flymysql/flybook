@@ -37,7 +37,8 @@ block content
                     span(class="author")= post.author
                   span(class="cop")= "✿" + post.cop
                   span= " 阅读" + post.view
-                  span= " " + post.tag
+                  a(href="/tag/"+post.tag)
+                    span= " " + post.tag
                   span= " " + post.updateTime
       div(class="ads")
             a(class="ads-link" href="https://me.idealli.com/post/651cfd47.html" target="_blank")
