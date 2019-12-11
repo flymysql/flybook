@@ -1,7 +1,7 @@
 const config = require('../../config')
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
-const adapter_post = new FileSync('server/db/post.json') 
+const adapter_post = new FileSync('db/post.json') 
 const db_post = low(adapter_post)
 
 const option = {

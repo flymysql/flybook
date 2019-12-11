@@ -1,6 +1,6 @@
-# cp -rf flybook/app.js ./
-# cp -rf flybook/routes ./
-# cp -rf flybook/bin ./
+cp -rf flybook/app.js ./
+cp -rf flybook/routes ./
+cp -rf flybook/bin ./
 cp -rf flybook/controllers ./
 cp -rf flybook/server/mysql ./server/
 cp -rf flybook/server/config ./server/
@@ -10,7 +10,7 @@ cp -rf flybook/public/javascripts ./public/
 # cp -rf flybook/public/third-part ./public/
 cp -rf flybook/public/stylesheets ./public/
 # cp -rf flybook/public/others ./public/
-# cp -rf flybook/public/robots.txt ./public/
+cp -rf flybook/public/robots.txt ./public/
 cp -rf flybook/views ./
 cp -rf flybook/package.json ./
 cp -rf flybook/LICENSE ./
