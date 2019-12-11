@@ -15,7 +15,8 @@ block content
                 a(href="/admin" class="menu-block" target="_blank")= "文章列表"
                 a(href="/draft" class="menu-block" target="_blank")= "草稿箱"
                 a(href="https://flymysql.leanapp.cn/" class="menu-block" target="_blank")= "评论管理"
-                a(href="/update/about" id="author-about" class="menu-block")= "个人介绍"
+                a(href="/update/about" id="author-about" class="menu-block" target="_blank")= "个人介绍"
+                a(href="/style" class="menu-block" target="_blank")= "主题样式"
                 button(class="menu-block" onclick="site_set()" style="border: unset;text-align: left;")= "设置"
         div(class="post-content" id="btn1" data-status=status)
             if update
@@ -134,7 +135,7 @@ block content
                 $.get("/get_config",{},
                     function(data){
                     post_content = $(".post-content").html();
-                    $(".post-content").html("<textarea style=\"width: 100%;height: 80%;overflow-y:scroll;font-size: 16px;\" \
+                    $(".post-content").html("<textarea class=\"post_update_content\" spellcheck=\"false\" \
                     id=\"config_area\">" + data + "</textarea><button class=\"btn1\" onclick=\"to_push_config()\">保存配置</button>");
                 });
             }

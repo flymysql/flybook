@@ -1,0 +1,40 @@
+html
+    head
+        include partails/head
+        link(rel="stylesheet", href="/stylesheets/ssstyle.css")
+    body
+        include partails/header
+        div(class="file_list")
+            each p in dir
+                p(onclick="get_css(this.id)" id=p)=p
+        div(class="file_content")
+            textarea(name="file_content" id="file_content" spellcheck="false")
+            button(onclick="push_css()" style="margin:20px;width:60px;height:30px")="保存"
+    script(src="/javascripts/jQuery.min.js")
+    script.
+        var name = "";
+        function get_css(filename){
+            console.log(filename);
+            name = filename;
+            $.post("/get_file",{
+                    file_name: filename
+                },
+                function(data){
+                    $("#file_content").val(data);
+            });
+        }
+        function push_css(){
+            $.post("/update_file",{
+                    file_name: name,
+                    file_content: $("#file_content").val()
+                },
+                function(data){
+                    if(data=="succeed"){
+                        alert("保存成功！")
+                    }
+                    else{
+                        alert("保存失败！")
+                    }
+                }
+                );
+        }

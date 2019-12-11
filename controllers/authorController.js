@@ -1,5 +1,6 @@
 var users = require('../server/config/user').items;
 const fs = require('fs');
+const path = require('path');
 var findUser = function(name, password){
     return users.find(function(item){
         return item.name === name && item.password === password;
@@ -73,5 +74,64 @@ exports.authorLogout = (req, res, next) => {
                 res.end("succeed");
              }
          });
+    }
+ }
+
+
+function readDirSync(path){
+    var re = [];
+	var pa = fs.readdirSync(path);
+	pa.forEach(function(ele,index){
+        var p = path+"/"+ele;
+		var info = fs.statSync(p)	
+		if(info.isDirectory()){
+			re = re.concat(readDirSync(p));
+		}else{
+            re.push(p)
+		}	
+    })
+    return re;
+}
+
+// 获取站点主题路径下的文件列表
+exports.get_style_path = (req, res) => {
+    var filedir = readDirSync("public/stylesheets");
+    filedir = filedir.concat(readDirSync("views"))
+    res.render("style", {
+        dir: filedir
+    });
+}
+
+ // 获取站点文件
+ exports.get_file = (req, res, next) => {
+    var sess = req.session;
+    var loginUser = sess.loginUser;
+    console.log(users[0].name)
+    if (loginUser == users[0].name) {
+        fs.readFile(req.body.file_name, function (err, data) {
+            if (err) {
+                return console.error(err);
+            }
+            res.end(data.toString());
+         });
+    }
+ };
+
+ exports.update_file = (req, res) => {
+    var sess = req.session;
+    var loginUser = sess.loginUser;
+    console.log(users[0].name)
+    if (loginUser == users[0].name) {
+        if(req.body.file_name != ""){
+            fs.writeFile(req.body.file_name, req.body.file_content, function (err) {
+                if(err) {
+                console.error(err);
+                res.end("failed");
+                } else {
+                    console.log('文件保存成功');
+                    res.end("succeed");
+                }
+            });
+        }
     }
  }

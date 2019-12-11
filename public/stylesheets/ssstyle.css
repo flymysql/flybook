@@ -1,0 +1,31 @@
+
+/* 样式编辑界面 */
+.file_list{
+    width: 250px;
+    padding-top: 60px;
+    padding: 20px;
+    height: 100%;
+    overflow: scroll;
+    /* pointer-events: visiblefill; */
+    border: rgba(0,0,0,.13) solid 1px;
+    float: left;
+}
+
+.file_content{
+    padding-top: 80px;
+    width: 60%;
+    height: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.file_content textarea{
+    height: 80%;
+    width: 100%;
+    font-size: 16px;
+    font-family: sans-serif;
+    height: 100%;
+    width: 100%;
+    background: #222;
+    color: cadetblue;
+}
