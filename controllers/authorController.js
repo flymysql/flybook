@@ -95,11 +95,18 @@ function readDirSync(path){
 
 // 获取站点主题路径下的文件列表
 exports.get_style_path = (req, res) => {
-    var filedir = readDirSync("public/stylesheets");
-    filedir = filedir.concat(readDirSync("views"))
-    res.render("style", {
-        dir: filedir
-    });
+    var sess = req.session;
+    var loginUser = sess.loginUser;
+    console.log(users[0].name);
+    if (loginUser == users[0].name) {
+        var filedir = readDirSync("public/stylesheets");
+        filedir = filedir.concat(readDirSync("views"))
+        res.render("style", {
+            dir: filedir
+        });
+    } else {
+        res.end("请登陆")
+    }
 }
 
  // 获取站点文件
