@@ -8,6 +8,14 @@ jQuery(document).ready(function () {
         'delay'  : 300 
     });
 });
+$("#like1").click(function(){
+    $.get("/like-add", function(status){
+        if(status.code==1){
+        alert("谢谢你的喜欢！！")
+        }
+    });
+});
+
 function CurentTime(){ 
     var now = new Date();
     var year = now.getFullYear();
