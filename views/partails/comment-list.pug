@@ -1,0 +1,23 @@
+ul(class="c_list")
+    each c in comment
+        li(class="c_card")
+            div(class="c_body")
+                div(class="c_head")
+                    img(class="vavatar" src="https://v1.alapi.cn/api/avatar?email=" + c.email + "&size=50")
+                    a(data-at="@"+c.nick class="c_at" rel="nofollow" id=c.cid data-cid=c.cid href="#tagcloud")="回复"
+                div(class="c_info")
+                    a(class="c_name" href=c.link target="_blank" rel="nofollow")=c.nick
+                    span(class="c_time")=c.time
+                div(class="c_content")!=c.content
+            div(class="c_list" style="width:92%;float:right;")
+                each cc in c.child
+                    div(class="c_card")
+                        div(class="c_body")
+                            div(class="c_head")
+                                img(class="vavatar" src="https://v1.alapi.cn/api/avatar?email=" + cc.email + "&size=50")
+                                a(data-at="@"+cc.nick class="c_at" rel="nofollow" id=cc.cid data-cid=c.cid href="#tagcloud")="回复"
+                            div(class="c_info")
+                                a(class="c_name" href=cc.link target="_blank" rel="nofollow")=cc.nick
+                                span(class="c_time")=cc.time
+                            div(class="c_content")!=cc.content
+            div(style="clear:both;")

@@ -40,11 +40,6 @@ module.exports ={
         ICP:"闽ICP备18025365号",
         copyright:"© 2018"
     },
-    // valine评论插件
-    valine:{
-      app_id: '',
-      app_key: ''
-    },
     // 首页轮播图设置
     carousel:[
         {

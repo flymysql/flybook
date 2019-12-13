@@ -30,9 +30,10 @@ block content
         div(class="ads")
             a(class="ads-link" href="https://me.idealli.com/post/651cfd47.html" target="_blank")
                 img(data-src="https://me.idealli.com/uploads/images/imageup-1558576491588.png", class="ads-img" id="no-view")
-        div(class="tag-cloud-tags" id="tagcloud") 
+        div(class="tag-cloud-tags" id="tagcloud" name="tagcloud") 
         br
-        div(class="comment" id="comment" data-vkey=valine.app_key data-vid=valine.app_id)
+        include partails/comment
          
 block scripts
-    script(src="/javascripts/post.js")
+    script(src="/javascripts/autotoc.js")
+    script(type="text/javascript" src="/third-part/highlight/highlight.pack.js")

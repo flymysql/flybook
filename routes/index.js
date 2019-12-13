@@ -3,6 +3,7 @@ const router = express.Router();
 
 const authorController = require('../controllers/authorController');
 const postController = require('../controllers/postController');
+const commentController = require('../controllers/commentController');
 
 const upload = require('../server/file/images').post_img_upload
 
@@ -74,6 +75,9 @@ router.post('/update_file', authorController.update_file);
 
 // 站点主题修改
 router.get('/style', authorController.get_style_path);
+
+// 评论管理
+router.post('/comment', commentController.com_Controller);
 
 // post上传图片
 router.post('/upload', upload.array('imageup',10), function (req, res, next) {

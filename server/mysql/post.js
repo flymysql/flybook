@@ -6,6 +6,9 @@ const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const adapter_post = new FileSync('db/post.json') 
 const db_post = low(adapter_post)
+const adapter_comment = new FileSync('db/comment.json') 
+const db_comment = low(adapter_comment)
+
 //serverStartTimestamp
 const sst = new Date().getTime();
 const option = {
@@ -157,7 +160,6 @@ exports.getArticleDetail = (res, id) =>{
         'view': rows.visitors,
         'tag': rows.tag,
         'updateTime': time,
-        'valine': config.valine,
         'sst': sst
     });
     db_post.get(id).assign({visitors:Number(rows.visitors)+1}).write()

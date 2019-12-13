@@ -8,6 +8,33 @@ jQuery(document).ready(function () {
         'delay'  : 300 
     });
 });
+function CurentTime(){ 
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1; 
+    var day = now.getDate();
+    var hh = now.getHours();
+    var mm = now.getMinutes();
+    var ss = now.getSeconds();
+    var clock = year + "-" + month + "-" + day + " " + hh + ":" + mm + ":" + ss; 
+    return(clock); 
+}
+function comment_event(){
+    var ats = $(".c_at");
+    for(let i = 0; i < ats.length; i++){
+        var cid = ats[i].id;
+        $("#"+cid).click(function(){
+            $("#pre_com")[0].innerHTML = "<div>" + this.parentNode.parentNode.innerHTML + "<div><a href=\"#tagcloud\" class=\"cancel\" id=\"cancel\">取消回复</a>";
+            $("#pre_com")[0].dataset.pre = ats[i].dataset.cid;
+            $("#c_content").val(this.dataset.at + "，");
+            $("#cancel").click(function(){
+                $("#pre_com")[0].dataset.pre = "";
+                $("#pre_com")[0].innerHTML = "";
+                $("#c_content").val("");
+            })
+        });
+    }
+}
 var tagcloud = document.getElementById('tagcloud');
 var to_create = true;
 var create_tag = function(){
@@ -29,6 +56,62 @@ var create_tag = function(){
             }   
         }
     });
+    if($("#comment")[0] != undefined) {
+        var pid = window.location.pathname.slice(6);
+        $.ajax({
+            url: '/comment',
+            type: 'POST',
+            data :{
+                op: 'get',
+                pid: pid
+            },
+            success: function(data) {
+                $("#comment")[0].innerHTML = data;
+                comment_event();
+                $("#c_submit").click(function(){
+                    var pid = window.location.pathname.slice(6);
+                    var nick = $("#c_nick").val();
+                    var email = $("#c_mail").val();
+                    var link = $("#c_link").val();
+                    var content = $("#c_content").val();
+                    var pre = $("#pre_com")[0].dataset.pre;
+                    if(nick == "") {
+                        alert("请输入昵称");
+                        return;
+                    };
+                    if(email == "") {
+                        alert("请输入邮箱");
+                        return;
+                    };
+                    if(content == "") {
+                        alert("评论内容不能为空哦");
+                        return;
+                    };
+                    $.ajax({
+                        url: '/comment',
+                        type: 'POST',
+                        data :{
+                            op: 'push',
+                            pid: pid,
+                            nick: nick,
+                            email: email,
+                            link: link,
+                            content: content,
+                            time: CurentTime(),
+                            pre: pre
+                        },
+                        success: function(data) {
+                            $("#comment")[0].innerHTML = data;
+                            $("#pre_com")[0].dataset.pre = "";
+                            $("#pre_com")[0].innerHTML = "";
+                            $("#c_content").val("");
+                            comment_event();
+                        }
+                    })
+                });
+            }
+        })
+    }
 }
 if (typeof IntersectionObserver == "function"){
     console.log("浏览器支持懒加载");
