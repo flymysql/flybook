@@ -42,7 +42,7 @@ function sendMail(to_name, to_email, title, text, html , send_time=0){
 }
 
 // 添加评论
-function push_comment(data) {
+function push_comment(data, href) {
     var p_title = data.title;
     var cid = Math.random().toString(16).substr(7);
     if(db_comment.get(data.pid).value() == undefined){
@@ -78,6 +78,7 @@ function push_comment(data) {
         var title = "你在" + site_name + "上的文章《" + p_title + "》评论收到了来自" +  data.nick + "的回复！";
         var text = p_content;
         var html = "<h2>" + p_nick + ":</h2>" + "<blockquote>" + p_content + "</blockquote><br>" + "<h2>" + data.nick + ":</h2>" + "<blockquote>" + data.content + "</blockquote><br>"
+        html += "<a href=\"" + href + "\">查看原文</a>";
         sendMail(p_nick, p_mail, title, text, html);
     }
     // 文章评论通知作者
@@ -87,10 +88,10 @@ function push_comment(data) {
     }
     authors_email = authors[author].email;
     author_name = authors[author].blog_name;
-    console.log(data)
     var title = "你在" + site_name + "上的文章《" + p_title + "》收到了来自" +  data.nick + "的评论！";
     var text = data.content;
     var html = "<h2>" + data.nick + ":</h2>" + "<blockquote>" + data.content + "</blockquote><br>"
+    html += "<a href=\"" + href + "\">查看原文</a>";
     sendMail(author_name, authors_email, title, text, html);
 }
 
@@ -113,7 +114,7 @@ exports.com_Controller = (req, res) =>{
             })
             break;
         case 'push':
-            push_comment(req.body);
+            push_comment(req.body, req.headers.referer);
             var comment = db_comment.get(req.body.pid)
             .sortBy(function(o){
                 var t = o.time.split(' ')[0].split('-');
