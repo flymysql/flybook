@@ -99,8 +99,8 @@ exports.com_Controller = (req, res) =>{
                 return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));
             })
             .value();
-            if (comment == undefined) {
-                res.end("还没有评论！");
+            if (comment == undefined || comment == {}) {
+                res.end("<div style=\"text-align:center;\">还没有评论！</div>");
                 return;
             }
             res.render('partails/comment-list', {
@@ -109,7 +109,12 @@ exports.com_Controller = (req, res) =>{
             break;
         case 'push':
             push_comment(req.body);
-            var comment = db_comment.get(req.body.pid).value()
+            var comment = db_comment.get(req.body.pid)
+            .sortBy(function(o){
+                var t = o.time.split(' ')[0].split('-');
+                return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));
+            })
+            .value()
             res.render('partails/comment-list', {
                 comment: comment
             })
