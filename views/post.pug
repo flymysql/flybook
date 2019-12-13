@@ -13,7 +13,7 @@ block content
                 img(src=head_img id="no-view")
             div(class="info")
                 span(class="name")
-                    a(href="/search?s="+author target="_blank")= author
+                    a(href="/search?s="+author target="_blank" id="author_name" data-name=author)= author
                 a(class="follow" href="/post/email" target="_blank")
                     span= "关注"
                 div(class="meta")

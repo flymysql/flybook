@@ -17,19 +17,22 @@ module.exports ={
         head_img:"/images/head.png",
         blog_name: "佚名",
         header_logo: "/images/headerico.png",
-        logo: "logo4.png"
+        logo: "logo4.png",
+        email: "flyphp@outlook.com"
       },
       "小鸡": {
         head_img:"/images/head.png",
         blog_name: "小鸡",
         header_logo: "/images/headerico.png",
-        logo: "logo4.png"
+        logo: "logo4.png",
+        email: "flyphp@outlook.com"
       },
       "Valky":{
         head_img:"/images/head_r.jpg",
         blog_name: "Valky",
         header_logo: "/images/headerico_r.png",
-        logo: "headerico2_r.png"
+        logo: "headerico2_r.png",
+        email: "1696731766@qq.com"
       }
     },
     // 站点信息
@@ -63,6 +66,14 @@ module.exports ={
           'img':'/images/111302.png'
         },
      ],
+     email_auth:{
+        // 用来发送消息的邮箱
+        name: "小鸡",
+        id: "237199972@qq.com",
+        key: "kyonyaawymfgbiid",
+        // 自己用来接收消息的邮箱
+        my_mail: "flyphp@outlook.com"
+     },
      // 首页侧边栏
      index_aside: [
        {

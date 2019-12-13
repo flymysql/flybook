@@ -75,6 +75,10 @@ var create_tag = function(){
                     var link = $("#c_link").val();
                     var content = $("#c_content").val();
                     var pre = $("#pre_com")[0].dataset.pre;
+                    var author = $("#author_name")[0].dataset.name;
+                    if(author == undefined) {
+                        author = "";
+                    }
                     if(nick == "") {
                         alert("请输入昵称");
                         return;
@@ -97,6 +101,8 @@ var create_tag = function(){
                             email: email,
                             link: link,
                             content: content,
+                            author: author,
+                            title: $(".post-title")[0].innerText,
                             time: CurentTime(),
                             pre: pre
                         },
