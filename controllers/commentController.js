@@ -16,8 +16,7 @@ var mailTransport = nodemailer.createTransport({
 });
 
 // 发送邮件通知
-function sendMail(to_name, to_email, title, text, html ){
-
+function sendMail(to_name, to_email, title, text, html , send_time=0){
     var options = {
         from: email_auth.name + ' ' + '<' + email_auth.id + '>',
         to: to_name + ' ' + '<' + to_email + '>',
@@ -26,14 +25,20 @@ function sendMail(to_name, to_email, title, text, html ){
         html: html,
         attachments:[]
     };
-    mailTransport.sendMail(options, function(err, msg){
-        if(err){
-            console.log(err);
-        }
-        else {
-            console.log(msg);
-        }
-    });
+
+    // 网络原因可能导致邮件发送失败，多大尝试发送次数设为5次
+    if(send_time < 5){
+        mailTransport.sendMail(options, function(err, msg){
+            if(err){
+                console.log(err);
+                console.log("发送失败");
+                sendMail(to_name, to_email, title, text, html , send_time+1)
+            }
+            else {
+                return;
+            }
+        });
+    }
 }
 
 // 添加评论
@@ -82,7 +87,7 @@ function push_comment(data) {
     }
     authors_email = authors[author].email;
     author_name = authors[author].blog_name;
-
+    console.log(data)
     var title = "你在" + site_name + "上的文章《" + p_title + "》收到了来自" +  data.nick + "的评论！";
     var text = data.content;
     var html = "<h2>" + data.nick + ":</h2>" + "<blockquote>" + data.content + "</blockquote><br>"
