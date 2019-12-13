@@ -70,7 +70,7 @@ module.exports ={
         // 用来发送消息的邮箱
         name: "小鸡",
         id: "237199972@qq.com",
-        key: "kyonyaawymfgbiid",
+        key: "",
         // 自己用来接收消息的邮箱
         my_mail: "flyphp@outlook.com"
      },
