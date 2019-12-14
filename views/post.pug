@@ -37,3 +37,11 @@ block content
 block scripts
     script(src="/javascripts/autotoc.js")
     script(type="text/javascript" src="/third-part/highlight/highlight.pack.js?t="+sst)
+    script.
+        new AutocJS({
+            article: '.post-body',
+            isOnlyAnchors: true,
+            //selector: 'h1',
+            // 不配置 selector 属性，即使用默认选择器
+            title: '文章目录',
+        });

@@ -7,7 +7,7 @@ cp -rf flybook/server/config ./server/
 cp -rf flybook/server/file ./server/
 cp -rf flybook/until ./
 cp -rf flybook/public/javascripts ./public/
-# cp -rf flybook/public/third-part ./public/
+cp -rf flybook/public/third-part ./public/
 cp -rf flybook/public/stylesheets ./public/
 # cp -rf flybook/public/others ./public/
 cp -rf flybook/public/robots.txt ./public/

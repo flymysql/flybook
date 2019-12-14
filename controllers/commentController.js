@@ -14,6 +14,9 @@ var mailTransport = nodemailer.createTransport({
         pass : email_auth.key
     },
 });
+const pug = require('pug');
+// 编译评论页面
+const compiledComment = pug.compileFile('views/partails/comment-list.pug');
 
 // 发送邮件通知
 function sendMail(to_name, to_email, title, text, html , send_time=0){
@@ -109,9 +112,9 @@ exports.com_Controller = (req, res) =>{
                 res.end("<div style=\"text-align:center;\">还没有评论！</div>");
                 return;
             }
-            res.render('partails/comment-list', {
+            res.send(compiledComment({
                 comment: comment
-            })
+            }));
             break;
         case 'push':
             push_comment(req.body, req.headers.referer);
@@ -121,9 +124,9 @@ exports.com_Controller = (req, res) =>{
                 return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));
             })
             .value()
-            res.render('partails/comment-list', {
+            res.send(compiledComment({
                 comment: comment
-            })
+            }))
             break;
         case 'delete':
             break;

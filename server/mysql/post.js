@@ -6,8 +6,14 @@ const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const adapter_post = new FileSync('db/post.json') 
 const db_post = low(adapter_post)
-const adapter_comment = new FileSync('db/comment.json') 
-const db_comment = low(adapter_comment)
+
+const pug = require('pug');
+// 编译文章页面
+const compiledPost = pug.compileFile('views/post.pug');
+// 编译首页页面
+const compiledIndex = pug.compileFile('views/index.pug');
+// 编译归档页面
+const compiledArchives = pug.compileFile('views/archives.pug');
 
 //serverStartTimestamp
 const sst = new Date().getTime();
@@ -64,12 +70,12 @@ const Articleslist = function(res,flag, ifadmin){
             'updateTime': time
         });
     }
-    res.render('archives', {
+    res.send(compiledArchives({
         'ifadmin': ifadmin,
         'site': option,
         'list': result,
         'sst': sst
-    })
+    }))
 }
 
 exports.adminArticle = (res, flag) =>Articleslist(res,flag, true);
@@ -110,7 +116,7 @@ exports.getArticleList = (res, page) =>{
             });
         }
         if(page == undefined){
-            res.render('index', { 
+            res.send(compiledIndex({ 
                 'site':option,
                 'list':result,
                 'index_aside': config.index_aside,
@@ -119,7 +125,7 @@ exports.getArticleList = (res, page) =>{
                 'carousel': option.carousel,
                 'friends': config.friends,
                 'sst':sst
-            }); 
+            })); 
         }
         else{
             res.json({
@@ -129,7 +135,6 @@ exports.getArticleList = (res, page) =>{
         }
     }
 };
-
 // 单文章页面
 exports.getArticleDetail = (res, id) =>{
     var ht = id.indexOf(".html");
@@ -141,12 +146,11 @@ exports.getArticleDetail = (res, id) =>{
         res.render('404');
         return;
     }
-    var time = rows.updateTime;
     var author_info = config.author[rows.author];
     if (author_info == undefined) {
         author_info = config.author["佚名"];
     }
-    res.render('post', {
+    res.send(compiledPost({
         'site':option,
         'title': rows.title,
         'content': rows.content,
@@ -159,9 +163,9 @@ exports.getArticleDetail = (res, id) =>{
         'logo' : author_info.logo,
         'view': rows.visitors,
         'tag': rows.tag,
-        'updateTime': time,
+        'updateTime': rows.updateTime,
         'sst': sst
-    });
+    }));
     db_post.get(id).assign({visitors:Number(rows.visitors)+1}).write()
 };
 
@@ -325,7 +329,7 @@ exports.post_search = (res, s) =>{
         });
     }
     // console.log(result);
-    res.render('index', {
+    res.send(compiledIndex({
         'site':option,
         'list':result,
         'index_aside': config.index_aside,
@@ -333,7 +337,7 @@ exports.post_search = (res, s) =>{
         'carousel': option.carousel,
         'friends': config.friends,
         'sst': sst
-    }); 
+    })); 
 }
 
 // 点击喜欢事件，like+1
