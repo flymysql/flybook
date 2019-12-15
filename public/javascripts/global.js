@@ -19,7 +19,6 @@ $("#like1").click(function(){
 });
 // 评论提交按钮
 $("#c_submit").click(function(){
-    $("#c_submit")[0].innerHTML = "回复中...";
     var pid = window.location.pathname.slice(6);
     var nick = $("#c_nick").val();
     var email = $("#c_mail").val();
@@ -42,6 +41,7 @@ $("#c_submit").click(function(){
         alert("评论内容不能为空哦");
         return;
     };
+    $("#c_submit")[0].innerHTML = "回复中...";
     $.ajax({
         url: '/comment',
         type: 'POST',
