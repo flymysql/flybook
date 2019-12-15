@@ -17,6 +17,20 @@ $("#like1").click(function(){
         }
     });
 });
+// 获取指定名称的cookie
+function getCookie(name){
+    var strcookie = document.cookie;//获取cookie字符串
+    var arrcookie = strcookie.split("; ");//分割
+    //遍历匹配
+    for ( var i = 0; i < arrcookie.length; i++) {
+        var arr = arrcookie[i].split("=");
+        if (arr[0] == name){
+            return arr[1];
+        }
+    }
+    return "";
+}
+
 // 评论提交按钮
 $("#c_submit").click(function(){
     var pid = window.location.pathname.slice(6);
@@ -26,6 +40,7 @@ $("#c_submit").click(function(){
     var content = $("#c_content").val();
     var pre = $("#pre_com")[0].dataset.pre;
     var author = $("#author_name")[0].dataset.name;
+    var reg=  /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{1,8}$/;
     if(author == undefined) {
         author = "";
     }
@@ -41,6 +56,22 @@ $("#c_submit").click(function(){
         alert("评论内容不能为空哦");
         return;
     };
+    if(nick.length > 30) {
+        alert("昵称太长了！！");
+        return;
+    }
+    if(email.length > 30) {
+        alert("邮箱太长了！！");
+        return;
+    }
+    if(content.length > 8000) {
+        alert("评论内容太长了！！");
+        return;
+    }
+    if(reg.test(email) == false){
+        alert("邮件格式错误");
+        return;
+    }
     $("#c_submit")[0].innerHTML = "回复中...";
     $.ajax({
         url: '/comment',
@@ -64,12 +95,20 @@ $("#c_submit").click(function(){
             $("#pre_com")[0].innerHTML = "";
             $("#c_content").val("");
             comment_event();
+            var exp = new Date();
+            exp.setTime(exp.getTime() + 8640000000);
+            document.cookie = "c_name" + "="+ nick + ";expires=" + exp.toGMTString();
+            document.cookie = "c_email" + "="+ email + ";expires=" + exp.toGMTString();
+            document.cookie = "c_link" + "="+ link + ";expires=" + exp.toGMTString();
         },
         fail: function(err){
             alert("评论添加失败！可能是网络的问题！")
         }
     })
 });
+
+// 获取当前时间的函数
+// 格式：year-month-day h:m:s
 function CurentTime(){ 
     var now = new Date();
     var year = now.getFullYear();
@@ -81,6 +120,7 @@ function CurentTime(){
     var clock = year + "-" + month + "-" + day + " " + hh + ":" + mm + ":" + ss; 
     return(clock); 
 }
+// 评论列表获取
 function comment_event(){
     var ats = $(".c_at");
     for(let i = 0; i < ats.length; i++){
@@ -97,6 +137,8 @@ function comment_event(){
         });
     }
 }
+
+// 云标签创建
 var tagcloud = document.getElementById('tagcloud');
 var to_create = true;
 var create_tag = function(){
@@ -130,6 +172,12 @@ var create_tag = function(){
             success: function(data) {
                 $("#comment")[0].innerHTML = data;
                 comment_event();
+                var c_name = getCookie("c_name");
+                var c_email = getCookie("c_email");
+                var c_link = getCookie("c_link");
+                $("#c_nick").val(c_name);
+                $("#c_mail").val(c_email);
+                $("#c_link").val(c_link);
             }
         })
     }
