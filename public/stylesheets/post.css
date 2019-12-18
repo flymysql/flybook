@@ -808,3 +808,104 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   border-bottom: 3px solid lightcoral;
   text-shadow: 1px 1px 9px #58bcc6;
 }
+
+/* 更多文章列表 */
+
+.index-aside {
+  width: 27%;
+  float: right;
+}
+
+ul .post-item{
+  position: relative;
+  width: 100%;
+  margin: 0 0 15px;
+  padding: 15px 2px 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+  word-wrap: break-word;
+}
+
+.post-item .post-item-content-img{
+  padding-right: 165px;
+}
+
+.post-item a.post-item-img{
+  width: 150px;
+  position: absolute;
+  top: 50%;
+  margin-top: -60px;
+  right: 0;
+  width: 125px;
+  height: 100px;
+}
+
+.post-item img{
+  display: none;
+}
+
+.post-item a.post-item-img img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  border: 1px solid #f0f0f0;
+}
+
+h2.post-item-title{
+  border-bottom: unset;
+  margin: unset;
+}
+
+.post-item-title a{
+  color: #333;
+  text-decoration: unset;
+  display: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.post-item p{
+  margin: 0 0 8px;
+  font-size: 13px;
+  line-height: 24px;
+  color: #999;
+}
+
+.post-item .post-item-meta span{
+  color: rgb(179, 190, 206);
+  line-height: 1;
+  font-size: 13px;
+}
+
+.post-item .post-item-meta span.cop{
+  color: #ea6f5a;
+}
+.post-list {
+  list-style: none!important;
+}
+.author_head{
+  display: inline-block!important;
+  margin-right: 4px;
+  height: 18px;
+  vertical-align: middle;
+  width: 18px;
+  border-radius: 9px;
+}
+ 
+@media (max-width: 960px){
+  .post-item .post-item-content-img{
+    padding-right: unset;
+  }
+  .post-item a.post-item-img{
+    display: none;
+  }
+}
+
+.hr_more_post{
+  font-size: 20px;
+  font-weight: 600;
+  margin: 20px 0;
+  border-left: 6px solid #d73b3b;
+  padding-left: 4px;
+}

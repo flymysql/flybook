@@ -141,7 +141,9 @@ function comment_event(){
 // 云标签创建
 var tagcloud = document.getElementById('tagcloud');
 var to_create = true;
-var create_tag = function(){
+
+// 获取标签云
+function get_tags(){
     $.ajax({
         url: '/gettags',
         type: 'get',
@@ -160,6 +162,10 @@ var create_tag = function(){
             }   
         }
     });
+}
+
+// 获取评论列表
+function get_comment(){
     if($("#comment")[0] != undefined) {
         var pid = window.location.pathname.slice(6);
         $.ajax({
@@ -182,13 +188,51 @@ var create_tag = function(){
         })
     }
 }
+
+// 获取最新文章推荐
+function get_more_post(){
+    $.get("/", {'page':0}, function(data){
+        if(data.code == 1){
+            var post = document.getElementById('more_post_list');
+            var list = data.list;
+            for(var i in list){
+                var l = document.createElement("li");
+                l.className = "post-item";
+                var block_class = '<div class="post-item-content">';
+                var post_img = "";
+                if(list[i].img != ""){
+                    post_img = '<a class="post-item-img" href="/post/' + list[i].id +'"><img src="' + list[i].img + '" alt="" id="no-view"></a>';
+                    block_class = '<div class="post-item-content-img">';
+                }
+                var title = '<h2 class="post-item-title"><a href="/post/' + list[i].id +'">' + list[i].title +'</a></h2>';
+                var desc = '<p>' + list[i].content + '</p>';
+                var meta = '<div class="post-item-meta"><a href="/search?s='+list[i].author+'"><img class="author_head" src="'+ list[i].author_head +'"><span class="author">'+ list[i].author +'</span></a><span class="cop">' + list[i].cop + '<i></i></span><span> 阅读' + list[i].view + '</span><span> ' + list[i].tag + '</span><span> ' + list[i].updateTime + '</span></div>';
+                var content = post_img + block_class + title + desc + meta + "</div>";
+                l.innerHTML = content;
+                post.appendChild(l);
+            }
+            console.log("succeed!")
+            }
+        })
+}
+
+// 各功能区块的获取
+var get_blocks = function(){
+    // 获取标签云
+    get_tags();
+    // 获取评论列表
+    get_comment();
+    // 获取最新文章推荐
+    get_more_post();
+}
+
 if (typeof IntersectionObserver == "function"){
     console.log("浏览器支持懒加载");
     var observertag = new IntersectionObserver(
         function (changes) {
             changes.forEach( function (change) {
                 if (change.intersectionRatio > 0) {
-                    create_tag();
+                    get_blocks();
                     observertag.unobserve(tagcloud);
                 }
             })
@@ -198,8 +242,8 @@ if (typeof IntersectionObserver == "function"){
     console.log("懒加载程序正常执行！");
 }
 else {
-    console.log("该浏览器不支持图片懒加载，启动强制加载")
-    create_tag();
+    console.log("该浏览器不支持懒加载，启动强制加载")
+    get_blocks();
 }
 
 //百度推送
