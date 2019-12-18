@@ -1,0 +1,20 @@
+ul(style="width: 100%;list-style: none;margin: 0;padding: 0;")
+    li(style="list-style: none;word-break: break-all;")
+        div(style="padding: 2em .5em 2em;border-top: 1px solid rgba(150, 150, 150, 0.08);")
+            div(style="line-height: 1;display: block;margin-bottom: .3em;position: relative;")
+                img(style="margin-right: 1em;margin-top: 0.1em;display: inline-block;height: 36px;width: 36px;position: absolute;top: 0;border-radius: 50%;" src="https://v1.alapi.cn/api/avatar?email=" + c.email + "&size=50")
+            div(style=" margin: 0 0 0 48px;")
+                a(style="font-weight: bolder;font-size: 1em;margin-right: 10px;color: rgba(0, 0, 0, 0.7);" href=c.link target="_blank" rel="nofollow")=c.nick
+                span(style="color: #a9a4a4;display: inline-block;font-weight: normal;font-size: 90%;")=c.time
+            div(style="overflow: hidden;-webkit-box-sizing: border-box;box-sizing: border-box;margin-left: 48px;padding-top: 5px;")!=c.content
+        div(style="width:92%;float:right;width: 100%;list-style: none;margin: 0;padding: 0;")
+            each cc in c.child
+                li(style="list-style: none;word-break: break-all;")
+                    div(style="padding: 2em .5em 2em;border-top: 1px solid rgba(150, 150, 150, 0.08);")
+                        div(style="line-height: 1;display: block;margin-bottom: .3em;position: relative;")
+                            img(style="margin-right: 1em;margin-top: 0.1em;display: inline-block;height: 36px;width: 36px;position: absolute;top: 0;border-radius: 50%;" src="https://v1.alapi.cn/api/avatar?email=" + cc.email + "&size=50")
+                        div(class="c_info")
+                            a(style="font-weight: bolder;font-size: 1em;margin-right: 10px;color: rgba(0, 0, 0, 0.7);" target="_blank" rel="nofollow")=cc.nick
+                            span(style="color: #a9a4a4;display: inline-block;font-weight: normal;font-size: 90%;")=cc.time
+                        div(style="overflow: hidden;-webkit-box-sizing: border-box;box-sizing: border-box;margin-left: 48px;padding-top: 5px;")!=cc.content
+        div(style="clear:both;")

@@ -228,7 +228,6 @@ var get_blocks = function(){
     // 获取最新文章推荐
     get_more_post();
 }
-
 if (typeof IntersectionObserver == "function"){
     console.log("浏览器支持懒加载");
     var observertag = new IntersectionObserver(
@@ -262,7 +261,8 @@ window.onload = function(){
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(bp, s);
 }
-var qrcode = document.getElementById("qrcode");
-if (qrcode!=undefined){
-    document.getElementById("qrcode").src="http://qr.topscan.com/api.php?&w=200&text=" + window.location.href;
+if (document.getElementById("qrcode")!=undefined){
+    window.onload = function(){
+        document.getElementById("qrcode").src="http://qr.topscan.com/api.php?&w=200&text=" + window.location.href;
+    }
 }
