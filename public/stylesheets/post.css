@@ -900,6 +900,9 @@ h2.post-item-title{
   .post-item a.post-item-img{
     display: none;
   }
+  .post_list{
+    padding: 0 8px;
+  }
 }
 
 .hr_more_post{

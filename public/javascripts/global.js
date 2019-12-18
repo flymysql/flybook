@@ -191,29 +191,32 @@ function get_comment(){
 
 // 获取最新文章推荐
 function get_more_post(){
-    $.get("/", {'page':0}, function(data){
-        if(data.code == 1){
-            var post = document.getElementById('more_post_list');
-            var list = data.list;
-            for(var i in list){
-                var l = document.createElement("li");
-                l.className = "post-item";
-                var block_class = '<div class="post-item-content">';
-                var post_img = "";
-                if(list[i].img != ""){
-                    post_img = '<a class="post-item-img" href="/post/' + list[i].id +'"><img src="' + list[i].img + '" alt="" id="no-view"></a>';
-                    block_class = '<div class="post-item-content-img">';
+    var post = document.getElementById('more_post_list');
+    if (post!=undefined){
+        $.get("/", {'page':0}, function(data){
+            if(data.code == 1){
+                
+                var list = data.list;
+                for(var i in list){
+                    var l = document.createElement("li");
+                    l.className = "post-item";
+                    var block_class = '<div class="post-item-content">';
+                    var post_img = "";
+                    if(list[i].img != ""){
+                        post_img = '<a class="post-item-img" href="/post/' + list[i].id +'"><img src="' + list[i].img + '" alt="" id="no-view"></a>';
+                        block_class = '<div class="post-item-content-img">';
+                    }
+                    var title = '<h2 class="post-item-title"><a href="/post/' + list[i].id +'">' + list[i].title +'</a></h2>';
+                    var desc = '<p>' + list[i].content + '</p>';
+                    var meta = '<div class="post-item-meta"><a href="/search?s='+list[i].author+'"><img class="author_head" src="'+ list[i].author_head +'"><span class="author">'+ list[i].author +'</span></a><span class="cop">' + list[i].cop + '<i></i></span><span> 阅读' + list[i].view + '</span><span> ' + list[i].tag + '</span><span> ' + list[i].updateTime + '</span></div>';
+                    var content = post_img + block_class + title + desc + meta + "</div>";
+                    l.innerHTML = content;
+                    post.appendChild(l);
                 }
-                var title = '<h2 class="post-item-title"><a href="/post/' + list[i].id +'">' + list[i].title +'</a></h2>';
-                var desc = '<p>' + list[i].content + '</p>';
-                var meta = '<div class="post-item-meta"><a href="/search?s='+list[i].author+'"><img class="author_head" src="'+ list[i].author_head +'"><span class="author">'+ list[i].author +'</span></a><span class="cop">' + list[i].cop + '<i></i></span><span> 阅读' + list[i].view + '</span><span> ' + list[i].tag + '</span><span> ' + list[i].updateTime + '</span></div>';
-                var content = post_img + block_class + title + desc + meta + "</div>";
-                l.innerHTML = content;
-                post.appendChild(l);
-            }
-            console.log("succeed!")
-            }
-        })
+                console.log("succeed!")
+                }
+            })
+    }
 }
 
 // 各功能区块的获取
@@ -259,5 +262,7 @@ window.onload = function(){
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(bp, s);
 }
-
-document.getElementById("qrcode").src="http://qr.topscan.com/api.php?&w=200&text=" + window.location.href;
+var qrcode = document.getElementById("qrcode");
+if (qrcode!=undefined){
+    document.getElementById("qrcode").src="http://qr.topscan.com/api.php?&w=200&text=" + window.location.href;
+}
