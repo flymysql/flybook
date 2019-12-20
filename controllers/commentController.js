@@ -5,6 +5,7 @@ const email_auth = require('../config').email_auth;
 const site_name = require('../config').seo.title;
 const authors = require('../config').author;
 const db_comment = low(adapter_comment)
+var users = require('../server/config/user').items;
 var nodemailer  = require('nodemailer');
 var mailTransport = nodemailer.createTransport({
     host : 'smtp.qq.com',
@@ -17,6 +18,13 @@ var mailTransport = nodemailer.createTransport({
 const pug = require('pug');
 // 编译评论页面
 const compiledComment = pug.compileFile('views/partails/comment-list.pug');
+// 判断是否登陆
+var ifLogin = function (name) {
+    for (i in users) {
+        if (users[i].name === name) return true;
+    }
+    return false;
+}
 
 // 发送邮件通知
 function sendMail(to_name, to_email, title, text, html , send_time=0){
@@ -48,6 +56,10 @@ function sendMail(to_name, to_email, title, text, html , send_time=0){
 function push_comment(data, href) {
     var p_title = data.title;
     var cid = Math.random().toString(16).substr(7);
+    var clink = data.link;
+    if(clink.indexOf("http") == -1){
+        clink = "http://" + clink;
+    }
     if(db_comment.get(data.pid).value() == undefined){
         console.log("文章首次评论")
         db_comment.set(data.pid, {}).write()
@@ -57,7 +69,7 @@ function push_comment(data, href) {
             cid: cid,
             nick: data.nick,
             email: data.email,
-            link: data.link,
+            link: clink,
             content: data.content,
             time: data.time,
             child: {}
@@ -98,6 +110,31 @@ function push_comment(data, href) {
     sendMail(author_name, authors_email, title, text, html);
 }
 
+// 删除留言
+function del_comment(req, res){
+    var sess = req.session;
+    var loginUser = sess.loginUser;
+    var isLogined = ifLogin(loginUser);
+    if(!isLogined){
+        res.end('error'); 
+        return;
+    }
+    var pid = req.body.pid;
+    if(req.body.pre != "") {
+        pid = pid + "." + req.body.pre + ".child";
+    }
+    db_comment.get(pid).unset(req.body.cid).write();
+    var comment = db_comment.get(req.body.pid)
+    .sortBy(function(o){
+        var t = o.time.split(' ')[0].split('-');
+        return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));
+    })
+    .value()
+    res.send(compiledComment({
+        comment: comment
+    }))
+}
+
 exports.com_Controller = (req, res) =>{
     var op = req.body.op;
     switch(op){
@@ -128,7 +165,8 @@ exports.com_Controller = (req, res) =>{
                 comment: comment
             }))
             break;
-        case 'delete':
+        case 'del':
+            del_comment(req, res)
             break;
         default:
             break; 

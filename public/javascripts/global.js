@@ -136,6 +136,40 @@ function comment_event(){
             })
         });
     }
+    var dels = $(".c_del");
+    
+    for(let j = 0; j < dels.length; j++){
+        var id = dels[j].id;
+        $("#"+id).click(function(){
+            var pid = window.location.pathname.slice(6);
+            var pre = this.dataset.pre;
+            if(pre == undefined){
+                pre = "";
+            }
+            $.ajax({
+                url: '/comment',
+                type: 'POST',
+                data :{
+                    op: 'del',
+                    pid: pid,
+                    pre: pre,
+                    cid: this.dataset.did
+                },
+                success: function(data) {
+                    if(data=="error"){
+                        alert("你不是管理员哦！")
+                        return;
+                    }
+                    console.log("suucced delete")
+                    $("#comment")[0].innerHTML = data;
+                    comment_event();
+                },
+                fail: function(e){
+                    console.log(e)
+                }
+            })
+        });
+    }
 }
 
 // 云标签创建

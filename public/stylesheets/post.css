@@ -753,10 +753,12 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   top: 0;
   border-radius: 50%;
 }
+.c_body:hover .c_del,
 .c_body:hover .c_at{
   background: #000;
   color: #ffffff;
 }
+.c_del,
 .c_at{
   float: right;
   background: transparent;
@@ -764,6 +766,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   padding: .2em 1em;
   line-height: 1.2;
   cursor: pointer;
+  margin: 3px;
   word-break: keep-all;
   white-space: nowrap;
   text-transform: uppercase;
