@@ -396,8 +396,8 @@ body{
   .author {
     margin: 30px 0 40px;
     box-sizing: border-box;
-    display: flex;
   }
+
   .author .avatar {
     width: 48px;
     height: 48px;
