@@ -53,19 +53,19 @@ function sendMail(to_name, to_email, title, text, html , send_time=0){
 }
 
 // 添加评论
-function push_comment(data, href) {
+function push_comment(pid, data, href) {
     var p_title = data.title;
     var cid = Math.random().toString(16).substr(7);
     var clink = data.link;
     if(clink.indexOf("http") == -1){
         clink = "http://" + clink;
     }
-    if(db_comment.get(data.pid).value() == undefined){
+    if(db_comment.get(pid).value() == undefined){
         console.log("文章首次评论")
-        db_comment.set(data.pid, {}).write()
+        db_comment.set(pid, {}).write()
     }
     if (data.pre == "") {
-        db_comment.get(data.pid).set(cid, {
+        db_comment.get(pid).set(cid, {
             cid: cid,
             nick: data.nick,
             email: data.email,
@@ -75,7 +75,7 @@ function push_comment(data, href) {
             child: {}
         }).write()
     } else {
-        var ccid = data.pid + '.' + data.pre + '.child';
+        var ccid = pid + '.' + data.pre + '.child';
         db_comment.get(ccid).set(cid, {
             cid: cid,
             nick: data.nick,
@@ -86,7 +86,7 @@ function push_comment(data, href) {
             pre: data.pre
         }).write()
         // 邮件通知被回复者
-        var pre_c = db_comment.get(data.pid + '.' + data.pre).value();
+        var pre_c = db_comment.get(pid + '.' + data.pre).value();
         var p_nick = pre_c.nick;
         var p_mail = pre_c.email;
         var p_content = pre_c.content;
@@ -120,6 +120,10 @@ function del_comment(req, res){
         return;
     }
     var pid = req.body.pid;
+    var index = pid.indexOf(".html");
+    if(index != -1) {
+        pid = pid.slice(0, index);
+    }
     if(req.body.pre != "") {
         pid = pid + "." + req.body.pre + ".child";
     }
@@ -137,9 +141,14 @@ function del_comment(req, res){
 
 exports.com_Controller = (req, res) =>{
     var op = req.body.op;
+    var pid = req.body.pid;
+    var index = pid.indexOf(".html");
+    if(index != -1) {
+        pid = pid.slice(0, index);
+    }
     switch(op){
         case 'get':
-            var comment = db_comment.get(req.body.pid)
+            var comment = db_comment.get(pid)
             .sortBy(function(o){
                 var t = o.time.split(' ')[0].split('-');
                 return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));
@@ -154,8 +163,8 @@ exports.com_Controller = (req, res) =>{
             }));
             break;
         case 'push':
-            push_comment(req.body, req.headers.referer);
-            var comment = db_comment.get(req.body.pid)
+            push_comment(pid, req.body, req.headers.referer);
+            var comment = db_comment.get(pid)
             .sortBy(function(o){
                 var t = o.time.split(' ')[0].split('-');
                 return 0-(Number(t[0]) * 365 + Number(t[1]) * 30 + Number(t[2]));

@@ -33,7 +33,7 @@ function getCookie(name){
 
 // 评论提交按钮
 $("#c_submit").click(function(){
-    var pid = window.location.pathname.slice(6);
+    var pid = window.location.pathname;
     var nick = $("#c_nick").val();
     var email = $("#c_mail").val();
     var link = $("#c_link").val();
@@ -141,7 +141,7 @@ function comment_event(){
     for(let j = 0; j < dels.length; j++){
         var id = dels[j].id;
         $("#"+id).click(function(){
-            var pid = window.location.pathname.slice(6);
+            var pid = window.location.pathname;
             var pre = this.dataset.pre;
             if(pre == undefined){
                 pre = "";
@@ -201,7 +201,7 @@ function get_tags(){
 // 获取评论列表
 function get_comment(){
     if($("#comment")[0] != undefined) {
-        var pid = window.location.pathname.slice(6);
+        var pid = window.location.pathname;
         $.ajax({
             url: '/comment',
             type: 'POST',
