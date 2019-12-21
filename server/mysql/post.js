@@ -164,6 +164,7 @@ exports.getArticleDetail = (res, id) =>{
         'view': rows.visitors,
         'tag': rows.tag,
         'updateTime': rows.updateTime,
+        'createTime': rows.createTime,
         'sst': sst
     }));
     db_post.get(id).assign({visitors:Number(rows.visitors)+1}).write()
