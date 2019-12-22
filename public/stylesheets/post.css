@@ -748,8 +748,9 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   margin-right: 1em;
   margin-top: 0.1em;
   display: inline-block;
-  height: 36px;
-  width: 36px;
+  height: 38px;
+  width: 38px;
+  border: 1px solid #e7ac64;
   position: absolute;
   top: 0;
   border-radius: 50%;
