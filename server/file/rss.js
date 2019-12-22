@@ -6,6 +6,7 @@ var index = config.seo.index;
 
 exports.createrss = function(db_post){
     var today = until.nowDate();
+    var urls = "";
     var rss_content = `
     <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
         <channel>
@@ -61,6 +62,7 @@ exports.createrss = function(db_post){
         if (time == null){
             time = today;
         }
+        urls += `${index}/post/${rows[i].id}\n`;
         sitemap_content = sitemap_content + `
         <url>
             <loc>${index}/post/${rows[i].id}</loc>
@@ -70,6 +72,7 @@ exports.createrss = function(db_post){
     }
     // 渲染tag
     for(var i in config.tags){
+        urls += `${index}/tag/${config.tags[i]}\n`;
         sitemap_content = sitemap_content + `
         <url>
             <loc>${index}/tag/${config.tags[i]}</loc>
@@ -83,6 +86,13 @@ exports.createrss = function(db_post){
         console.error(err);
         } else {
             console.log('写入sitemap成功');
+        }
+    });
+    fs.writeFile('public/urls.txt', urls, function (err) {
+        if(err) {
+        console.error(err);
+        } else {
+            console.log('写入urls成功');
         }
     });
     return;

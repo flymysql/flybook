@@ -4,7 +4,7 @@ ul(class="c_list")
         li(class="c_card")
             div(class="c_body")
                 div(class="c_head")
-                    img(class="vavatar" src="https://v1.alapi.cn/api/avatar?email=" + c.email + "&size=50")
+                    img(class="vavatar" src="https://api.paugram.com/gravatar/?email=" + c.email)
                     a(data-at="@"+c.nick class="c_at" rel="nofollow" id=c.cid data-cid=c.cid href="#tagcloud")="回复"
                     a(class="c_del" rel="nofollow" id="del"+c.cid data-did=c.cid)="删除"
                 div(class="c_info")
@@ -16,7 +16,7 @@ ul(class="c_list")
                     div(class="c_card")
                         div(class="c_body")
                             div(class="c_head")
-                                img(class="vavatar" src="https://v1.alapi.cn/api/avatar?email=" + cc.email + "&size=50")
+                                img(class="vavatar" src="https://api.paugram.com/gravatar/?email=" + cc.email)
                                 a(data-at="@"+cc.nick class="c_at" rel="nofollow" id=cc.cid data-cid=c.cid href="#tagcloud")="回复"
                                 a(class="c_del" rel="nofollow" id="del"+cc.cid data-did=cc.cid data-pre=c.cid)="删除"
                             div(class="c_info")
