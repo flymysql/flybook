@@ -1772,6 +1772,25 @@
           "pre": "5df0d549fc36ed006891fcce"
         }
       }
+    },
+    "3a9e9da1": {
+      "cid": "3a9e9da1",
+      "nick": "小鸡",
+      "email": "flyphp@outlook.com",
+      "link": "https://me.idealli.com",
+      "content": "<h2>富文本测试</h2><p><span style=\"font-weight: bold;\">​加粗</span><br></p><p><span style=\"font-size: x-small;\">小字号，</span><span style=\"font-size: x-large;\">大字号</span></p><p><span style=\"text-decoration-line: line-through;\">​删除线，</span><span style=\"text-decoration-line: underline;\">下划线，<span style=\"color: rgb(139, 170, 74);\">五</span><span style=\"color: rgb(0, 0, 0);\">颜</span><span style=\"color: rgb(249, 150, 59);\">六</span><span style=\"color: rgb(77, 128, 191);\">色</span></span><span style=\"font-size: x-large;\"><br></span></p>",
+      "time": "2019-12-26 10:13:14",
+      "child": {
+        "47fb44ff": {
+          "cid": "47fb44ff",
+          "nick": "小鸡",
+          "email": "flyphp@outlook.com",
+          "link": "https://me.idealli.com",
+          "content": "<a href=\"#3a9e9da1\">@小鸡，</a>回复测试",
+          "time": "2019-12-26 10:27:44",
+          "pre": "3a9e9da1"
+        }
+      }
     }
   }
 }

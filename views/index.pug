@@ -12,14 +12,14 @@ block content
         each post in list
           li(class="post-item")
             if post.img != ""
-              a(href="/post/" + post.id class="post-item-img")
+              a(href="/post/" + post.id class="post-item-img" target="_blank")
                 img(src=post.img, alt="" id="no-view")
               div(class="post-item-content-img")
                 h2(class="post-item-title")
-                  a(href="/post/" + post.id)=post.title
+                  a(href="/post/" + post.id target="_blank")=post.title
                 p!=post.content
                 div(class="post-item-meta")
-                  a(href="/search?s="+post.author)
+                  a(href="/search?s="+post.author target="_blank")
                     img(src=post.author_head class="author_head")
                     span(class="author")= post.author
                   span(class="cop")= "✿" + post.cop
@@ -29,7 +29,7 @@ block content
             else
               div(class="post-item-content")
                 h2(class="post-item-title")
-                  a(href="/post/" + post.id)=post.title
+                  a(href="/post/" + post.id target="_blank")=post.title
                 p!=post.content
                 div(class="post-item-meta")
                   a(href="/search?s="+post.author)
@@ -37,7 +37,7 @@ block content
                     span(class="author")= post.author
                   span(class="cop")= "✿" + post.cop
                   span= " 阅读" + post.view
-                  a(href="/tag/"+post.tag)
+                  a(href="/tag/"+post.tag target="_blank")
                     span= " " + post.tag
                   span= " " + post.updateTime
       div(class="ads")

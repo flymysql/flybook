@@ -9,6 +9,23 @@ jQuery(document).ready(function () {
         'delay'  : 300 
     });
 });
+
+// 评论框编辑初始化
+function comment_init(){
+    var script = document.createElement('script') ;
+    script.type ='text/javascript' ;
+    script.src = "https://unpkg.com/wangeditor@3.1.1/release/wangEditor.min.js";
+    var head = document.getElementsByTagName('head')[0];
+    head.appendChild(script);
+
+    script.onload = function(){
+        var E = window.wangEditor
+        // var editor = new E('#editor')
+        var editor = new E( document.getElementById('c_content') )
+        editor.create()
+    }
+}
+
 // 用户点击喜欢
 $("#like1").click(function(){
     $.get("/like-add", function(status){
@@ -37,7 +54,7 @@ $("#c_submit").click(function(){
     var nick = $("#c_nick").val();
     var email = $("#c_mail").val();
     var link = $("#c_link").val();
-    var content = $("#c_content").val();
+    var content = $(".w-e-text")[0].innerHTML;
     var pre = $("#pre_com")[0].dataset.pre;
     var author = $("#author_name")[0].dataset.name;
     var reg=  /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{1,8}$/;
@@ -93,7 +110,7 @@ $("#c_submit").click(function(){
             $("#comment")[0].innerHTML = data;
             $("#pre_com")[0].dataset.pre = "";
             $("#pre_com")[0].innerHTML = "";
-            $("#c_content").val("");
+            $(".w-e-text")[0].innerHTML = "<p></p>";
             comment_event();
             var exp = new Date();
             exp.setTime(exp.getTime() + 8640000000);
@@ -128,11 +145,11 @@ function comment_event(){
         $("#"+cid).click(function(){
             $("#pre_com")[0].innerHTML = "<div>" + this.parentNode.parentNode.innerHTML + "<div><a href=\"#tagcloud\" class=\"cancel\" id=\"cancel\">取消回复</a>";
             $("#pre_com")[0].dataset.pre = ats[i].dataset.cid;
-            $("#c_content").val(this.dataset.at + "，");
+            $(".w-e-text")[0].innerHTML = `<a href="#${ats[i].dataset.cid}">${this.dataset.at}，</a>`;
             $("#cancel").click(function(){
                 $("#pre_com")[0].dataset.pre = "";
                 $("#pre_com")[0].innerHTML = "";
-                $("#c_content").val("");
+                $(".w-e-text")[0].innerHTML = `<p></p>`;
             })
         });
     }
@@ -237,12 +254,12 @@ function get_more_post(){
                     var block_class = '<div class="post-item-content">';
                     var post_img = "";
                     if(list[i].img != ""){
-                        post_img = '<a class="post-item-img" href="/post/' + list[i].id +'"><img src="' + list[i].img + '" alt="" id="no-view"></a>';
+                        post_img = '<a class="post-item-img" href="/post/' + list[i].id +'" target="_blank"><img src="' + list[i].img + '" alt="" id="no-view"></a>';
                         block_class = '<div class="post-item-content-img">';
                     }
-                    var title = '<h2 class="post-item-title"><a href="/post/' + list[i].id +'">' + list[i].title +'</a></h2>';
+                    var title = '<h2 class="post-item-title"><a href="/post/' + list[i].id +'" target="_blank">' + list[i].title +'</a></h2>';
                     var desc = '<p>' + list[i].content + '</p>';
-                    var meta = '<div class="post-item-meta"><a href="/search?s='+list[i].author+'"><img class="author_head" src="'+ list[i].author_head +'"><span class="author">'+ list[i].author +'</span></a><span class="cop">' + list[i].cop + '<i></i></span><span> 阅读' + list[i].view + '</span><span> ' + list[i].tag + '</span><span> ' + list[i].updateTime + '</span></div>';
+                    var meta = '<div class="post-item-meta"><a href="/search?s='+list[i].author+'" target="_blank"><img class="author_head" src="'+ list[i].author_head +'"><span class="author">'+ list[i].author +'</span></a><span class="cop">' + list[i].cop + '<i></i></span><span> 阅读' + list[i].view + '</span><span> ' + list[i].tag + '</span><span> ' + list[i].updateTime + '</span></div>';
                     var content = post_img + block_class + title + desc + meta + "</div>";
                     l.innerHTML = content;
                     post.appendChild(l);
@@ -255,6 +272,8 @@ function get_more_post(){
 
 // 各功能区块的获取
 var get_blocks = function(){
+    // 初始化评论框的富文本编辑
+    comment_init();
     // 获取标签云
     get_tags();
     // 获取评论列表
