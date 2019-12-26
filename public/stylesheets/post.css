@@ -85,7 +85,7 @@ hr {
   background-color: #dbdbdb;
 }
 
-.post-body img {
+ img {
   max-width: 100%;
   height: auto;
   border: 0;
@@ -144,7 +144,7 @@ pre code{
   background-color: unset;
 }
 
-.post-body p {
+ p {
   margin: 0 0 1.5rem;
   letter-spacing: 0.3px;
   line-height: 2em;
@@ -152,16 +152,16 @@ pre code{
   color:#213346;
 }
 
-.post-body p:last-child {
+ p:last-child {
   margin-bottom: 0;
 }
 
-.post-body h1,
-.post-body h2,
-.post-body h3,
-.post-body h4,
-.post-body h5,
-.post-body h6 {
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
   display: block;
   margin: 0 0 2rem;
   color: #000;
@@ -170,9 +170,9 @@ pre code{
   line-height: 1.25;
 }
 
-.post-body h2 .header-anchor,
-.post-body h3 .header-anchor,
-.post-body h4 .header-anchor{
+ h2 .header-anchor,
+ h3 .header-anchor,
+ h4 .header-anchor{
   display: none;
 }
 
@@ -189,26 +189,26 @@ h1 {
   font-size: 2rem;
 }
 
-.post-body h2 {
+ h2 {
   border-bottom: 1px solid #b1c7da70;
   font-size: 1.6rem;
 }
 
-.post-body h3 {
+ h3 {
   border-bottom: 1px solid #9cafc070;
   font-size: 1.4rem;
 }
 
-.post-body h4 {
+ h4 {
   border-bottom: 1px solid #e9f2fa70;
   font-size: 1.25rem;
 }
 
-.post-body h5 {
+ h5 {
   font-size: 1.125rem;
 }
 
-.post-body h6 {
+ h6 {
   font-size: 1rem;
 }
 
@@ -387,7 +387,7 @@ body{
     margin-top: 80px;
   }
 
-  article .post-body{
+  article .post-body {
     margin-bottom: 20px;
     border-bottom: slategray solid 1px;
     padding-bottom: 20px;
@@ -678,6 +678,13 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .comment .w-e-toolbar{
   background: #fff!important;
 }
+.comment pre{
+  background: #f8fffa;
+  padding: 6px;
+}
+.comment img{
+  margin: 10px;
+}
 .auth-section{
   display: -webkit-box;
   display: flex;
@@ -801,6 +808,7 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   box-sizing: border-box;
   margin-left: 48px;
   padding-top: 5px;
+  margin-top: 10px;
 }
 
 .smile-area{
