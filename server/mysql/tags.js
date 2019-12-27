@@ -60,6 +60,7 @@ exports.queryOneTags = (res, req) =>{
         'tag': true,
         'carousel': option.carousel,
         'friends': config.friends,
+        'tags':config.tags,
         'sst' : new Date().getTime()
     }); 
 }

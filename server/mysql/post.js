@@ -339,6 +339,7 @@ exports.post_search = (res, s) =>{
         'tag': true,
         'carousel': option.carousel,
         'friends': config.friends,
+        'tags':config.tags,
         'sst': sst
     })); 
 }
