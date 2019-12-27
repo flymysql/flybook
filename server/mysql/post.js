@@ -124,7 +124,8 @@ exports.getArticleList = (res, page) =>{
                 'pre': parseInt(page)-1>=0? parseInt(page)-1 : 0,
                 'carousel': option.carousel,
                 'friends': config.friends,
-                'sst':sst
+                'sst':sst,
+                'tags':config.tags
             })); 
         }
         else{
@@ -165,6 +166,7 @@ exports.getArticleDetail = (res, id) =>{
         'tag': rows.tag,
         'updateTime': rows.updateTime,
         'createTime': rows.createTime,
+        'tags':config.tags,
         'sst': sst
     }));
     db_post.get(id).assign({visitors:Number(rows.visitors)+1}).write()

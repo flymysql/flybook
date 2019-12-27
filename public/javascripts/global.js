@@ -195,24 +195,10 @@ var to_create = true;
 
 // 获取标签云
 function get_tags(){
-    $.ajax({
-        url: '/gettags',
-        type: 'get',
-        success: function(data){
-            if(data.code === 200){
-                var tags = data.data;
-                for(var i in tags){
-                    if(tags[i]!=""){
-                        var node = document.createElement("a");
-                        node.setAttribute('style', 'font-size: 16px;');
-                        node.setAttribute('href', '/tag/' + tags[i]);
-                        node.innerHTML = '<div class="tag_img" style="background-image:url(https://image.idealli.com/tags/'+ tags[i] +'.png);"></div>' + tags[i];
-                        tagcloud.appendChild(node);
-                    }
-                }
-            }   
-        }
-    });
+    var tags = $(".tag_img");
+    for(var i  = 0; i < tags.length; i++){
+        tags[i].style.backgroundImage = `url("https://image.idealli.com/tags/${tags[i].dataset.img}.png")`;
+    }
 }
 
 // 获取评论列表
@@ -281,13 +267,14 @@ var get_blocks = function(){
     // 获取最新文章推荐
     get_more_post();
 }
-if (typeof IntersectionObserver == "function"){
+if (typeof IntersectionObserver == "function" && to_create == true){
     console.log("浏览器支持懒加载");
     var observertag = new IntersectionObserver(
         function (changes) {
             changes.forEach( function (change) {
                 if (change.intersectionRatio > 0) {
                     get_blocks();
+                    to_create = false;
                     observertag.unobserve(tagcloud);
                 }
             })
@@ -300,7 +287,6 @@ else {
     console.log("该浏览器不支持懒加载，启动强制加载")
     get_blocks();
 }
-
 //百度推送
 window.onload = function(){
     var bp = document.createElement('script');

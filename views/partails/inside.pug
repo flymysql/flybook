@@ -4,6 +4,10 @@ div(class="index-aside")
             a(href=asd.link target='_blank' style='text-align: right; width: 80%;')
                 img(src=asd.img width='100%' id="no-view")
     div(class="tag-cloud-tags" id="tagcloud")
+        each tag in tags
+                a(style="font-size: 16px;" href="/tag/" + tag)
+                    div(class="tag_img" data-img=tag)
+                    span=tag
     br
     span= "推荐作者"
     ul(class="index-list")

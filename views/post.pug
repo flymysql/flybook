@@ -31,7 +31,11 @@ block content
         div(class="ads")
             a(class="ads-link" href="https://me.idealli.com/post/651cfd47.html" target="_blank")
                 img(data-src="https://me.idealli.com/uploads/images/imageup-1558576491588.png", class="ads-img" id="no-view")
-        div(class="tag-cloud-tags" id="tagcloud" name="tagcloud") 
+        div(class="tag-cloud-tags" id="tagcloud" name="tagcloud")
+            each tag in tags
+                a(style="font-size: 16px;" href="/tag/" + tag)
+                    div(class="tag_img" data-img=tag)
+                    span=tag
         br
         include partails/comment
         div(class="hr_more_post")="最近文章"
