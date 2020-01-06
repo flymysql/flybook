@@ -202,8 +202,8 @@ exports.insertArticle = (req, res) =>{
         return;
     }
     var date = until.nowDate();
-    var content = req.body.content.replace(/'/g,'"');
-    var title = req.body.title.replace(/'/g,'"');
+    var content = req.body.content.replace(/'/g,'\'');
+    var title = req.body.title.replace(/'/g,'\'');
     var desc = req.body.desc;
     if(desc.length > 100){
         desc = desc.substring(0,100);
