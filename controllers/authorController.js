@@ -100,7 +100,8 @@ exports.get_style_path = (req, res) => {
     console.log(users[0].name);
     if (loginUser == users[0].name) {
         var filedir = readDirSync("public/stylesheets");
-        filedir = filedir.concat(readDirSync("views"))
+        filedir = filedir.concat(readDirSync("views"));
+        filedir = filedir.concat(["config.js"])
         res.render("style", {
             dir: filedir
         });

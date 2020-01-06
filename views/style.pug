@@ -6,7 +6,7 @@ html
         include partails/header
         div(class="file_list")
             each p in dir
-                p(onclick="get_css(this.id)" id=p)=p
+                a(onclick="get_css(this.id)" id=p href="#" class="item")=p
         div(class="file_content")
             textarea(name="file_content" id="file_content" spellcheck="false")
             button(onclick="push_css()" style="margin:20px;width:60px;height:30px")="保存"
