@@ -146,7 +146,7 @@ exports.getArticleDetail = (res, id) =>{
         id = id.slice(0, ht);
     }
     var rows = db_post.get(id).value()
-    if(rows == undefined){
+    if(rows == undefined || rows.type != "post"){
         res.render('404');
         return;
     }
