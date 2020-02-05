@@ -9,7 +9,7 @@ cp -rf flybook/until ./
 cp -rf flybook/public/javascripts ./public/
 cp -rf flybook/public/third-part ./public/
 cp -rf flybook/public/stylesheets ./public/
-cp -rf flybook/public/others/loginPage ./public/others
+# cp -rf flybook/public/others/loginPage ./public/others
 cp -rf flybook/public/robots.txt ./public/
 cp -rf flybook/views ./
 cp -rf flybook/package.json ./

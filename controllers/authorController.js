@@ -183,6 +183,16 @@ exports.get_style_path = (req, res) => {
 
  // 微信小程序端用户注册
 exports.wechat_signup = function(req, res) {
+    const adapter_signcode = new FileSync('db/signcode.json') 
+    const sign_code = low(adapter_signcode)
+    var cur_code = sign_code.get(req.body.signcode).value()
+    if (cur_code == undefined || cur_code == false) {
+        res.end("2");
+        return;
+    }
+    else {
+        sign_code.set(req.body.signcode, false).write()
+    }
     var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + secret + '&js_code=' + req.body.code + '&grant_type=authorization_code';
     request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
@@ -231,7 +241,9 @@ function sendCode(body, res) {
         })
         if (curuser.value() == undefined) {
             console.log("未注册用户")
-            res.send("1")
+            res.json({
+                s: 1
+            })
             return;
         }
         else {
@@ -241,10 +253,16 @@ function sendCode(body, res) {
             }).write()
 
             var r = code + '-' + String(t)
-            res.send(r)
+            res.json({
+                code: code,
+                time: t,
+                s: 0
+            })
         } 
     }
     else {
-        res.send("2")
+        res.json({
+            s:2
+        })
     }
 }

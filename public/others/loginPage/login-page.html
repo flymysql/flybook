@@ -139,7 +139,7 @@
 				if(data.ret_code === 0){
 					var exp = new Date();
 					exp.setTime(exp.getTime() + 8640000000);
-					document.cookie = "name" + "="+ $('#name').val() + ";expires=" + exp.toGMTString();
+					document.cookie = "name" + "="+ $('#name').val() + ";expires=" + exp.toGMTString()+";path=/create";
 					console.log("登陆成功")
 					window.location.href = "/create"
 				}
