@@ -7,8 +7,10 @@ const db_code = low(adapter_code)
 var request = require('request');
 const adapter_user = new FileSync('db/user.json') 
 var ws = require("nodejs-websocket")
-const appId = '小程序appid';
-const secret = '小程序secret';
+// 小程序设置
+// const appId = '';
+// const secret = '';
+
 var findUser = function(name, password){
     var users = low(adapter_user).get("users").value();
     return users.find(function(item){
@@ -171,29 +173,15 @@ exports.get_style_path = (req, res) => {
  
  // 用户获取验证码
  exports.getcode = (req, res) => {
-    
-    if (req.body.openid != undefined) {
-        db_code.find({
-            openid: req.body.openid
-        }).assign({
-            code: code,
-            time: t
-        }).write()
-        res.send({
-            code: code,
-            time: t
-        })
-    }
-    else {
-        db_code.get(req.body.name)
-        .assign({
-            code: code,
-            time: t
-        }).write();
-    }
+    var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + secret + '&js_code=' + req.body.code + '&grant_type=authorization_code';
+    request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            sendCode(body, res);
+        }
+    })
  }
 
- // 微信小程序端获取验证码
+ // 微信小程序端用户注册
 exports.wechat_signup = function(req, res) {
     var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + secret + '&js_code=' + req.body.code + '&grant_type=authorization_code';
     request(url, function (error, response, body) {
@@ -233,7 +221,7 @@ exports.wechat_signup = function(req, res) {
     })
  }
 
-function sendCode(body, conn) {
+function sendCode(body, res) {
     var code = Math.random().toString(16).substr(2,4);
     var t = +new Date();
     var b = JSON.parse(body)
@@ -243,7 +231,7 @@ function sendCode(body, conn) {
         })
         if (curuser.value() == undefined) {
             console.log("未注册用户")
-            conn.send("1")
+            res.send("1")
             return;
         }
         else {
@@ -253,24 +241,10 @@ function sendCode(body, conn) {
             }).write()
 
             var r = code + '-' + String(t)
-            conn.send(r)
+            res.send(r)
         } 
     }
     else {
-        conn.send("2")
+        res.send("2")
     }
 }
-
-ws.createServer(function (conn) {
-    conn.on("text", function (str) {
-        var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + secret + '&js_code=' + str + '&grant_type=authorization_code';
-        request(url, function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                sendCode(body, conn);
-            }
-        })
-    })
-    conn.on("close", function (code, reason) {
-        console.log("Connection closed")
-    })
-}).listen(2020)

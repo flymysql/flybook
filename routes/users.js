@@ -12,7 +12,7 @@ router.post('/push_config', authorController.push_config);
 router.post('/get_file', authorController.get_file);
 
 // get code
-//router.post('/getcode', authorController.getcode);
+router.post('/getcode', authorController.getcode);
 
 // wechat signup
 router.post('/wechat_signup', authorController.wechat_signup);

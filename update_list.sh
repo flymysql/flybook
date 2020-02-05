@@ -4,7 +4,7 @@ cp -rf flybook/bin ./
 cp -rf flybook/controllers ./
 cp -rf flybook/server/mysql ./server/
 cp -rf flybook/server/file ./server/
-cp -rf flybook/db/code.json ./db
+# cp -rf flybook/db/code.json ./db
 cp -rf flybook/until ./
 cp -rf flybook/public/javascripts ./public/
 cp -rf flybook/public/third-part ./public/
