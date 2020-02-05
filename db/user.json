@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "name": "Valky",
+      "password": "123456"
+    },
+    {
+      "name": "levy",
+      "password": "123456"
+    }
+  ],
+  "userInfo": {
+    "佚名": {
+      "head_img": "/images/head.png",
+      "blog_name": "佚名",
+      "header_logo": "/images/headerico.png",
+      "logo": "logo4.png",
+      "email": "flyphp@outlook.com"
+    },
+    "小鸡": {
+      "head_img": "/images/head.png",
+      "blog_name": "小鸡",
+      "header_logo": "/images/headerico.png",
+      "logo": "logo4.png",
+      "email": "flyphp@outlook.com"
+    },
+    "Valky": {
+      "head_img": "/images/head_r.jpg",
+      "blog_name": "Valky",
+      "header_logo": "/images/headerico_r.png",
+      "logo": "headerico2_r.png",
+      "email": "1696731766@qq.com"
+    },
+    "levy": {
+      "head_img": "https://wx.qlogo.cn/mmopen/vi_32/BqiaBiaNiaCgEGiaZIzxe8U5icFnNIjF3eqMgh9GPpZcbIZanSVcsTytmOAd0gYUtia88ibAp7nWpSkxNicnBSGnYxqicYQ/132",
+      "blog_name": "levy",
+      "header_logo": "/images/headerico.png",
+      "logo": "logo4.png",
+      "email": "flyphp@outlook.com"
+    }
+  }
+}

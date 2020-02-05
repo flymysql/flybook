@@ -1,11 +1,11 @@
 const config = require('../../config');
 const until = require('../../until/until');
 const createrss = require('../file/rss').createrss;
-var users = require('../config/user').items;
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const adapter_post = new FileSync('db/post.json') 
 const db_post = low(adapter_post)
+const adapter_user = new FileSync('db/user.json') 
 
 const pug = require('pug');
 // 编译文章页面
@@ -31,6 +31,7 @@ const option = {
 
 // 判断是否登陆
 var ifLogin = function (name) {
+    var users = low(adapter_user).get("users").value();
     for (i in users) {
         if (users[i].name === name) return true;
     }
@@ -85,6 +86,7 @@ exports.archivesArticle = (res => Articleslist(res, 0, false));
  * 获取文章列表
  */
 exports.getArticleList = (res, page) =>{
+    var authorInfo = low(adapter_user).get("userInfo").value()
     var pagenum = page * option.pagenum || 0;
     var result= [];
     var rows =db_post.filter({type: "post"})
@@ -97,9 +99,9 @@ exports.getArticleList = (res, page) =>{
     if (rows != []) {
         for(var i in rows){
             var time = rows[i].updateTime;
-            var author_info = config.author[rows[i].author];
+            var author_info = authorInfo[rows[i].author];
             if (author_info == undefined) {
-                author_info = config.author["佚名"];
+                author_info = authorInfo["佚名"];
             }
             result.push({
                 'id':rows[i].id,
@@ -138,6 +140,7 @@ exports.getArticleList = (res, page) =>{
 };
 // 单文章页面
 exports.getArticleDetail = (res, id) =>{
+    var authorInfo = low(adapter_user).get("userInfo").value()
     var ht = id.indexOf(".html");
     if( ht != -1) {
         id = id.slice(0, ht);
@@ -147,9 +150,9 @@ exports.getArticleDetail = (res, id) =>{
         res.render('404');
         return;
     }
-    var author_info = config.author[rows.author];
+    var author_info = authorInfo[rows.author];
     if (author_info == undefined) {
-        author_info = config.author["佚名"];
+        author_info = authorInfo["佚名"];
     }
     res.send(compiledPost({
         'site':option,
@@ -290,8 +293,9 @@ exports.deleteArticle = (res, id, islogin) =>{
 
 // 文章搜索
 exports.post_search = (res, s) =>{
+    var authorInfo = low(adapter_user).get("userInfo").value()
     var rows = [];
-    if(s in config.author){
+    if(s in authorInfo){
         // 搜索的是作者名字
         rows = db_post.filter({author: s, type: "post"})
         .sortBy(function(o){
@@ -313,9 +317,9 @@ exports.post_search = (res, s) =>{
     var result= [];
     for(var i in rows){
         var time = rows[i].updateTime;
-        var author_info = config.author[rows[i].author];
+        var author_info = authorInfo[rows[i].author];
         if (author_info == undefined) {
-            author_info = config.author["佚名"];
+            author_info = authorInfo["佚名"];
         }
         result.push({
             'id':rows[i].id,

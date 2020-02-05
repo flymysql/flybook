@@ -1,14 +1,39 @@
-var users = require('../server/config/user').items;
 const fs = require('fs');
 const path = require('path');
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+const adapter_code = new FileSync('db/code.json') 
+const db_code = low(adapter_code)
+var request = require('request');
+const adapter_user = new FileSync('db/user.json') 
+var ws = require("nodejs-websocket")
+const appId = '小程序appid';
+const secret = '小程序secret';
 var findUser = function(name, password){
+    var users = low(adapter_user).get("users").value();
     return users.find(function(item){
         return item.name === name && item.password === password;
     });
 };
 // 作者登录
 exports.authorLogin = (req, res, next) => { 
+    try{
     var sess = req.session;
+    var data = db_code.get(req.body.name).value();
+    console.log(req.body)
+    if (data == undefined) {
+        res.json({ret_code: 1, ret_msg: '验证码未生成！'});
+        return;
+    }
+    if (data.code != req.body.code) {
+        res.json({ret_code: 1, ret_msg: '验证码错误！'});
+        return;
+    }
+    // 验证码有效时间设为100秒
+    else if (+new Date() - data.time > 100000) {
+        res.json({ret_code: 1, ret_msg: '验证码过期！'});
+        return;
+    }
     var user = findUser(req.body.name, req.body.password);
     console.log(user)
     if(user){
@@ -21,31 +46,22 @@ exports.authorLogin = (req, res, next) => {
             res.json({ret_code: 0, ret_msg: '登录成功'});                     
         });
     }else{
+        console.log("账号或密码错误")
         res.json({ret_code: 1, ret_msg: '账号或密码错误'});
-    }     
+    }
+}
+catch(e){
+    console.log(e);
+} 
  };
 
 // 作者登出
 exports.authorLogout = (req, res, next) => { 
-    // 备注：这里用的 session-file-store 在destroy 方法里，并没有销毁cookie
-    // 所以客户端的 cookie 还是存在，导致的问题 --> 退出登陆后，服务端检测到cookie
-    // 然后去查找对应的 session 文件，报错
-    // session-file-store 本身的bug    
-
-    req.session.destroy(function(err) {
-        if(err){
-            res.json({ret_code: 2, ret_msg: '退出登录失败'});
-            return;
-        }
-        
-        // req.session.loginUser = null;
-        res.clearCookie(identityKey);
-        res.redirect('/');
-    });
  };
 
  // 获取站点配置
  exports.get_config = (req, res, next) => {
+    var users = low(adapter_user).get("users").value();
     var sess = req.session;
     var loginUser = sess.loginUser;
     console.log(users[0].name)
@@ -60,6 +76,7 @@ exports.authorLogout = (req, res, next) => {
  };
 
  exports.push_config = (req, res, next) => {
+    var users = low(adapter_user).get("users").value();
     var sess = req.session;
     var loginUser = sess.loginUser;
     console.log(users[0].name)
@@ -95,6 +112,7 @@ function readDirSync(path){
 
 // 获取站点主题路径下的文件列表
 exports.get_style_path = (req, res) => {
+    var users = low(adapter_user).get("users").value();
     var sess = req.session;
     var loginUser = sess.loginUser;
     console.log(users[0].name);
@@ -112,6 +130,7 @@ exports.get_style_path = (req, res) => {
 
  // 获取站点文件
  exports.get_file = (req, res, next) => {
+    var users = low(adapter_user).get("users").value();
     var sess = req.session;
     var loginUser = sess.loginUser;
     console.log(users[0].name)
@@ -126,6 +145,7 @@ exports.get_style_path = (req, res) => {
  };
 
  exports.update_file = (req, res) => {
+    var users = low(adapter_user).get("users").value();
     var sess = req.session;
     var loginUser = sess.loginUser;
     console.log(users[0].name)
@@ -143,3 +163,114 @@ exports.get_style_path = (req, res) => {
         }
     }
  }
+
+ // 新用户注册页面
+ exports.toSignUP = (req, res) => {
+    res.render("signup", {})
+ }
+ 
+ // 用户获取验证码
+ exports.getcode = (req, res) => {
+    
+    if (req.body.openid != undefined) {
+        db_code.find({
+            openid: req.body.openid
+        }).assign({
+            code: code,
+            time: t
+        }).write()
+        res.send({
+            code: code,
+            time: t
+        })
+    }
+    else {
+        db_code.get(req.body.name)
+        .assign({
+            code: code,
+            time: t
+        }).write();
+    }
+ }
+
+ // 微信小程序端获取验证码
+exports.wechat_signup = function(req, res) {
+    var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + secret + '&js_code=' + req.body.code + '&grant_type=authorization_code';
+    request(url, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var b = JSON.parse(body)
+            if (b.openid != undefined ) {
+                // 初始化验证码表
+                db_code.set(req.body.nick, {
+                    openid: b.openid,
+                    code: "",
+                    time: 0
+                }).write()
+                // 初始化用户密码表
+                var user = low(adapter_user);
+                var cur_user = user.get("users").value();
+                cur_user.push({
+                    name: req.body.nick,
+                    password: req.body.pwd
+                })
+                user.assign({
+                    users: cur_user
+                }).write()
+                // 初始化用户信息
+                user.get("userInfo").set(req.body.nick, {
+                    "head_img": req.body.head_img,
+                    "blog_name": req.body.nick,
+                    "header_logo": "/images/headerico.png",
+                    "logo": "logo4.png",
+                    "email": req.body.mail
+                }).write()
+                res.send("0")
+            }
+            else {
+                res.send("1")
+            }
+        }
+    })
+ }
+
+function sendCode(body, conn) {
+    var code = Math.random().toString(16).substr(2,4);
+    var t = +new Date();
+    var b = JSON.parse(body)
+    if (b.openid != undefined) {
+        var curuser = db_code.find({
+            openid: b.openid
+        })
+        if (curuser.value() == undefined) {
+            console.log("未注册用户")
+            conn.send("1")
+            return;
+        }
+        else {
+            curuser.assign({
+                code: code,
+                time: t
+            }).write()
+
+            var r = code + '-' + String(t)
+            conn.send(r)
+        } 
+    }
+    else {
+        conn.send("2")
+    }
+}
+
+ws.createServer(function (conn) {
+    conn.on("text", function (str) {
+        var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + secret + '&js_code=' + str + '&grant_type=authorization_code';
+        request(url, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                sendCode(body, conn);
+            }
+        })
+    })
+    conn.on("close", function (code, reason) {
+        console.log("Connection closed")
+    })
+}).listen(2020)

@@ -22,12 +22,6 @@ router.get('/create', postController.post_create_get);
 // post插入文章
 router.post('/insert_post', postController.post_insert_post);
 
-// login
-router.post('/login', authorController.authorLogin);
-
-// logout
-router.post('/logout', authorController.authorLogin)
-
 // get后台文章列表
 router.get('/admin', postController.post_admin);
 
@@ -60,21 +54,6 @@ router.get('/link', postController.get_link);
 
 // get增加photos
 router.get('/photos', postController.get_photos);
-
-// 获取站点配置
-router.get('/get_config', authorController.get_config);
-
-// 更新站点配置
-router.post('/push_config', authorController.push_config);
-
-// 获取站点文件内容
-router.post('/get_file', authorController.get_file);
-
-// 更新站点文件内容
-router.post('/update_file', authorController.update_file);
-
-// 站点主题修改
-router.get('/style', authorController.get_style_path);
 
 // 评论管理
 router.post('/comment', commentController.com_Controller);

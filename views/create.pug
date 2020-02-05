@@ -157,36 +157,5 @@ block content
             }
 
     else
-        div.
-            <form method="POST" action="/login" class="login">
-                <input type="text" id="name" name="name" value="levy" />
-                <input type="password" id="password" name="password" value="123456" />
-                <input type="submit" value="登录" id="login" />
-            </form>
-        script(src="/javascripts/jQuery.min.js")
         script.
-            $('#login').click(function(evt){
-                evt.preventDefault();
-
-                $.ajax({
-                    url: '/login',
-                    type: 'POST',
-                    data: {
-                        name: $('#name').val(),
-                        password: $('#password').val()
-                    },
-                    success: function(data){
-                        if(data.ret_code === 0){
-                            var exp = new Date();
-                            exp.setTime(exp.getTime() + 8640000000);
-                            document.cookie = "name" + "="+ $('#name').val() + ";expires=" + exp.toGMTString();
-                            location.reload();
-                        }
-                        else{
-                            alert("账号密码错误！！")
-                        }
-                    }
-                });
-            });
-
-
+            window.location.href = "/others/loginPage/login-page.html";

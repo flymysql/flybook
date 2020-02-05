@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>登陆</title>
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
+    
+</head>
+
+<body class="login-page sidebar-collapse">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="/" rel="tooltip" data-placement="bottom" style="font-size: 20px;">
+                    首页
+                </a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" data-nav-image="assets/img/blurred-image-1.jpg">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/archives" style="font-size: 20px;">归档</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/post/email" style="font-size: 20px;">订阅</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="page-header" filter-color="orange">
+        <div class="page-header-image" style="background-image:url(assets/img/login.jpg)"></div>
+        <div class="container">
+            <div class="col-md-4 content-center">
+                <div class="card card-login card-plain">
+                    <form class="form" method="POST" action="/login">
+                        <div class="header header-primary text-center">
+                            <div class="logo-container">
+                                <img src="assets/img/now-logo.png" alt="">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="input-group form-group-no-border input-lg">
+                                <span class="input-group-addon">
+                                    🧑
+                                </span>
+                                <input type="text" class="form-control" placeholder="昵称..." id="name" name="name" >
+                            </div>
+                            <div class="input-group form-group-no-border input-lg">
+                                <span class="input-group-addon">
+                                    👀
+                                </span>
+                                <input type="password" id="password" name="password"  placeholder="密码..." class="form-control" />
+                            </div>
+							<div class="input-group form-group-no-border input-lg">
+                                <span class="input-group-addon">
+                                    📜
+                                </span>
+                                <input type="text" id="verifi_code"  placeholder="验证码..." class="form-control" />
+                            </div>
+                                <span href="/" class="link" id="getcode" onmouseover="showcode()" >获取验证码</span>
+                                <img id="code" src="assets/image/code.jpg" onmouseout="out()" style="width: 150px;display: block; margin: auto;opacity: 0.5;display: none;">
+                        </div>
+                        <div class="footer text-center">
+                            <a  id="login" class="btn btn-primary btn-round btn-lg btn-block">登陆</a>
+                        </div>
+                        <div class="pull-left">
+                            <h6>
+                                <a href="/" class="link">创建账号</a>
+                            </h6>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="/">
+                                博客
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/post/about小鸡">
+                                关于我
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.github.com/flymysql">
+                                GitHub
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://weibo.com/237199972">
+                                微博
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://localhost:3000/rss.xml">
+                                RSS订阅
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+    </div>
+</body>
+<script src="/javascripts/jQuery.min.js"> </script>
+<script>
+    function showcode(){
+        $("#code")[0].style.display = "block";
+    }
+    function out(){
+        $("#code")[0].style.display = "none";
+    }
+
+	$('#login').click(function(evt){
+		evt.preventDefault();
+
+		$.ajax({
+			url: '/login',
+			type: 'POST',
+			data: {
+				name: $('#name').val(),
+				password: $('#password').val(),
+				code: $('#verifi_code').val()
+			},
+			success: function(data){
+				if(data.ret_code === 0){
+					var exp = new Date();
+					exp.setTime(exp.getTime() + 8640000000);
+					document.cookie = "name" + "="+ $('#name').val() + ";expires=" + exp.toGMTString();
+					console.log("登陆成功")
+					window.location.href = "/create"
+				}
+				else{
+					alert(data.ret_msg)
+				}
+			}
+		});
+	});
+</script>
+</html>

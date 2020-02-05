@@ -6,35 +6,6 @@ module.exports ={
         keywords:"兰州小红鸡,博客,技术博客,写作,阅读",
         description:"兰州小红鸡的博客，代码记录成长",
     },
-    // 用户配置
-    users: [
-        {name: '小鸡', password: '123456'},
-        {name: 'Valky', password: '123456'}
-    ],
-    // 作者信息
-    author:{
-      "佚名": {
-        head_img:"/images/head.png",
-        blog_name: "佚名",
-        header_logo: "/images/headerico.png",
-        logo: "logo4.png",
-        email: "flyphp@outlook.com"
-      },
-      "小鸡": {
-        head_img:"/images/head.png",
-        blog_name: "小鸡",
-        header_logo: "/images/headerico.png",
-        logo: "logo4.png",
-        email: "flyphp@outlook.com"
-      },
-      "Valky":{
-        head_img:"/images/head_r.jpg",
-        blog_name: "Valky",
-        header_logo: "/images/headerico_r.png",
-        logo: "headerico2_r.png",
-        email: "1696731766@qq.com"
-      }
-    },
     // 站点信息
     options:{
         avatar:"/images/avatar.jpg",   

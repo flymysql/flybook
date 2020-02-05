@@ -5,7 +5,8 @@ const email_auth = require('../config').email_auth;
 const site_name = require('../config').seo.title;
 const authors = require('../config').author;
 const db_comment = low(adapter_comment)
-var users = require('../server/config/user').items;
+const adapter_user = new FileSync('db/user.json') 
+const users = low(adapter_user).get("users").value();
 var nodemailer  = require('nodemailer');
 var mailTransport = nodemailer.createTransport({
     host : 'smtp.qq.com',

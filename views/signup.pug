@@ -1,0 +1,14 @@
+extends layout
+block head_content
+  title= "小红鸡 | 用户注册"
+  meta(name="description" content="小红鸡用户注册")
+  link(rel='stylesheet', href='/stylesheets/create.css')
+block content
+    div
+      form(method="POST" action="/login" class="login")
+          input(type="text" id="name" name="name" value="levy" )
+          input(type="password" id="password" name="password" value="123456")
+          div(class="login_check" id="login_check")
+              input(type="text" id="verifi_code")
+              button(id="getVerifiCode")="获取验证码"
+          input(type="submit" value="登录" id="login")

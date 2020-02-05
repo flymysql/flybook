@@ -1,12 +1,13 @@
 footer
     div(class="col")
-        each foo in site.footer
-            a(target="_blank" href=foo.link)= foo.desc
-        span= "power by "
-        a(href="https://me.idealli.com/post/d3f1788e3")= "Flybook"
-        div(class="icp")
-            span
-                a(target="_blank" href="https://flymysql.leanapp.cn/")= "©2018-2019 " + site.title + " | " + site.icp 
-            script(async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js")
-            span(id="busuanzi_container_site_pv")= " 本站总访问量"
-            span(id="busuanzi_value_site_pv")= "次"
+        if site
+            each foo in site.footer
+                a(target="_blank" href=foo.link)= foo.desc
+            span= "power by "
+            a(href="https://me.idealli.com/post/d3f1788e3")= "Flybook"
+            div(class="icp")
+                span
+                    a(target="_blank" href="https://flymysql.leanapp.cn/")= "©2018-2019 " + site.title + " | " + site.icp 
+                script(async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js")
+                span(id="busuanzi_container_site_pv")= " 本站总访问量"
+                span(id="busuanzi_value_site_pv")= "次"
