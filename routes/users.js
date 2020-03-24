@@ -14,6 +14,9 @@ router.post('/get_file', authorController.get_file);
 // get code
 router.post('/getcode', authorController.getcode);
 
+// get rsa key
+router.get('/getrsakey', authorController.getRsaKey)
+
 // wechat signup
 router.post('/wechat_signup', authorController.wechat_signup);
 

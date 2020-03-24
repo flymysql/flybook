@@ -6,10 +6,14 @@ const adapter_code = new FileSync('db/code.json')
 const db_code = low(adapter_code)
 var request = require('request');
 const adapter_user = new FileSync('db/user.json') 
-var ws = require("nodejs-websocket")
+const RSA = require('../until/rsa');
+// var ws = require("nodejs-websocket");
 // 小程序设置
 // const appId = '';
 // const secret = '';
+p = new RSA.BigInt("106697219132480173106064317148705638676529121742557567770857687729397446898790451577487723991083173010242416863238099716044775658681981821407922722052778958942891831033512463262741053961681512908218003840408526915629689432111480588966800949428079015682624591636010678691927285321708935076221951173426894836169")
+q = new RSA.BigInt("144819424465842307806353672547344125290716753535239658417883828941232509622838692761917211806963011168822281666033695157426515864265527046213326145174398018859056439431422867957079149967592078894410082695714160599647180947207504108618794637872261572262805565517756922288320779308895819726074229154002310375209")
+const keys = RSA.get_key(p, q);
 
 var findUser = function(name, password){
     var users = low(adapter_user).get("users").value();
@@ -173,7 +177,12 @@ exports.get_style_path = (req, res) => {
  
  // 用户获取验证码
  exports.getcode = (req, res) => {
-    var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + secret + '&js_code=' + req.body.code + '&grant_type=authorization_code';
+    // console.log("接收到客户端信息，解密前信息：", req.body.code)
+    var d = RSA.decrypt(req.body.code, keys[1]);
+    // console.log("使用私钥解密后：", d.toString())
+    var str = RSA.FromAssic(d)
+    // console.log("将信息复原为字符串：", str)
+    var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + secret + '&js_code=' + str + '&grant_type=authorization_code';
     request(url, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             sendCode(body, res);
@@ -247,11 +256,12 @@ function sendCode(body, res) {
             return;
         }
         else {
+            console.log("用户标识：", b.openid, " ==>已注册用户")
             curuser.assign({
                 code: code,
                 time: t
             }).write()
-
+            console.log("生成临时验证码：",code, "(有效100s)")
             var r = code + '-' + String(t)
             res.json({
                 code: code,
@@ -265,4 +275,15 @@ function sendCode(body, res) {
             s:2
         })
     }
+}
+
+// 生成RSA密钥
+exports.getRsaKey = function(req, res) {
+    // console.log("接收到客户端请求")
+    // console.log('生成公钥n:', keys[0][0].toString())
+    // console.log('生成公钥e:', keys[0][1].toString()) 
+    res.json({
+        n: keys[0][0].toString(),
+        e: keys[0][1].toString() 
+    });
 }
