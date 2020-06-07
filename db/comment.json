@@ -1792,5 +1792,27 @@
         }
       }
     }
+  },
+  "/post/1c79ddcd3": {
+    "1a64179f": {
+      "cid": "1a64179f",
+      "nick": "小鸡",
+      "email": "flyphp@outlook.com",
+      "link": "https://me.idealli.com",
+      "content": "<p>评论测试</p>",
+      "time": "2020-6-7 21:26:14",
+      "child": {}
+    }
+  },
+  "/others/photos": {
+    "44f5c93": {
+      "cid": "44f5c93",
+      "nick": "小鸡",
+      "email": "flyphp@outlook.com",
+      "link": "http://",
+      "content": "<p>111</p>",
+      "time": "2020-6-7 21:34:46",
+      "child": {}
+    }
   }
 }
