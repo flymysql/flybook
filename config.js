@@ -1,10 +1,10 @@
 module.exports ={
     // 站点信息
     seo:{
-        title:"兰州小红鸡",
+        title:"小红鸡博客",
         index:"https://me.idealli.com",
-        keywords:"兰州小红鸡,博客,技术博客,写作,阅读",
-        description:"兰州小红鸡的博客，代码记录成长",
+        keywords:"兰州小红鸡,博客,技术博客,写作,阅读,小鸡",
+        description:"小鸡的博客，代码记录成长",
     },
     // 用户配置
     users: [
@@ -38,7 +38,7 @@ module.exports ={
     // 站点信息
     options:{
         avatar:"/images/avatar.jpg",   
-        nickname:"兰州小红鸡",    
+        nickname:"小红鸡博客",    
         description:"桃李春风一杯酒，江湖夜雨十年灯",
         ICP:"闽ICP备18025365号",
         copyright:"© 2018"
