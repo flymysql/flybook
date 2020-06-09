@@ -10,7 +10,7 @@ block content
     include partails/post-aside  
     div(class="post-content")
         h2(class="post-title")= "邻居们"
-
+        <div id="author_name" data-name="小鸡" style="display:none;" class="overlay" onclick="cancel_link()"></div>
         article(class="post-body")
             ul(class="index-list")
                 each link in links
@@ -69,9 +69,11 @@ block scripts
     script.
         function show_form(){
             document.getElementsByClassName("add_link_form")[0].style.display="block";
+            document.getElementsByClassName("overlay")[0].style.display="block";
         }
         function cancel_link(){
             document.getElementsByClassName("add_link_form")[0].style.display="none";
+            document.getElementsByClassName("overlay")[0].style.display="none";
         }
         function add_link(){
             var h = $("#href")[0].value;

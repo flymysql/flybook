@@ -123,7 +123,7 @@ for (var i = 0; i < content.length; i++) {
     for (var j = 1; j < content[i].length && j < showNum+1; j++) {
         var con=content[i][j].url;
         var item=document.createElement("li");
-        item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><img class=imgitem src=http://cdn.idealli.com/"+title+con+" alt="+con+"></div><span>"+con.substring(0,con.length-4)+"</span><p>上传于"+content[i][j].date+"</p>";
+        item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><a data-fancybox=gallery href=http://cdn.idealli.com/"+title+con+"><img class=imgitem src=http://cdn.idealli.com/"+title+con+" alt="+con+"></a></div><span>"+con.substring(0,con.length-4)+"</span><p>上传于"+content[i][j].date+"</p>";
         conBox.appendChild(item);
     }
     if(content[i].length > showNum){
@@ -147,142 +147,9 @@ function moreClick(obj,cur,cont,title){
     for ( ; j < cont.length && j < Number(showNum) + Number(begin); j++) {
         var con=cont[j].url;
         var item=document.createElement("li");
-        item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><img class=imgitem src=http://cdn.idealli.com/"+title+con+" alt="+con+"></div><span>"+con.substring(0,con.length-4)+"</span><p>上传于"+cont[j].date+"</p>";
+        item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><a data-fancybox=gallery href=http://cdn.idealli.com/"+title+con+"><img class=imgitem src=http://cdn.idealli.com/"+title+con+" alt="+con+"></a></div><span>"+con.substring(0,con.length-4)+"</span><p>上传于"+cont[j].date+"</p>";
         parent.appendChild(item);
         var v=item.getElementsByTagName('img');
-        v[0].id=imgid;
-        imgid++;
-        v[0].addEventListener("click",function(e){ // 注册事件
-            // 记录小图的位置个大小
-            x=e.target.offsetLeft;
-            y=e.target.offsetTop;
-            w=e.target.offsetWidth;
-            h=e.target.offsetHeight;
-            src=e.target.src;
-            id=e.target.id;
-            // 创建遮罩层
-            div=document.createElement("div");
-            div.style.cssText=`
-                position:fixed;
-                left:0;
-                top:0;
-                bottom:0;
-                right:0;
-                background-color: rgba(25,25,25,0.8);
-                z-index:99999999;
-                transition:all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
-            `;
-            document.body.appendChild(div);
-            setTimeout(function(){
-                div.style.opacity=1;
-            },0);
-            // (此处可以加loading)
-            // 创建副本
-            img=new Image();
-            btnright=document.createElement("button");
-            btnleft=document.createElement("button");
-            img.src=src;
-            btnleft.style.cssText=`
-                position:fixed;
-                border-radius: 50%;;
-                left:${x - 20}px;
-                top:${y - container.scrollTop + h/2}px;
-                width:50px;
-                height:50px;
-                border: 0px;
-                background-color: rgba(200,200,200,0.8);
-                font-size: 20px;
-                z-index: 999999999;
-                transition:all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
-            `;
-            btnright.style.cssText=`
-                position:fixed;
-                border-radius: 50%;
-                left:${x + w + 20}px;
-                top:${y - container.scrollTop + h/2}px;
-                width:50px;
-                border: 0px;
-                height:50px;
-                font-size: 20px;
-                background-color: rgba(200,200,200,0.8);
-                z-index: 999999999;
-                transition:all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
-            `;
-            btnleft.innerText="<";
-            btnright.innerText=">";
-            img.style.cssText=`
-                position:fixed;
-                border-radius: 12px;
-                left:${x}px;
-                top:${y - container.scrollTop}px;
-                width:${w}px;
-                height:${h}px;
-                z-index: 999999999;
-                transition:all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
-                opacity:0;
-            `;
-            btnleft.onclick=function(){
-                if(id===0){
-                    alert("已经是第一张了！");
-                    return;
-                }
-                var left=document.getElementById(id-1);
-                img.src=left.src;
-                x=left.offsetLeft;
-                y=left.offsetTop;
-                w=left.offsetWidth;
-                h=left.offsetHeight;
-                id--;
-            }
-            btnright.onclick=function(){
-                id++;
-                if(id>=imgid){
-                    alert("已经是最后一张了！");
-                    return;
-                }
-                var right=document.getElementById(id);
-                img.src=right.src;
-                x=right.offsetLeft;
-                y=right.offsetTop;
-                w=right.offsetWidth;
-                h=right.offsetHeight;
-            }
-            img.onload=function(){
-                document.body.appendChild(img);
-                document.body.appendChild(btnright);
-                document.body.appendChild(btnleft);
-                // 浏览器宽高
-                wh=window.innerHeight;
-                ww=window.innerWidth;
-                // 目标宽高和坐标
-                if(w/h<ww/wh){
-                    th=wh-80;
-                    tw=w/h*th >> 0;
-                    tx=(ww - tw) / 2;
-                    ty=40;	            	
-                }
-                else{
-                    tw=ww*0.8;
-                    th=h/w*tw >> 0;
-                    tx=ww*0.1;
-                    ty=(wh-th)/2;
-                }
-                // 延迟写入否则不会有动画
-                setTimeout(function(){
-                    img.style.opacity=1;
-                    img.style.height=th+"px";
-                    img.style.width=tw+"px";
-                    img.style.left=tx+"px";
-                    img.style.top=ty+"px";
-                    btnleft.style.left=(tx-90)+"px";
-                    btnleft.style.top=(ty+th/2)+"px";
-                    btnright.style.left=(tx+tw+40)+"px";
-                    btnright.style.top=(ty+th/2)+"px";
-                    // 点击隐藏
-                    div.onclick=img.onclick=closeMove;
-                },10);
-            };
-        });//end event
     }
     if(cont.length > j){
         obj.value=j;
@@ -343,16 +210,10 @@ function moreClick(obj,cur,cont,title){
 <ul class="post_list" id="more_post_list" style="list-style:none;"></ul>
 <footer><div class="col"><a target="_blank" href="/post/about">关于小鸡</a><a target="_blank" href="/post/about">联系小鸡</a><a target="_blank" href="/rss.xml">RSS订阅</a><a target="_blank" href="/post/email">邮件订阅</a><a target="_blank" href="https://www.github.com/flymysql">Github</a><a target="_blank" href="https://weibo.com/237199972">微博</a><span>power by </span><a href="https://me.idealli.com/post/d3f1788e3">Flybook</a><div class="icp"><span><a target="_blank" href="https://flymysql.leanapp.cn/">©2018-2019 兰州小红鸡 | 闽ICP备18025365号</a></span><script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_pv" style="display: inline;"> 本站总访问量</span><span id="busuanzi_value_site_pv">171288</span></div></div></footer>
 </div>
-<script src="/javascripts/image.js?t=1591535249469"></script>
 <script src="https://lib.sinaapp.com/js/jquery/3.1.0/jquery-3.1.0.min.js"></script>
 <script src="/javascripts/global.js?t=1591535249469"></script>
-<script>jQuery(document).ready(function () {
-    jQuery.viewImage({
-        'target' : 'img', //需要使用ViewImage的图片
-        'exclude': '#no-view',    //要排除的图片
-        'delay'  : 300                //延迟时间
-    });
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
-});</script>
 </body>
 </html>

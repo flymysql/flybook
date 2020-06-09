@@ -44,6 +44,8 @@ block content
 block scripts
     script(src="/javascripts/autotoc.js")
     script(type="text/javascript" src="/third-part/highlight/highlight.pack.js?t="+sst)
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css")
+    script(src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js")
     script.
         new AutocJS({
             article: '.post-body',
@@ -52,3 +54,6 @@ block scripts
             // 不配置 selector 属性，即使用默认选择器
             title: '文章目录',
         });
+        $(".post-body img").wrap(function(index){
+            return "<a data-fancybox=gallery href='" + this.src + "'></a>"
+        })
