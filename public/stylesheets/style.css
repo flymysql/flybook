@@ -28,7 +28,6 @@ a{
   内阴影+圆角*/
  ::-webkit-scrollbar-track
  {
-    -webkit-box-shadow:inset 0 0 6px rgba(200,200,0,0.3);
     border-radius:4px;
     background-color:#fff;
  }
@@ -101,7 +100,7 @@ a{
   float: right;
   margin: 11px 6px 0 10px;
   font-size: 1.5em;
-  color: #969696;
+  color: #000;
 }
 
 .header .container{

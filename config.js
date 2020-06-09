@@ -122,7 +122,7 @@ module.exports ={
     ],
     // 标签云
     tags: ["随想","博客","机器学习","教程","邻家酒肆","前端","深度学习","算法","小程序",
-          "资源","cpp","html","javascript","python","sql","node","wordpress"],
+          "资源","cpp","html","javascript","python","sql","node"],
     // 页脚菜单栏
     footer_menu:[
       {
