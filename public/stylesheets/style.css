@@ -34,11 +34,11 @@ a{
  }
  /*定义滑块
   内阴影+圆角*/
- ::-webkit-scrollbar-thumb
- {
-    border-radius:4px;
-    background-color: rgb(239, 193, 193);
- }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgb(219 217 217);
+}
+
 
 /* 顶部样式 */
 
