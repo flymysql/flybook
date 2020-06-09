@@ -1,1 +1,105 @@
-.post-title{display:none!important;}.index-list{box-sizing:border-box;margin:0 0 20px;list-style:none;text-align:left}.index-list a{border:none}.index-list li{display:list-item;margin-top:15px;list-style:none;text-align:-webkit-match-parent;line-height:20px}.index-list .avatar{float:left;display:block;margin-right:10px;width:3pc;height:3pc;cursor:pointer}.index-list .follow{float:right;margin-top:5px;padding:0;color:#42c02e;font-weight:400;font-size:13px;line-height:normal}.index-list .index-name{display:block;margin-right:60px;padding-top:5px;font-size:15px}.index-list{margin-top:2px;color:#969696;font-size:9pt}.index-list a:hover{border-bottom:none!important;color:#4b784e}.find-more{padding:7px 7px 7px 9pt;width:100%;border:1px solid #dcdcdc;border-radius:4px;background-color:#f7f7f7;color:#787878;font-size:13px}@media (max-width:767px){.posts-expand .post-body ul p{margin:unset;letter-spacing:unset;font-size:14px}.posts-expand .post-body ol,.posts-expand .post-body ul{padding-left:unset}}
+.index-list{box-sizing:border-box;margin:0 0 20px;list-style:none;text-align:left}.index-list a{border:none}.index-list li{display:list-item;margin-top:15px;list-style:none;text-align:-webkit-match-parent;line-height:20px}.index-list .avatar{float:left;display:block;margin-right:10px;width:3pc;height:3pc;cursor:pointer}.index-list .follow{float:right;margin-top:5px;padding:0;color:#42c02e;font-weight:400;font-size:13px;line-height:normal}.index-list .index-name{display:block;margin-right:60px;padding-top:5px;font-size:15px}.index-list{margin-top:2px;color:#969696;font-size:9pt}.index-list a:hover{border-bottom:none!important;color:#4b784e}.find-more{padding:7px 7px 7px 9pt;width:100%;border:1px solid #dcdcdc;border-radius:4px;background-color:#f7f7f7;color:#787878;font-size:13px}@media (max-width:767px){.posts-expand .post-body ul p{margin:unset;letter-spacing:unset;font-size:14px}.posts-expand .post-body ol,.posts-expand .post-body ul{padding-left:unset}}
+
+.add_link_form{
+    position: fixed;
+    top: 0px;
+    border-right: 1px solid #e3c6c6;
+    left: 0px;
+    padding-left: 5px;
+    padding-top: 20px;
+    z-index: 99999;
+    height: 100%;
+    width: 400px;
+    background: #fff;
+    box-shadow: 1px 3px #c9e3a7;
+    text-align: center;
+}
+
+.to_add_link{
+    position: fixed;
+    top: 50%;
+    left: 0px;
+    height: 7rem;
+    width: 2.3rem;
+    padding-right: 0.3rem;
+    margin-left: 3px;
+    background: #dc6161;
+    font-size: 19px;
+    text-align: center;
+    cursor:pointer;
+    border-radius: 20px;
+    color: #fff;
+    background-color: #ea6f5a;
+    text-shadow: 1px 1px black, 2px 2px black, 3px 3px black, 4px 4px black, 3px 3px black, 4px 4px black, 3px 3px black, 4px 4px black;
+}
+
+.add_link_form label {
+    display: block;
+}
+.add_link_form span{
+    display: inline-block;
+    width: 5rem;
+    background: #b0e793;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    margin-right: 10px;
+    border-radius: 5px;
+    color: #2e1717;
+    box-shadow: 1px 1px #ede966;
+}
+.add_link_form input{
+    display: inline-block;
+    width: 15rem;
+    box-shadow: 2px 1px #8bddd5;
+}
+.add_link_submit{
+    display: inline-block;
+    width: 5rem;
+    background: #efc6a9;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    margin: auto;
+    border-radius: 5px;
+    color: #241212;
+    font-weight: 600;
+    margin-left: 10px;
+    /* margin: auto; */
+}
+.tips{
+    margin: 20px;
+}
+.tips p.tip1{
+    margin: unset;
+    line-height: 1.5rem;
+    color: #bb2323;
+    font-weight: 800;
+    text-align: center!important;
+}
+.tips p.tip2{
+    line-height: 1.5rem;
+    font-size: 13px;
+    font-weight:300;
+}
+.tips p {
+    text-align: left;
+    line-height: 1.5rem;
+    padding: unset;
+    margin: unset;
+    font-size: 14px;
+    color: #331f1f;
+    font-weight: 600;
+}
+
+
+@media (max-width: 767px){
+    .to_add_link{
+        top: 50%;
+        right: 2px!important;
+        left: unset;
+    }
+    .add_link_form{
+        width: 100%;
+    }
+}

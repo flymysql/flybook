@@ -9,22 +9,14 @@ block head_content
 block content
     include partails/post-aside  
     div(class="post-content")
-        h2(class="post-title")= title
-        div(class="author")
-            a(class="avatar" href="/post/about" target="_blank")
-                img(src="/images/head.png" id="no-view")
-            div(class="info")
-                span(class="name")
-                    a(href="/" target="_blank")= "小鸡"
-                a(class="follow" href="/post/email" target="_blank")
-                    span= "关注"
+        h2(class="post-title")= "邻居们"
 
         article(class="post-body")
             ul(class="index-list")
                 each link in links
                     li
                         a(href=link.href target="_blank" class="avatar")
-                            img(src=link.src)
+                            img(src=link.img)
                         a(class="follow" state="0" href=link.href target="_blank")="关注"
                         a(href=link.href target="_blank" class="index-name")=link.name
                         p=link.desc
@@ -32,36 +24,76 @@ block content
         div(class="ads")
             a(class="ads-link" href="https://me.idealli.com/post/651cfd47.html" target="_blank")
                 img(data-src="https://me.idealli.com/uploads/images/imageup-1558576491588.png", class="ads-img" id="no-view")
-        div(class="tag-cloud-tags" id="tagcloud") 
+     
         br
-        div(class="comment" id="comment")
+        div(class="to_add_link" onclick="show_form()")="申请友链"
+        div(class="add_link_form" style="display:none;")
+            h2(style="text-align:center;")="友链自助申请"
+            label
+                span="博客"
+                input(type="text" id="name" placeholder="你的博客名")
+            label
+                span="链接"
+                input(type="text" id="href" placeholder="你的链接")
+            label
+                span="头像"
+                input(type="text" id="img" placeholder="https://")
+            label
+                span="简介"
+                input(type="text" id="desc" placeholder="一句话概括下你的博客")
+            label
+                span="友链页"
+                input(type="text" id="f_link" placeholder="你的友链页链接")
+            label
+                span="邮箱"
+                input(type="text" id="email" placeholder="留下你的邮件，链接出问题时联系")
+            button(class="add_link_submit" onclick="add_link()")= "提交申请"
+            button(class="add_link_submit" onclick="cancel_link()")= "取消"
+            div(class="tips")
+                p(class="tip1")="FBI Warning"
+                p(class="tip2")="请先将本网站链接添加至贵站友链页面，再填表申请本站友链，本站有爬虫自动检测贵站友链。"
+                p="博客：小红鸡"
+                p="链接：https:me.idealli.com"
+                p="头像：https://me.idealli.com/images/head.png"
+                p="简介：桃李春风一杯酒，江湖夜雨十年灯。"
+        h3(class="post-title")= "本站实现自助添加友链，可点击左侧按钮进行友链添加"
+        div(class="tag-cloud-tags" id="tagcloud" name="tagcloud")
+            each tag in tags
+                a(style="font-size: 16px;" href="/tag/" + tag)
+                    div(class="tag_img" data-img=tag)
+                    span=tag
+        <br>
+        include partails/comment
          
 block scripts
-    script(src="/javascripts/autotoc.js")
-    script(type="text/javascript" src="/third-part/highlight/highlight.pack.js?t=")
-    script(src="https://cloud.panjunwen.com/av-min.js?t=")
-    script(src="/javascripts/valine.min.js?t=")
     script.
-        new Valine({
-            // AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
-            av: AV, 
-            el: '#comment',
-            lang: 'zh-cn',
-            emoticon_url: 'https://cloud.panjunwen.com/alu',
-            emoticon_list: ["吐.png","喷血.png","狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","中指.png","尴尬.png","瞅你.png","想一想.png","中枪.png","得意.png","肿包.png","扇耳光.png","亲亲.png","惊喜.png","脸红.png","无所谓.png","便便.png","愤怒.png","蜡烛.png","献黄瓜.png","内伤.png","投降.png","观察.png","看不见.png","击掌.png","抠鼻.png","邪恶.png","看热闹.png","口水.png","抽烟.png","锁眉.png","装大款.png","吐舌.png","无奈.png","长草.png","赞一个.png","呲牙.png","无语.png","阴暗.png","不出所料.png","咽气.png","期待.png","高兴.png","吐血倒地.png","哭泣.png","欢呼.png","黑线.png","喜极而泣.png","喷水.png","深思.png","鼓掌.png","暗地观察.png"],
-            app_id: 'CODUI37tPwbXtbN2NzB64mhy-gzGzoHsz',
-            app_key: 'zM95HhjgwuUXtm9jsasnKFyr',
-            placeholder: '✍写评论'
-        });
-        $(function(){
-            $('pre').each(function(i, block) {
-                hljs.highlightBlock(block);
-            });
-        });
-        new AutocJS({
-            article: '.post-body',
-            isOnlyAnchors: true,
-            //selector: 'h1',
-            // 不配置 selector 属性，即使用默认选择器
-            title: '文章目录',
-        });
+        function show_form(){
+            document.getElementsByClassName("add_link_form")[0].style.display="block";
+        }
+        function cancel_link(){
+            document.getElementsByClassName("add_link_form")[0].style.display="none";
+        }
+        function add_link(){
+            var h = $("#href")[0].value;
+            var f = $("#f_link")[0].value;
+            if (f.indexOf(h) == -1) {
+                alert("你的友链链接" + f + "与博客链接" + h + "不在同一个域名下（或者http协议不同）！\n请重新输入！")
+                return;
+            }
+            $.post("/add_link",{
+                    name: $("#name")[0].value,
+                    href: h,
+                    img: $("#img")[0].value,
+                    desc: $("#desc")[0].value,
+                    f_link: f,
+                    email: $("#email")[0].value,
+                },
+                function(data){
+                    if(data == "succeed"){
+                        alert("添加成功");
+                    }
+                    if (data == "err"){
+                        alert("添加失败")
+                    }
+                });
+        }

@@ -58,6 +58,9 @@ router.get('/like-add', postController.get_add_like);
 // get获取友链
 router.get('/link', postController.get_link);
 
+// 添加友链请求
+router.post('/add_link', postController.add_link);
+
 // get增加photos
 router.get('/photos', postController.get_photos);
 

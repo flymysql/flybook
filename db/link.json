@@ -1,0 +1,74 @@
+{
+  "无文字": {
+    "name": "无文字",
+    "href": "https://blog.imalan.cn/",
+    "img": "https://secure.gravatar.com/avatar/1741a6eef5c824899e347e4afcbaa75d?s=64&r=G&d=",
+    "desc": "无文字 | 三无计划"
+  },
+  "柠檬酸": {
+    "name": "柠檬酸",
+    "href": "https://cherryml.com/",
+    "img": "https://cherryml.com/images/avatar.jpg",
+    "desc": "喜欢撸代码，喜欢前端，更喜欢漂亮的妹子。"
+  },
+  "Mhun博客": {
+    "name": "Mhun博客",
+    "href": "https://www.iasds.cn/",
+    "img": "https://gitee.com/MHun/gallery/raw/master/headimg.png",
+    "desc": "爱技术，爱生活。"
+  },
+  "APP喵": {
+    "name": "APP喵",
+    "href": "https://www.appmews.cn/",
+    "img": "https://s.gravatar.com/avatar/ec276009a8a14549c0f0f0e3a2f21137?s=80",
+    "desc": "贯彻爱与真实的邪恶，可爱又迷人的反派角色"
+  },
+  "林阿三":{
+    "name": "林阿三",
+    "href": "https://www.linasan.cn/",
+    "img":"https://q1.qlogo.cn/g?b=qq&nk=1603889221&s=640",
+    "desc":"既然爱可以做 那还谈它干嘛"
+  },
+  "在线分享网":{
+    "name": "在线分享网",
+    "href": "https://www.52share.online/",
+    "img":"https://www.52share.online/medias/avatar.jpg",
+    "desc":"免费分享各种学习视频，资源收集于网络！"
+  },
+  "北宸":{
+    "name": "北宸",
+    "href": "https://leafjame.github.io/",
+    "img":"https://leafjame.github.io/images/beichen.png",
+    "desc":"Java狮 北漂男 摄影 旅行 赚钱"
+  },
+  "安歌":{
+    "name": "安歌",
+    "href": "https://www.xerrors.fun/",
+    "img":"https://www.xerrors.fun/avatar.jpg",
+    "desc":"敬畏代码、敬畏技术"
+  },
+  "水寒的博客":{
+    "name": "水寒的博客",
+    "href": "https://dp2px.com/",
+    "img":"https://dp2px.com/images/download_head.png",
+    "desc":"Android/Java/Kotlin/前端/嵌入式/Python"
+  },
+  "长弓不是弓长":{
+    "name": "长弓不是弓长",
+    "href": "https://52chang.wang/",
+    "img":"https://52chang.wang/img/avatar.jpg",
+    "desc":"学习、记录，最重要的是开心。"
+  },
+  "KeZunLin":{
+    "name": "KeZunLin",
+    "href": "https://kezunlin.me/",
+    "img":"https://kezunlin.me/medias/logo.png",
+    "desc":"C++ && Python. Computer Vision && Deep Learning."
+  },
+  "辣椒の酱":{
+    "name": "辣椒の酱",
+    "href": "https://removeif.github.io/",
+    "img":"https://removeif.github.io/images/tuzi.jpg",
+    "desc":"后端开发，技术分享"
+  }
+}

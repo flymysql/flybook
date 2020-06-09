@@ -6,6 +6,7 @@ const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const adapter_post = new FileSync('db/post.json') 
 const db_post = low(adapter_post)
+const db_link = low(new FileSync('db/link.json') )
 
 const pug = require('pug');
 // 编译文章页面
@@ -357,31 +358,52 @@ exports.get_add_like = (res, req) => {
 
 // 友链页面渲染
 exports.get_link = (res, req) => {
-    /*
-    var sql = 'SELECT * FROM `links` WHERE 1';
-    var links = []
-    connection.query(sql, function(err, rows){
-        if(err){
-            console.log(err)
-            res.json({
-                code:0
-            })
-            return;
-        }
-        for(var i in rows){
-            links.push({
-                'name':rows[i].name,
-                'src': rows[i].src,
-                'href': rows[i].href,
-                'desc': rows[i].desc
-            });
-        }
-        res.render('link', {
-            'site':option,
-            'links':links
-        })
+    var rows =db_link.filter()
+                    .value()
+    res.render('link', {
+        'links': rows,
+        'site':option,
+        'carousel': option.carousel,
+        'tags':config.tags,
+        'sst': sst
     })
-    */
+}
+
+// 友链添加请求
+exports.add_link = (res, req) => {
+    var b = req.body;
+    var http = require('http');
+    
+    if (b.f_link.indexOf("https") != -1) {
+         http = require('https');
+    }
+    try{
+    http.get(b.f_link, function(r){
+        let html='';
+        r.setEncoding('utf8');
+        r.on('data', (chunk) => {
+        html += chunk;
+        });
+        r.on('end', () => {
+            var check =html.indexOf("me.idealli.com");
+            if(check != -1) {
+                db_link.set(b.name, {
+                    name:b.name,
+                    href:b.href,
+                    img:b.img,
+                    desc:b.desc,
+                    f_link:b.f_link,
+                    email:b.email
+                }).write()
+                console.log("友链添加成功："+b.href);
+                res.end("succeed")
+            }
+            else {
+                res.end("err")
+            }
+        });
+    })
+    }catch(e){console.log(e)}
 }
 
 // 相册渲染
