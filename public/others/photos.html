@@ -3,10 +3,10 @@
 <head>
 <title>小鸡的相册</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" sizes="32x32" href="/images/logo4.png?t=1591535249469">
-<link rel="stylesheet" href="/stylesheets/post.css?t=1591535249469">
-<link rel="stylesheet" href="/stylesheets/style.css?t=1591535249469">
-<link rel="stylesheet" href="/stylesheets/photos.css?t=1591535249469">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/logo4.png">
+<link rel="stylesheet" href="/stylesheets/post.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
+<link rel="stylesheet" href="/stylesheets/photos.css">
 
 </head>
 <body>
@@ -123,7 +123,7 @@ for (var i = 0; i < content.length; i++) {
     for (var j = 1; j < content[i].length && j < showNum+1; j++) {
         var con=content[i][j].url;
         var item=document.createElement("li");
-        item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><a data-fancybox=gallery href=http://cdn.idealli.com/"+title+con+"><img class=imgitem src=http://cdn.idealli.com/"+title+con+" alt="+con+"></a></div><span>"+con.substring(0,con.length-4)+"</span><p>上传于"+content[i][j].date+"</p>";
+        item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><a data-fancybox='gallery' href='http://cdn.idealli.com/"+title+con+"''><img class=imgitem src=http://cdn.idealli.com/"+title+con+" alt="+con+"></a></div><span>"+con.substring(0,con.length-4)+"</span><p>上传于"+content[i][j].date+"</p>";
         conBox.appendChild(item);
     }
     if(content[i].length > showNum){
@@ -147,7 +147,7 @@ function moreClick(obj,cur,cont,title){
     for ( ; j < cont.length && j < Number(showNum) + Number(begin); j++) {
         var con=cont[j].url;
         var item=document.createElement("li");
-        item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><a data-fancybox=gallery href=http://cdn.idealli.com/"+title+con+"><img class=imgitem src=http://cdn.idealli.com/"+title+con+" alt="+con+"></a></div><span>"+con.substring(0,con.length-4)+"</span><p>上传于"+cont[j].date+"</p>";
+        item.innerHTML="<div class=imgbox id=imgbox style=height:"+wid+"px;><a data-fancybox='gallery' href='http://cdn.idealli.com/"+title+con+"''><img class=imgitem src=http://cdn.idealli.com/"+title+con+" alt="+con+"></a></div><span>"+con.substring(0,con.length-4)+"</span><p>上传于"+cont[j].date+"</p>";
         parent.appendChild(item);
         var v=item.getElementsByTagName('img');
     }
@@ -211,7 +211,7 @@ function moreClick(obj,cur,cont,title){
 <footer><div class="col"><a target="_blank" href="/post/about">关于小鸡</a><a target="_blank" href="/post/about">联系小鸡</a><a target="_blank" href="/rss.xml">RSS订阅</a><a target="_blank" href="/post/email">邮件订阅</a><a target="_blank" href="https://www.github.com/flymysql">Github</a><a target="_blank" href="https://weibo.com/237199972">微博</a><span>power by </span><a href="https://me.idealli.com/post/d3f1788e3">Flybook</a><div class="icp"><span><a target="_blank" href="https://flymysql.leanapp.cn/">©2018-2019 兰州小红鸡 | 闽ICP备18025365号</a></span><script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_pv" style="display: inline;"> 本站总访问量</span><span id="busuanzi_value_site_pv">171288</span></div></div></footer>
 </div>
 <script src="https://lib.sinaapp.com/js/jquery/3.1.0/jquery-3.1.0.min.js"></script>
-<script src="/javascripts/global.js?t=1591535249469"></script>
+<script src="/javascripts/global.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
