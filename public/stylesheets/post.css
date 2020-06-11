@@ -359,6 +359,7 @@ ol {
 li {
   display: list-item;
   margin-bottom: 0.5rem;
+  list-style: cambodian;
 }
 
 li p {

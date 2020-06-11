@@ -59,5 +59,6 @@ block scripts
             return "<a data-fancybox=gallery href='" + this.src + "'></a>"
         })
         $("pre code").each(function(){
-            $(this).html("<ul><li>" + $(this).html().replace(/<br>/g,"<br></li><li>") +"<br></li></ul>");
+            $(this).html("<ul><li>" + $(this).html().replace(/<br>|\n/g,"<br></li><li>") +"</li></ul>");
+            $(this).html($(this).html().replace("<li></li></ul>","</ul>"));
         });
