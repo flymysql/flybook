@@ -365,11 +365,13 @@ thead > tr{
   text-align: center;
   margin: 1em auto;
   width: 400px;
-  background: #e7efee;
+  background: #f6f6f6;
   height: 70px;
-  line-height: 70px;
   border-radius: 1em;
   color: #555;
+}
+.LinkCard br{
+  display: none;
 }
 table td {
   padding: 0.5rem;
