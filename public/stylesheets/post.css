@@ -83,7 +83,7 @@
 	padding: 0px;
 }
 .hljs ul li {
-	list-style: decimal-leading-zero;
+	list-style: decimal-leading-zero!important;
 	border-left: 1px solid #ddd !important;
 	background: #fff;
 	padding: 5px!important;
@@ -359,7 +359,10 @@ ol {
 li {
   display: list-item;
   margin-bottom: 0.5rem;
-  list-style: cambodian;
+}
+
+.post-body ul li{
+   list-style: square;
 }
 
 li p {
