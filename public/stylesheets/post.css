@@ -462,7 +462,7 @@ table th{
   下面为主题自定义的文章页面样式
 */
 
-footer {
+footer .col {
   width: 700px!important;
 }
 

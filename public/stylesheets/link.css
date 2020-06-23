@@ -65,6 +65,9 @@
     margin: 0 0 6px;
     /* box-shadow: 2px 1px #8bddd5; */
 }
+.post-body ul li {
+    list-style: none!important;
+}
 .add_link_submit{
     display: inline-block;
     width: 5rem;

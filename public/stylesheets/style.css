@@ -163,25 +163,29 @@ input.search-input{
 /* 底部样式 */
 
 footer {
-  width: 950px;
   margin-right: auto;
   margin-left: auto;
-  margin-bottom: 30px;
+  background: #262626;
 }
 
-footer col{
-  width: 70.83333%;
-  display: inline-block;
+footer .col{
+  width: 950px;
+  margin: auto;
+  padding: 30px 0;
 }
 .site-info a,
 footer a{
-  color: #666666!important;
+  color: #c6c6c6!important;
   display: inline-block;
   margin-right: 12px;
 }
 
-footer .icp{
-  color: #666666;
+footer span .icp{
+  color: #c6c6c6!important;
+}
+
+footer span {
+  color: #6491e2;
 }
 
 /* 底部结束 */
@@ -316,8 +320,15 @@ header .email{
 /* 顶部结束 */
 
 /* 底部样式 */
-footer{
-  width:94%!important;
+
+footer .col {
+  width: inherit!important;
+  margin: auto;
+  padding: 3px;
+}
+footer span,
+footer a{
+  font-size: 13px;
 }
 /* 底部结束 */
 }
