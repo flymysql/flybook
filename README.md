@@ -126,7 +126,7 @@
 - 控制器：从模型中获取请求的数据，创建一个 HTML 页面显示出数据，并将页面返回给用户，以便在浏览器中查看。
 - 视图（模板）：供控制器用来渲染数据。
 
-![](https://me.idealli.com/uploads/images/imageup-1558169043543.png)  
+![](https://flycode.co/uploads/images/imageup-1558169043543.png)  
 
 ## 博客安装
 
@@ -181,7 +181,7 @@ npm run pmrestart
 ```
 server {  
 listen 80;  
-server_name [me.idealli.com](http://me.idealli.com);  
+server_name [flycode.co](http://flycode.co);  
 location / {  
     proxy_pass [http://localhost:3000](http://localhost:3000);  
     proxy\_http\_version 1.1;  

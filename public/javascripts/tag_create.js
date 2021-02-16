@@ -12,7 +12,7 @@ var create_tag = function(){
                         var node = document.createElement("a");
                         node.setAttribute('style', 'font-size: 16px;');
                         node.setAttribute('href', '/tag/' + tags[i]);
-                        node.innerHTML = '<div class="tag_img" style="background-image:url(https://image.idealli.com/tags/'+ tags[i] +'.png);"></div>' + tags[i];
+                        node.innerHTML = '<div class="tag_img" style="background-image:url(https://picture-1256429518.cos.ap-chengdu.myqcloud.com/'+ tags[i] +'.png);"></div>' + tags[i];
                         tagcloud.appendChild(node);
                     }
                 }

@@ -185,7 +185,7 @@ var to_create = true;
 function get_tags(){
     var tags = $(".tag_img");
     for(var i  = 0; i < tags.length; i++){
-        tags[i].style.backgroundImage = `url("https://image.idealli.com/tags/${tags[i].dataset.img}.png")`;
+        tags[i].style.backgroundImage = `url("https://picture-1256429518.cos.ap-chengdu.myqcloud.com/tags/${tags[i].dataset.img}.png")`;
     }
 }
 

@@ -245,11 +245,6 @@ header .email{
   height: 100px;
   width: 100%;
   margin-top: 10px;
-  /* background-image: url(http://qr.topscan.com/api.php?&w=200&text=https://me.idealli.com);
-  background-size: auto 100%;
-  background-color: #fff;
-  background-repeat: no-repeat;
-  background-position: left; */
   border: 1px solid #ccc;
   border-radius: 5px;
   display: inline-flex;

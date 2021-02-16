@@ -2,7 +2,7 @@ module.exports ={
     // 站点信息
     seo:{
         title:"小红鸡博客",
-        index:"https://me.idealli.com",
+        index:"",
         keywords:"兰州小红鸡,博客,技术博客,写作,阅读,小鸡",
         description:"小鸡的博客，代码记录成长",
     },
@@ -46,23 +46,23 @@ module.exports ={
     // 首页轮播图设置
     carousel:[
         {
-          'link':'https://me.idealli.com/post/651cfd47.html',
+          'link':'/post/651cfd47.html',
           'img':'/images/18123106.jpg'
         },
         {
-          'link':'https://me.idealli.com/post/73ad4183.html',
+          'link':'/post/73ad4183.html',
           'img':'/images/18122304.jpg'
         },
         {
-          'link':'https://me.idealli.com/post/e8d13fc.html',
+          'link':'/post/e8d13fc.html',
           'img':'/images/110602.png'
         },
         {
-          'link':'https://me.idealli.com/post/118d23db.html',
+          'link':'/post/118d23db.html',
           'img':'/images/110601.png'
         },
         {
-          'link':'https://me.idealli.com/post/56d5689a.html',
+          'link':'/post/56d5689a.html',
           'img':'/images/111302.png'
         },
      ],
@@ -95,12 +95,6 @@ module.exports ={
      ],
      // 首页友链
      friends:[
-      {
-        img: "https://me.idealli.com/images/head_r.jpg",
-        link: "http://blog.idealli.com/",
-        name: "pink",
-        desc: "博主的可爱女友"
-      },
       {
         img: "https://secure.gravatar.com/avatar/1741a6eef5c824899e347e4afcbaa75d?s=64&r=G&d=",
         link: "https://blog.imalan.cn/",

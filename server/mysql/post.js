@@ -385,7 +385,7 @@ exports.add_link = (res, req) => {
         html += chunk;
         });
         r.on('end', () => {
-            var check =html.indexOf("me.idealli.com");
+            var check =html.indexOf("flycode.co");
             if(check != -1) {
                 db_link.set(b.name, {
                     name:b.name,
